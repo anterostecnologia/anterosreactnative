@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 import AnterosRefreshableScrollView from '../ScrollView/AnterosRefreshableScrollView'
 import {AnterosText} from '../Text/AnterosText';
-import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from '../../../../../src/components/AnterosDatasource'
+import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from '../Datasource/AnterosDatasource'
 
 const { width, height } = Dimensions.get('window')
 const PaginationStatus = {
