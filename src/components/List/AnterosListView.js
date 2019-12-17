@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 import AnterosRefreshableScrollView from '../ScrollView/AnterosRefreshableScrollView'
 import {AnterosText} from '../Text/AnterosText';
+import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from '../../../../../src/components/AnterosDatasource'
 
 const { width, height } = Dimensions.get('window')
 const PaginationStatus = {
@@ -80,7 +81,10 @@ export class AnterosListView extends Component {
     paginationBtnText: 'Load more...',
 
     // GridView
-    numColumns: 1
+    numColumns: 1,
+
+    pageLimit : 10
+   
   }
 
   static propTypes = {
@@ -143,7 +147,15 @@ export class AnterosListView extends Component {
     paginationBtnText: PropTypes.string,
 
     // GridView
-    numColumns: PropTypes.number
+    numColumns: PropTypes.number,
+
+    pageLimit : PropTypes.number,
+
+    //dataSource
+    dataSource: PropTypes.oneOfType([
+        PropTypes.instanceOf(AnterosLocalDatasource),
+        PropTypes.instanceOf(AnterosRemoteDatasource)
+    ]),
   }
 
   constructor(props) {
@@ -192,7 +204,7 @@ export class AnterosListView extends Component {
   componentDidMount() {
     this.mounted = true
     if (this.props.firstLoader) {
-      this.props.onFetch(this.getPage(), this.postRefresh, this.endFetch)
+      this.onFetch(this.getPage(), this.postRefresh, this.endFetch)
     }
   }
 
@@ -206,14 +218,14 @@ export class AnterosListView extends Component {
         isRefreshing: true
       })
       this.setPage(1)
-      this.props.onFetch(this.getPage(), this.postRefresh, this.endFetch)
+      this.onFetch(this.getPage(), this.postRefresh, this.endFetch)
     }
   }
 
   onPaginate(){
     if (this.state.paginationStatus !== PaginationStatus.allLoaded && !this.state.isRefreshing) {
       this.setState({ paginationStatus: PaginationStatus.waiting })
-      this.props.onFetch(this.getPage() + 1, this.postPaginate, this.endFetch)
+      this.onFetch(this.getPage() + 1, this.postPaginate, this.endFetch)
     }
   }
 
@@ -475,6 +487,26 @@ export class AnterosListView extends Component {
     return null
   }
 
+  onFetch = (page = 1, startFetch, abortFetch) => {
+    try {
+        
+        let pageLimit = this.props.pageLimit
+        let itens = this.props.dataSource ? this.props.dataSource.data : this.props.itens
+
+        let rowData = [...itens];
+        console.log('rowData',rowData)
+  
+        if (page === 10) {
+          rowData = []
+        }
+  
+        startFetch(rowData, pageLimit)
+      } catch (err) {
+        console.log(err);
+        abortFetch() 
+      }
+  }
+
   render() {
     const { numColumns } = this.props
     return (
@@ -493,6 +525,7 @@ export class AnterosListView extends Component {
         onEndReached={this.onEndReached}
         refreshControl={this.renderRefreshControl()}
         numColumns={numColumns}
+        onFetch={this.onFetch}
       />
     )
   }

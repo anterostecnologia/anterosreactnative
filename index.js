@@ -247,7 +247,7 @@ import AnterosDateTimePicker from './src/components/Calendar/AnterosDateTimePick
 import {AnterosDraggableView} from './src/components/View/AnterosDraggableView';
 import {AnterosPanDrawer} from './src/components/Drawer/AnterosPanDrawer';
 import {AnterosScallingDrawer} from './src/components/Drawer/AnterosScalingDrawer';
-
+import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from './src/components/Datasource/AnterosDatasource'
 
 var AnterosSet = {
     AnterosTheme,
@@ -527,6 +527,8 @@ var AnterosSet = {
 
     AnterosColorGradientSlider,
     AnterosGradingModal,
+
+    AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents
 
 }
 

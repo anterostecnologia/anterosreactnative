@@ -9,6 +9,7 @@ import {
   Text,
   TouchableNativeFeedback,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   ActivityIndicator,
   ViewPropTypes as RNViewPropTypes,
   Platform,
@@ -164,7 +165,7 @@ AnterosButton.defaultProps = {
   title: '',
   iconRight: false,
   TouchableComponent:
-    Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
+    Platform.OS === 'ios' ? TouchableWithoutFeedback : TouchableNativeFeedback,
   onPress: log,
   clear: false,
   loadingProps: {

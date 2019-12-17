@@ -11,3 +11,5 @@ tmp
 # Examples (If applicable to your project)
 example
 exemplos
+
+*.tgz
