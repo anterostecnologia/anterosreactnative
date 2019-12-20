@@ -16,11 +16,16 @@ import {
 import AnterosTheme from '../../themes/AnterosTheme';
 import AnterosPullPicker from '../PullPicker/AnterosPullPicker';
 import AnterosPopoverPicker from '../PopoverPicker/AnterosPopoverPicker';
+import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from "../Datasource/AnterosDatasource";
 
 export default class AnterosSelect extends Component {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
+    dataSource: PropTypes.oneOfType([
+      PropTypes.instanceOf(AnterosLocalDatasource),
+      PropTypes.instanceOf(AnterosRemoteDatasource)
+    ]),
     size: PropTypes.oneOf(['lg', 'md', 'sm']),
     value: PropTypes.any,
     valueStyle: Text.propTypes.style,
@@ -81,7 +86,11 @@ export default class AnterosSelect extends Component {
     return -1;
   }
 
-  get valueText() {
+  state = {
+    value:''
+  }
+
+  valueText = () => {
     let {value, items, getItemValue, getItemText} = this.props;
     let text = value;
     if (getItemText && items instanceof Array) {
@@ -118,8 +127,15 @@ export default class AnterosSelect extends Component {
       iconSize,
       placeholder,
       placeholderTextColor,
+      onSelected,
       ...others
     } = this.props;
+
+    //value
+    value = this.state.value
+    //onSelected
+    onSelected = this.props.onSelected ? this.props.onSelected : this.onChangeSelect
+
 
     //style
     let borderRadius,
@@ -193,7 +209,7 @@ export default class AnterosSelect extends Component {
       valueStyle = valueStyle.concat({color: placeholderTextColor});
       valueElement = <Text style={valueStyle} numberOfLines={1} allowFontScaling={false}>{placeholder}</Text>;
     } else {
-      let valueText = this.valueText;
+      let valueText = value;
       if (React.isValidElement(valueText)) {
         valueElement = valueText;
       } else {
@@ -216,24 +232,31 @@ export default class AnterosSelect extends Component {
       iconSize,
       placeholder,
       placeholderTextColor,
+      onSelected,
       ...others
     };
   }
 
   showPullPicker() {
     let {pickerTitle, items, getItemText, onSelected} = this.props;
-    AnterosPullPicker.show(pickerTitle, items, this.selectedIndex, onSelected, {getItemText});
+    let its = items.map(item => {
+      return item.text
+    })
+    AnterosPullPicker.show(pickerTitle, its, this.selectedIndex, onSelected, {getItemText});
   }
 
   showPopoverPicker() {
     this.measure((x, y, width, height, pageX, pageY) => {
       let {items, getItemText, onSelected} = this.props;
+      let its = items.map(item => {
+        return item.text
+      })
       AnterosPopoverPicker.show({
         x: pageX,
         y: pageY,
         width,
         height
-      }, items, this.selectedIndex, onSelected, {getItemText, align: 'end'});
+      }, its, this.selectedIndex, onSelected, {getItemText, align: 'end'});
     });
   }
 
@@ -274,6 +297,72 @@ export default class AnterosSelect extends Component {
     return iconElement;
   }
 
+  onChangeSelect = (newValue) => {
+    
+    if (this.props.dataSource) {
+        let valor
+        this.props.items.map(item => {
+          if(item.text === newValue){
+            valor = item.value
+          }
+        })
+        this.props.dataSource.setFieldByName(this.props.dataField, valor);
+        console.log('onChangeSelect',this.props.dataSource.fieldByName(this.props.dataField))
+        this.setState({ value: newValue });
+    } else {
+        this.setState({ value: newValue });
+    }
+
+}
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.dataSource) {
+      let value = nextProps.dataSource.fieldByName(this.props.dataField);
+      if (!value) {
+          value = '';
+      }
+  }
+}
+
+  componentDidMount() {
+    
+    if (this.props.dataSource) {
+        this.props.dataSource.addEventListener(
+            [dataSourceEvents.AFTER_CLOSE,
+            dataSourceEvents.AFTER_OPEN,
+            dataSourceEvents.AFTER_GOTO_PAGE,
+            dataSourceEvents.AFTER_CANCEL,
+            dataSourceEvents.AFTER_SCROLL], this.onDatasourceEvent);
+            this.props.dataSource.addEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
+    }
+  }
+
+  componentWillUnmount() {
+    
+    if ((this.props.dataSource)) {
+        this.props.dataSource.removeEventListener(
+            [dataSourceEvents.AFTER_CLOSE,
+            dataSourceEvents.AFTER_OPEN,
+            dataSourceEvents.AFTER_GOTO_PAGE,
+            dataSourceEvents.AFTER_CANCEL,
+            dataSourceEvents.AFTER_SCROLL], this.onDatasourceEvent);
+        this.props.dataSource.removeEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
+    }
+  }
+
+  onDatasourceEvent(event, error) {
+    console.log('Datasource',event)
+    if (event == dataSourceEvents.AFTER_OPEN || event == dataSourceEvents.AFTER_CLOSE) {
+        
+    } else {
+        let value = this.props.dataSource.fieldByName(this.props.dataField);
+        if (!value) {
+            value = '';
+        }
+        
+    }
+  }
+
   render() {
     this.buildProps();
 
@@ -293,6 +382,8 @@ export default class AnterosSelect extends Component {
     let ViewClass = disabled
       ? View
       : TouchableOpacity;
+
+      
     return (
       <ViewClass
         style={style}
