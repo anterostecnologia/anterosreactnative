@@ -14,7 +14,7 @@ export default class AnterosInput extends TextInput {
   constructor(props){
     super(props);
 
-    this.handleChange = this.handleChange.bind(this)
+    
     if (this.props.dataSource) {
       
       let value = this
@@ -84,21 +84,25 @@ export default class AnterosInput extends TextInput {
         .props
         .dataSource
         .fieldByName(this.props.dataField);
+        console.log('onDatasourceEvent',value)
     if (!value) {
         value = '';
     }
     this.setState({value: value});
 }
 
-handleChange(event) {
+handleChange = (valor) => {
   if (this.props.dataSource) {
+    
       this
           .props
           .dataSource
-          .setFieldByName(this.props.dataField, event.target.value);
+          .setFieldByName(this.props.dataField, valor);
   } else {
-      this.setState({value: event.target.value});
+      this.setState({value: valor});
   }
+
+  
   
 }
 
@@ -128,6 +132,7 @@ handleChange(event) {
       disabled,
       placeholderTextColor,
       pointerEvents,
+      //onChange,
       opacity,
       ...others
     } = this.props;
@@ -180,7 +185,7 @@ handleChange(event) {
       opacity = AnterosTheme.inputDisabledOpacity;
     }
 
-    let onChange = this.handleChange
+    //let onChange = this.handleChange
     let value = this.state.value
 
     this.props = {
@@ -190,7 +195,7 @@ handleChange(event) {
       placeholderTextColor,
       pointerEvents,
       opacity,
-      onChange,
+      onChangeText:this.handleChange,
       value,
       ...others
     };

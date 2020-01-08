@@ -307,7 +307,7 @@ export default class AnterosSelect extends Component {
           }
         })
         this.props.dataSource.setFieldByName(this.props.dataField, valor);
-        console.log('onChangeSelect',this.props.dataSource.fieldByName(this.props.dataField))
+        //console.log('onChangeSelect',this.props.dataSource.fieldByName(this.props.dataField))
         this.setState({ value: newValue });
     } else {
         this.setState({ value: newValue });
@@ -355,10 +355,10 @@ export default class AnterosSelect extends Component {
     if (event == dataSourceEvents.AFTER_OPEN || event == dataSourceEvents.AFTER_CLOSE) {
         
     } else {
-        let value = this.props.dataSource.fieldByName(this.props.dataField);
+        /*let value = this.props.dataSource.fieldByName(this.props.dataField);
         if (!value) {
             value = '';
-        }
+        }*/
         
     }
   }
