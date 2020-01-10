@@ -90,14 +90,14 @@ export default class AnterosInput extends TextInput {
     this.setState({value: value});
 }
 
-handleChange(event) {
+handleChange(value) {
   if (this.props.dataSource) {
       this
           .props
           .dataSource
-          .setFieldByName(this.props.dataField, event.target.value);
+          .setFieldByName(this.props.dataField, value);
   } else {
-      this.setState({value: event.target.value});
+      this.setState({value: value});
   }
   
 }
