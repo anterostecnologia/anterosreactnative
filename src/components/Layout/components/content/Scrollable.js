@@ -17,14 +17,26 @@ const styles = StyleSheet.create({
  * @type {React.StatelessComponent<{stretch: boolean, horizontal: boolean, children: any}>}
  */
 /* eslint-enable */
-const Scrollable = ({ children, stretch, horizontal }) => (
-  <AnterosKeyboardScrollView
-    horizontal={horizontal}
-    contentContainerStyle={stretch ? styles.stretch : null}
+class Scrollable extends React.Component{
+
+
+scrollToPosition = (x, y, animated = true) => {
+        this.keyboardRef.scrollToPosition(x,y,animated);
+    }
+
+  render(){
+    return(
+      <AnterosKeyboardScrollView
+    horizontal={this.props.horizontal}
+    contentContainerStyle={this.props.stretch ? styles.stretch : null}
+    ref={ref => this.keyboardRef = ref}
   >
-    {children}
+    {this.props.children}
   </AnterosKeyboardScrollView>
-);
+      )
+  }
+  
+}
 
 
 Scrollable.propTypes = {

@@ -124,6 +124,12 @@ class Content extends Component {
     }
   }
 
+  scrollToPosition = (x, y, animated = true) => {
+        	this.scrollRef.scrollToPosition(x,y,animated);
+        }
+
+
+
   render() {
     const view = (
       <View
@@ -146,6 +152,8 @@ class Content extends Component {
       <Scrollable
         horizontal={this.props.horizontal}
         stretch={this.props.stretchable}
+        
+        ref={ref => this.scrollRef = ref}
       >
         {view}
       </Scrollable>

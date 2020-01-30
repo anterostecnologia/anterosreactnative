@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from "../Datasource/AnterosDatasource";
 
 import AnterosTheme from '../../themes/AnterosTheme';
 
@@ -12,6 +13,10 @@ export class AnterosCheckbox extends TouchableOpacity {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
+    dataSource: PropTypes.oneOfType([
+      PropTypes.instanceOf(AnterosLocalDatasource),
+      PropTypes.instanceOf(AnterosRemoteDatasource)
+    ]),
     checked: PropTypes.bool,
     defaultChecked: PropTypes.bool,
     size: PropTypes.oneOf(['lg', 'md', 'sm']),
@@ -51,6 +56,11 @@ export class AnterosCheckbox extends TouchableOpacity {
         ? props.checked
         : props.defaultChecked
     });
+
+    if(this.props.dataSource){
+      this.state.checked = this.props.dataSource.fieldByName(this.props.dataField)
+    }
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,6 +69,16 @@ export class AnterosCheckbox extends TouchableOpacity {
         this.setState({checked: nextProps.checked});
       }
     }
+  }
+
+  onChangeChecked = (checked) => {
+    
+    if(this.props.dataSource){
+      this.props.dataSource.setFieldByName(this.props.dataField,checked)
+    }
+
+    this.setState({checked})
+
   }
 
   buildProps() {
@@ -77,6 +97,8 @@ export class AnterosCheckbox extends TouchableOpacity {
       ...others
     } = this.props;
     let {checked} = this.state;
+
+    
 
     let iconSize,
       textFontSize,
@@ -161,6 +183,8 @@ export class AnterosCheckbox extends TouchableOpacity {
       });
       onChange && onChange(!checked);
     };
+
+    onChange = this.onChangeChecked
 
     this.props = {
       style,

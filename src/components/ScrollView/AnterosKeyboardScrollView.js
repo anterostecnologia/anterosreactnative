@@ -72,11 +72,16 @@ function listenToKeyboardEvents(ScrollableComponent) {
             ? _KAM_DEFAULT_TAB_BAR_HEIGHT
             : 0
         this.state = { keyboardSpace }
+
+        
+        
         }
+
+
 
         componentDidMount() {
         this.mountedComponent = true
-        // Keyboard events
+        
         if (Platform.OS === 'ios') {
             this.keyboardWillShowEvent = Keyboard.addListener(
             'keyboardWillShow',
@@ -96,6 +101,10 @@ function listenToKeyboardEvents(ScrollableComponent) {
             this._resetKeyboardSpace
             )
         }
+
+
+        // setTimeout(() => this.scrollToPosition(100,200),1000);
+
         }
 
         componentWillReceiveProps(nextProps) {
@@ -331,6 +340,10 @@ function listenToKeyboardEvents(ScrollableComponent) {
         this._rnkasv_keyboardView = ref
         if (this.props.innerRef) {
             this.props.innerRef(this._rnkasv_keyboardView)
+        }
+        //console.log('refScroll ' + this.props.refScroll)
+        if(this.props.refScroll !== undefined){
+            this.props.refScroll(ref)
         }
         }
 
