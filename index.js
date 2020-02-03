@@ -248,6 +248,13 @@ import {AnterosDraggableView} from './src/components/View/AnterosDraggableView';
 import {AnterosPanDrawer} from './src/components/Drawer/AnterosPanDrawer';
 import {AnterosScallingDrawer} from './src/components/Drawer/AnterosScalingDrawer';
 import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from './src/components/Datasource/AnterosDatasource'
+import {AnterosJacksonParser} from './src/components/anteros-core/AnterosJacksonParser'
+import {AnterosUtils} from './src/components/anteros-core/AnterosUtils'
+import {AnterosDateUtils} from './src/components/anteros-core/AnterosDateUtils'
+import {AnterosDatasourceError} from './src/components/anteros-core/AnterosExceptions' 
+import Anteros from './src/components/anteros-core/Anteros'
+import {AnterosObjectUtils} from './src/components/anteros-core/AnterosObjectUtils'
+
 
 var AnterosSet = {
     AnterosTheme,
@@ -528,7 +535,9 @@ var AnterosSet = {
     AnterosColorGradientSlider,
     AnterosGradingModal,
 
-    AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents
+    AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents,
+    AnterosJacksonParser,AnterosUtils,AnterosDateUtils,
+    AnterosDatasourceError,Anteros,AnterosObjectUtils
 
 }
 
