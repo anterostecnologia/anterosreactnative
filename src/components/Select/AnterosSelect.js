@@ -54,6 +54,14 @@ export default class AnterosSelect extends Component {
     pickerType: 'auto'
   };
 
+  constructor(props){
+    super(props);
+
+    if(!this.props.dataSource && this.props.value){
+      this.state.value = this.props.value;
+    }
+  }
+
   measureInWindow(callback) {
     this.refs.selectView && this
       .refs
@@ -132,7 +140,7 @@ export default class AnterosSelect extends Component {
     } = this.props;
 
     //value
-    value = this.state.value
+    value = this.props.onSelected ? this.props.value : this.state.value
     //onSelected
     onSelected = this.props.onSelected ? this.props.onSelected : this.onChangeSelect
 
@@ -207,13 +215,13 @@ export default class AnterosSelect extends Component {
     ].concat(valueStyle);
     if (value === null || value === undefined) {
       valueStyle = valueStyle.concat({color: placeholderTextColor});
-      valueElement = <Text style={valueStyle} numberOfLines={1} allowFontScaling={false}>{placeholder}</Text>;
+      valueElement = <Text style={valueStyle} numberOfLines={this.props.numberOfLines ? this.props.numberOfLines : 1} allowFontScaling={false}>{placeholder}</Text>;
     } else {
       let valueText = value;
       if (React.isValidElement(valueText)) {
         valueElement = valueText;
       } else {
-        valueElement = <Text style={valueStyle} numberOfLines={1} allowFontScaling={false}>{valueText}</Text>;
+        valueElement = <Text style={valueStyle} numberOfLines={this.props.numberOfLines ? this.props.numberOfLines : 1} allowFontScaling={false}>{valueText}</Text>;
       }
     }
 
