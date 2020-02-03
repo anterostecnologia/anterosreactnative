@@ -13,9 +13,11 @@ export default class AnterosPullPicker extends AnterosOverlay {
   static PullPickerView = AnterosPullPickerView;
 
   // items: array of string
-  static show(title, items, selectedIndex, onSelected, options = {}) {
+  static show(title, items, selectedIndex, onSelected, options = {},pickerTitleStyle,popupHeight) {
     return super.show(
       <AnterosPullPicker.PullPickerView
+        popupHeight={popupHeight}
+        pickerTitleStyle={pickerTitleStyle}
         title={title}
         items={items}
         selectedIndex={selectedIndex}
@@ -26,4 +28,3 @@ export default class AnterosPullPicker extends AnterosOverlay {
   }
 
 }
-

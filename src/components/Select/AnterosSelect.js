@@ -250,7 +250,7 @@ export default class AnterosSelect extends Component {
     let its = items.map(item => {
       return item.text
     })
-    AnterosPullPicker.show(pickerTitle, its, this.selectedIndex, onSelected, {getItemText});
+    AnterosPullPicker.show(pickerTitle, its, this.selectedIndex, onSelected, {getItemText},this.props.pickerTitleStyle,this.props.popupHeight);
   }
 
   showPopoverPicker() {

@@ -34,7 +34,7 @@ export default {
   pixelSize: pixelSize,
 
   //AnterosLabel - color
-  labelFontFamily: 'Roboto-Regular',
+  labelFontFamily: 'System',
   labelTextColor: defaultTextColor,
   labelTextTitleColor: '#000',
   labelTextDetailColor: '#989898',

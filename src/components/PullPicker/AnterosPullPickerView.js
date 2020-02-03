@@ -52,7 +52,7 @@ export default class AnterosPullPickerView extends AnterosOverlay.PullView {
     let headerTextStyle = {
       color: AnterosTheme.pupHeaderTitleColor,
       fontSize: AnterosTheme.pupHeaderFontSize,
-      fontWeight: AnterosTheme.pupHeaderFontWeight
+      fontWeight: 'bold'
     }
     let headerSeparatorStyle = {
       backgroundColor: AnterosTheme.pupHeaderSeparatorColor,
@@ -63,14 +63,14 @@ export default class AnterosPullPickerView extends AnterosOverlay.PullView {
       <View
         style={{
         backgroundColor: AnterosTheme.pupColor,
-        maxHeight: AnterosTheme.pupMaxHeight,
+        maxHeight: this.props.popupHeight ? this.props.popupHeight : AnterosTheme.pupMaxHeight,
         paddingLeft: leftInset,
         paddingRight: rightInset
       }}>
         {!title
           ? null
           : <View style={headerRowStyle}>
-            <AnterosLabel style={headerTextStyle} text={title}/>
+            <AnterosLabel style={this.props.pickerTitleStyle ? this.props.pickerTitleStyle : headerTextStyle} text={title}/>
           </View>
 }
         {!title
