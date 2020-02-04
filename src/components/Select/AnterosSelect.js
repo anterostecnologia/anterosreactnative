@@ -59,6 +59,8 @@ export default class AnterosSelect extends Component {
 
     if(!this.props.dataSource && this.props.value){
       this.state.value = this.props.value;
+    }else if(this.props.dataSource){
+      this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText] : ''
     }
   }
 
@@ -247,10 +249,13 @@ export default class AnterosSelect extends Component {
 
   showPullPicker() {
     let {pickerTitle, items, getItemText, onSelected} = this.props;
-    let its = items.map(item => {
-      return item.text
+    let its;
+    if(!getItemText){
+    its = items.map(item => {
+      return item[this.props.fieldText]
     })
-    AnterosPullPicker.show(pickerTitle, its, this.selectedIndex, onSelected, {getItemText},this.props.pickerTitleStyle,this.props.popupHeight);
+  }
+    AnterosPullPicker.show(pickerTitle,!getItemText ? its : items, this.selectedIndex, onSelected, {getItemText},this.props.pickerTitleStyle,this.props.popupHeight);
   }
 
   showPopoverPicker() {
@@ -310,15 +315,16 @@ export default class AnterosSelect extends Component {
     if (this.props.dataSource) {
         let valor
         this.props.items.map(item => {
-          if(item.text === newValue){
-            valor = item.value
+          if(item[this.props.fieldText] === newValue[this.props.fieldText] || item[this.props.fieldText] === newValue){
+            this.props.dataSource.setFieldByName(this.props.dataField, item);
+            valor = this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText]
           }
         })
-        this.props.dataSource.setFieldByName(this.props.dataField, valor);
-        //console.log('onChangeSelect',this.props.dataSource.fieldByName(this.props.dataField))
-        this.setState({ value: newValue });
+        
+        
+        this.setState({ value: valor });
     } else {
-        this.setState({ value: newValue });
+        this.setState({ value: valor });
     }
 
 }
