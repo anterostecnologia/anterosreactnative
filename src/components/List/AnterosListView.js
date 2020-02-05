@@ -432,15 +432,15 @@ export class AnterosListView extends Component {
   }
 
   renderFooter() {
-    if (this.state.paginationStatus === PaginationStatus.firstLoad) {
-      return this.paginationFetchingView()
-    } else if (this.state.paginationStatus === PaginationStatus.waiting && this.props.autoPagination === false) {
-      return this.paginationWaitingView(this.onPaginate)
-    } else if (this.state.paginationStatus === PaginationStatus.waiting && this.props.autoPagination === true) {
-      return this.paginationWaitingView()
-    } else if (this.getRows().length !== 0 && this.state.paginationStatus === PaginationStatus.allLoaded) {
-      return this.paginationAllLoadedView()
-    }
+    // if (this.state.paginationStatus === PaginationStatus.firstLoad) {
+    //   return this.paginationFetchingView()
+    // } else if (this.state.paginationStatus === PaginationStatus.waiting && this.props.autoPagination === false) {
+    //   return this.paginationWaitingView(this.onPaginate)
+    // } else if (this.state.paginationStatus === PaginationStatus.waiting && this.props.autoPagination === true) {
+    //   return this.paginationWaitingView()
+    // } else if (this.getRows().length !== 0 && this.state.paginationStatus === PaginationStatus.allLoaded) {
+    //   return this.paginationAllLoadedView()
+    // }
 
     return null
   }
@@ -490,7 +490,7 @@ export class AnterosListView extends Component {
   onFetch = (page = 1, startFetch, abortFetch) => {
     try {
         
-        let pageLimit = this.props.pageLimit
+        let pageLimit = this.props.pageLimit ? this.props.pageLimit : 10
         let itens = this.props.dataSource ? this.props.dataSource.data : this.props.itens
 
         let rowData = [...itens];
@@ -516,7 +516,7 @@ export class AnterosListView extends Component {
         onEndReachedThreshold={0.1}
         {...this.props}
         ref={ref => this._flatList = ref}
-        data={this.state.dataSource}
+        data={this.props.dataSource ? this.props.dataSource.data : this.props.itens}
         renderItem={this.renderItem}
         ItemSeparatorComponent={this.renderSeparator}
         ListHeaderComponent={this.renderHeader}

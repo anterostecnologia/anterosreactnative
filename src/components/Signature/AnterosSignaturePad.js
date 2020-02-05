@@ -28,9 +28,9 @@ export default class AnterosSignaturePad extends Component{
 }
 
 AnterosSignaturePad.propTypes = {
-      onError = PropTypes.func,
-      onChange = PropTypes.func,
-      style = PropTypes.style,
-      dataURL = PropTypes.string,
+      onError :PropTypes.func,
+      onChange : PropTypes.func,
+      style : PropTypes.style,
+      dataURL: PropTypes.string,
       penColor: PropTypes.string
 }

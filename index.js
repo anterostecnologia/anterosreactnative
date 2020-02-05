@@ -254,7 +254,7 @@ import {AnterosDateUtils} from './src/components/anteros-core/AnterosDateUtils'
 import {AnterosDatasourceError} from './src/components/anteros-core/AnterosExceptions' 
 import Anteros from './src/components/anteros-core/Anteros'
 import {AnterosObjectUtils} from './src/components/anteros-core/AnterosObjectUtils'
-
+import AnterosSignaturePad from './src/components/Signature/AnterosSignaturePad'
 
 var AnterosSet = {
     AnterosTheme,
@@ -537,8 +537,8 @@ var AnterosSet = {
 
     AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents,
     AnterosJacksonParser,AnterosUtils,AnterosDateUtils,
-    AnterosDatasourceError,Anteros,AnterosObjectUtils
-
+    AnterosDatasourceError,Anteros,AnterosObjectUtils,
+    AnterosSignaturePad
 }
 
 module.exports = AnterosSet;
