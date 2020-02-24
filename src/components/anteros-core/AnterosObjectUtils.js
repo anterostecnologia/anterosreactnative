@@ -175,7 +175,7 @@ class AnterosObjectUtils {
 			if (typeof property == "string" && property !== "") {
 				var split = property.split(".");
 				return split.reduce(function(obj, prop, idx) {
-					obj[prop] = obj[prop] || {};
+					obj[prop] = obj[prop] || (typeof value === 'boolean' ? value : {});
 					if (split.length == idx + 1) {
 						obj[prop] = value;
 					}

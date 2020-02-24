@@ -59,6 +59,9 @@ export class AnterosCheckbox extends TouchableOpacity {
 
     if(this.props.dataSource){
       this.state.checked = this.props.dataSource.fieldByName(this.props.dataField)
+      if(!this.props.dataSource.fieldByName(this.props.dataField)){
+        this.props.dataSource.setFieldByName(this.props.dataField,false)
+    }
     }
 
   }

@@ -60,7 +60,11 @@ export default class AnterosSelect extends Component {
     if(!this.props.dataSource && this.props.value){
       this.state.value = this.props.value;
     }else if(this.props.dataSource){
-      this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText] : ''
+      if(!this.props.fieldText){
+        this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField) : ''
+      }else{
+        this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText] : ''
+      }
     }
   }
 
@@ -315,10 +319,15 @@ export default class AnterosSelect extends Component {
     if (this.props.dataSource) {
         let valor
         this.props.items.map(item => {
+          if(typeof(item) === "string"){
+            valor = newValue
+            this.props.dataSource.setFieldByName(this.props.dataField, valor);
+          }else{
           if(item[this.props.fieldText] === newValue[this.props.fieldText] || item[this.props.fieldText] === newValue){
             this.props.dataSource.setFieldByName(this.props.dataField, item);
             valor = this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText]
           }
+        }
         })
         
         
