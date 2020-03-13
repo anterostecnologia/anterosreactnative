@@ -11,10 +11,11 @@ export default class AnterosDrawer extends AnterosOverlay {
 
   static DrawerView = AnterosOverlay.PullView;
 
-  static open(view, side = 'left', rootTransform = 'none', options = {}) {
+  static open(view, side = 'left', rootTransform = 'none', containerStyle = {}, options = {}) {
     let drawer;
     let key = super.show(
       <AnterosDrawer.DrawerView
+      containerStyle={{...containerStyle}}
         side={side}
         rootTransform={rootTransform}
         {...options}

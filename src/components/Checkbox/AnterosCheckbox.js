@@ -187,7 +187,7 @@ export class AnterosCheckbox extends TouchableOpacity {
       onChange && onChange(!checked);
     };
 
-    onChange = this.onChangeChecked
+    onChange = this.props.onChange ? this.props.onChange : this.onChangeChecked
 
     this.props = {
       style,
