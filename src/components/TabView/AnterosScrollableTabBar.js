@@ -61,7 +61,7 @@ export const AnterosScrollableTabBar = createReactClass({
       scrollOffset: 52,
       activeTextColor: 'navy',
       inactiveTextColor: 'black',
-      backgroundColor: null,
+      backgroundColor: '#00000000',
       style: {},
       tabStyle: {},
       tabsContainerStyle: {},
@@ -283,7 +283,7 @@ export const AnterosScrollableDefaultTabBar = createReactClass({
     return {
       activeTextColor: 'navy',
       inactiveTextColor: 'black',
-      backgroundColor: null,
+      backgroundColor: '#00000000',
     };
   },
 
