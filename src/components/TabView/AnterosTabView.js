@@ -87,9 +87,10 @@ export default class AnterosTabView extends Component {
     return ({style, barStyle, buttonContainerStyle, buttonStyle, children, ...others});
   }
 
-  renderBar(props) {
+  renderBar = (props) => {
     //Overflow is not supported on Android, then use a higher container view to support "big icon button"
     let {barStyle, buttonContainerStyle, buttonStyle, onChange, children} = props;
+    let {titleStyle,activeTitleStyle} = this.props
     let sheetCount = 0;
     return (
       <View pointerEvents='box-none'>
@@ -98,12 +99,14 @@ export default class AnterosTabView extends Component {
           {children.map((item, index) => {
             let {type, title, icon, activeIcon, iconContainerStyle, badge, onPress} = item.props;
             let sheetIndex = sheetCount;
+            let isActive = this.activeIndex === sheetIndex;
             if (type === 'sheet') sheetCount += 1;
             return (
               <this.constructor.Button
                 key={index}
                 style={buttonStyle}
                 title={title}
+                titleStyle={isActive ? activeTitleStyle : titleStyle}
                 icon={icon}
                 activeIcon={activeIcon}
                 active={type === 'sheet' ? sheetIndex === this.activeIndex : false}
