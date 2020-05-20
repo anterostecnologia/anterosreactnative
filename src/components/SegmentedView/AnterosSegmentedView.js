@@ -137,7 +137,8 @@ export default class AnterosSegmentedView extends Component {
       animated,
       autoScroll,
       onChange,
-      children
+      children,
+      paddingHorizontalBar
     } = this.props;
 
     if (!indicatorPosition && barPosition == 'bottom') {
@@ -148,6 +149,7 @@ export default class AnterosSegmentedView extends Component {
       <View>
         <AnterosSegmentedBar
           style={barStyle}
+          paddingHorizontalBar={paddingHorizontalBar}
           justifyItem={justifyItem}
           indicatorType={indicatorType}
           indicatorPosition={indicatorPosition}

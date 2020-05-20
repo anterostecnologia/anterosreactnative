@@ -45,6 +45,7 @@ export default class AnterosSegmentedBar extends Component {
     this._indicatorX = null;
     this._indicatorWidth = null;
     this._scrollViewWidth = 0;
+    this.paddingHorizontalBar = props.paddingHorizontalBar || 0
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,7 +81,7 @@ export default class AnterosSegmentedBar extends Component {
   get indicatorXValue() {
     switch (this.props.indicatorType) {
       case 'boxWidth':
-        return this._buttonsLayout[this._activeIndex].x;
+        return this._buttonsLayout[this._activeIndex].x + this.paddingHorizontalBar/2;
       case 'itemWidth':
         return this._buttonsLayout[this._activeIndex].x + this._itemsLayout[this._activeIndex].x + this._itemsAddWidth[this._activeIndex] / 2;
     }
@@ -90,7 +91,7 @@ export default class AnterosSegmentedBar extends Component {
   get indicatorWidthValue() {
     switch (this.props.indicatorType) {
       case 'boxWidth':
-        return this._buttonsLayout[this.activeIndex].width;
+        return this._buttonsLayout[this.activeIndex].width - this.paddingHorizontalBar;
       case 'itemWidth':
         return this._itemsLayout[this.activeIndex].width - this._itemsAddWidth[this._activeIndex];
     }
