@@ -494,7 +494,6 @@ export class AnterosListView extends Component {
         let itens = this.props.dataSource ? this.props.dataSource.data : this.props.itens
 
         let rowData = [...itens];
-        console.log('rowData',rowData)
   
         if (page === 10) {
           rowData = []
@@ -502,7 +501,6 @@ export class AnterosListView extends Component {
   
         startFetch(rowData, pageLimit)
       } catch (err) {
-        console.log(err);
         abortFetch() 
       }
   }
