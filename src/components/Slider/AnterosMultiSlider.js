@@ -7,7 +7,8 @@ import {
   View,
   TouchableHighlight, 
   Platform,
-  I18nManager
+  I18nManager,
+  Text
 } from 'react-native';
 
 const ViewPropTypes = require('react-native').ViewPropTypes || View.propTypes;
@@ -426,9 +427,12 @@ export class AnterosMultiSlider extends React.Component {
       borderRadius: borderRadius || 0,
     };
 
-    const markerContainerOne = { top: markerOffsetY - 24, left : trackOneLength + markerOffsetX - 24 }
+    const wdt = this.props.markerContainerStyle ? this.props.markerContainerStyle.width : 48
+    const hgt = this.props.markerContainerStyle ? this.props.markerContainerStyle.height : 48
 
-    const markerContainerTwo = { top: markerOffsetY - 24, right: trackThreeLength + markerOffsetX - 24 };
+    const markerContainerOne = { top: markerOffsetY - hgt/2+(this.props.renderMarkerContainerChildrenOne ? 10 : 0), left : trackOneLength + markerOffsetX - wdt/2 }
+
+    const markerContainerTwo = { top: markerOffsetY - hgt/2+(this.props.renderMarkerContainerChildrenTwo ? 10 : 0), right: trackThreeLength + markerOffsetX - wdt/2 };
 
     return (
       <View style={[styles.container, this.props.containerStyle]}>
@@ -494,6 +498,7 @@ export class AnterosMultiSlider extends React.Component {
                 }
 
             </View>
+            {this.props.renderMarkerContainerChildrenOne ? this.props.renderMarkerContainerChildrenOne() : null}
           </View>
           {twoMarkers &&
           positionOne !== this.props.sliderLength &&
@@ -525,6 +530,7 @@ export class AnterosMultiSlider extends React.Component {
                 />
                 }
             </View>
+            {this.props.renderMarkerContainerChildrenTwo ? this.props.renderMarkerContainerChildrenTwo() : null}
           </View>}
         </View>
       </View>
@@ -660,5 +666,3 @@ const closest = (array, n) => {
       return result;
     }
   }
-
-
