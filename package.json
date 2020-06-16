@@ -1,6 +1,6 @@
 {
   "name": "anteros-react-native",
-  "version": "1.0.61",
+  "version": "1.0.63",
   "description": "Biblioteca Anteros",
   "main": "index.js",
   "scripts": {

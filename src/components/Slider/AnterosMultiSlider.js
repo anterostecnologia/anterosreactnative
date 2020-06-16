@@ -432,7 +432,7 @@ export class AnterosMultiSlider extends React.Component {
 
     const markerContainerOne = { top: markerOffsetY - hgt/2+(this.props.renderMarkerContainerChildrenOne ? 10 : 0), left : trackOneLength + markerOffsetX - wdt/2 }
 
-    const markerContainerTwo = { top: markerOffsetY - hgt/2+(this.props.renderMarkerContainerChildrenTwo ? 10 : 0), right: trackThreeLength + markerOffsetX - wdt/2 };
+    const markerContainerTwo = { top: markerOffsetY - hgt/2-(this.props.renderMarkerContainerChildrenTwo ? 11 : 0), right: trackThreeLength + markerOffsetX - wdt/2 };
 
     return (
       <View style={[styles.container, this.props.containerStyle]}>
@@ -508,6 +508,7 @@ export class AnterosMultiSlider extends React.Component {
               ref={component => this._markerTwo = component}
               {...this._panResponderTwo.panHandlers}
             >
+            {this.props.renderMarkerContainerChildrenTwo ? this.props.renderMarkerContainerChildrenTwo() : null}
                 {isMarkersSeparated === false ?
                 <Marker
                     pressed={this.state.twoPressed}
@@ -530,7 +531,7 @@ export class AnterosMultiSlider extends React.Component {
                 />
                 }
             </View>
-            {this.props.renderMarkerContainerChildrenTwo ? this.props.renderMarkerContainerChildrenTwo() : null}
+            
           </View>}
         </View>
       </View>
