@@ -59,9 +59,9 @@ class DefaultMarker extends React.Component {
           shadowOpacity: 0.2,
         },
         android: {
-          height: 12,
-          width: 12,
-          borderRadius: 12,
+          height: 30,
+          width: 30,
+          borderRadius: 30,
           backgroundColor: '#0D8675',
         },
       }),
@@ -70,9 +70,9 @@ class DefaultMarker extends React.Component {
       ...Platform.select({
         ios: {},
         android: {
-          height: 20,
-          width: 20,
-          borderRadius: 20,
+          height: 30,
+          width: 30,
+          borderRadius: 30,
         },
       }),
     },
