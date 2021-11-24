@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {PureComponent, Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -15,12 +15,13 @@ import _ from 'lodash';
 import {sprintf} from 'sprintf-js';
 import {AnterosText} from '../Text/AnterosText';
 
+
 const DEFAULT_BG_COLOR = '#FAB913';
 const DEFAULT_TIME_TXT_COLOR = '#000';
 const DEFAULT_DIGIT_TXT_COLOR = '#000';
 const DEFAULT_TIME_TO_SHOW = ['D', 'H', 'M', 'S'];
 
-export class AnterosCountdown extends React.Component {
+export class AnterosCountdown extends Component {
   static propTypes = {
     digitBgColor: PropTypes.string,
     digitTxtColor: PropTypes.string,
@@ -270,7 +271,7 @@ function getInitialState(props) {
   }
 }
 
-class Circle extends React.PureComponent {
+class Circle extends PureComponent {
   static propTypes = {
     seconds: PropTypes.number.isRequired,
     radius: PropTypes.number.isRequired,
@@ -307,7 +308,7 @@ class Circle extends React.PureComponent {
 
  
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.seconds !== nextProps.seconds
     ) {
@@ -360,7 +361,7 @@ class Circle extends React.PureComponent {
           },
         ]}
       >
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={[
             stylesCircle.halfCircle,
             {
@@ -500,7 +501,6 @@ class Timer extends Component {
       sec: 0,
     };
     componentDidMount() {
-      //console.log(this.props.date);//"2017-03-29T00:00:00+00:00"
       this.interval = setInterval(()=> {
         const date = this.getDateData(this.props.date);
         if (date) {
@@ -511,7 +511,7 @@ class Timer extends Component {
         }
       }, 1000);
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       const date = this.getDateData(this.props.date);
       if (date) {
         this.setState(date);

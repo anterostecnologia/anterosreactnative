@@ -77,7 +77,7 @@ let styles = {
 AnterosRipple.defaultProps.rippleContainerBorderRadius = styles.container.borderRadius;
 
 
-export default class RippleExample extends AnterosNavigationPage {
+export class RippleExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

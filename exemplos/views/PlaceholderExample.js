@@ -1,4 +1,4 @@
-import React, { PureComponent, Component } from 'react';
+import { PureComponent, Component } from 'react';
 import { View, Text, StyleSheet, Animated, Image, ScrollView } from 'react-native';
 
 import {AnterosNavigationPage, AnterosPlaceHolder} from 'anteros-react-native';
@@ -18,7 +18,7 @@ class Line extends PureComponent {
   }
 }
 
-export default class PlaceholderExample extends AnterosNavigationPage {
+export class PlaceholderExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

@@ -10,7 +10,7 @@ const STEP_STATUS = {
   UNFINISHED:'unfinished'
 }
 
-export default class AnterosStepIndicator extends PureComponent {
+export class AnterosStepIndicator extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -69,7 +69,7 @@ export default class AnterosStepIndicator extends PureComponent {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if(nextProps.currentPosition !== this.props.currentPosition) {
       this.onCurrentPositionChanged(nextProps.currentPosition);
     }
@@ -138,7 +138,7 @@ export default class AnterosStepIndicator extends PureComponent {
       }
     }
     return(
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={progressBarStyle}/>
     )
   }
@@ -232,7 +232,7 @@ export default class AnterosStepIndicator extends PureComponent {
       }
 
       return (
-        <Animated.View key={'step-indicator'} style={[styles.step , stepStyle ]}>
+        <Animated.View useNativeDriver={true}   key={'step-indicator'} style={[styles.step , stepStyle ]}>
           {
             renderStepIndicator ? renderStepIndicator({
           position,

@@ -1,5 +1,5 @@
 'use strict'
-import React, { Component } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, View, ViewPropTypes } from 'react-native'
 import {AnterosPagerViewIndicator} from './AnterosPagerViewIndicator'

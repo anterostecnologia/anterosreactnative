@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react'
 import { View, Image } from 'react-native'
 import PropTypes from 'prop-types'
 import Svg, { Rect, Path } from 'react-native-svg'
@@ -55,7 +55,7 @@ export class AnterosQRCode extends PureComponent {
     this._path = null
     this.setMatrix(props)
   }
-  componentWillUpdate (nextProps) {
+  UNSAFE_componentWillUpdate (nextProps) {
     // if value has changed, re-setMatrix
     if (nextProps.value !== this.props.value || nextProps.size !== this.props.size) {
       this.setMatrix(nextProps)

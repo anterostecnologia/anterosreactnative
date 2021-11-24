@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -31,7 +31,7 @@ import DropdownAlertExample from './DropdownAlertExample';
 import FlashMessageExample from './FlashMessageExample';
 import ModalWalkThroughExample from './ModalWalkThroughExample';
 
-export default class ModalExample extends AnterosNavigationPage {
+export class ModalExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

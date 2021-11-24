@@ -97,7 +97,7 @@ class AnterosCalendar extends Component {
     this.shouldComponentUpdate = shouldComponentUpdate;
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const current= parseDate(nextProps.current);
     if (current && current.toString('yyyy MM') !== this.state.currentMonth.toString('yyyy MM')) {
       this.setState({
@@ -320,9 +320,8 @@ function shouldComponentUpdate(nextProps, nextState) {
       field: 'current'
     };
   }
-  //console.log(shouldUpdate.field, shouldUpdate.update);
   return shouldUpdate.update;
 }
 
 
-export default AnterosCalendar;
+export {AnterosCalendar};

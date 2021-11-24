@@ -1,10 +1,10 @@
-import React from 'react'
+import React,{Component} from "react";
 import {StyleSheet, View, TouchableOpacity, PanResponder} from 'react-native';
 import {AnterosNavigationPage, AnterosText, AnterosTriangleColorPicker, AnterosHoloColorPicker} from 'anteros-react-native';
 
 
 
-class ExampleControlledTriangle extends React.Component {
+class ExampleControlledTriangle extends Component {
 
     constructor(...args) {
       super(...args)
@@ -35,7 +35,7 @@ class ExampleControlledTriangle extends React.Component {
   }
 
 
-  class ExampleControlledVertical extends React.Component {
+  class ExampleControlledVertical extends Component {
 
     constructor(...args) {
       super(...args)
@@ -94,7 +94,7 @@ const examples = [
   { Component: ExampleControlledTriangle, title: 'Controlled triangle picker' },
 ]
 
-export default class HoloColorPickerExample extends AnterosNavigationPage {
+export class HoloColorPickerExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

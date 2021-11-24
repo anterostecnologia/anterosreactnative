@@ -2,12 +2,12 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, ActivityIndicator} from 'react-native';
 
 import {AnterosTheme, AnterosNavigationPage, AnterosListRow, AnterosPullPicker} from 'anteros-react-native';
 
-export default class ThemeExample extends AnterosNavigationPage {
+export class ThemeExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

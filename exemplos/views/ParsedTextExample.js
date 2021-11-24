@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+
 import ReactNative from 'react-native';
 const {
   AppRegistry,
@@ -11,7 +11,7 @@ const {
 } = ReactNative;
 import {AnterosParsedText, AnterosNavigationPage} from 'anteros-react-native';
 
-export default class ParsedTextExample extends AnterosNavigationPage {
+export class ParsedTextExample extends AnterosNavigationPage {
 
   static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

@@ -48,7 +48,7 @@ export class AnterosHero extends Component {
 		};
 	};
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.source !== this.props.source) {
 			this.setState({
 				source: nextProps.source

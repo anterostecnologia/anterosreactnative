@@ -1,6 +1,6 @@
 //https://github.com/jmurzy/react-native-foldview
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {Platform, ScrollView, StatusBar, StyleSheet, View, UIManager, TouchableHighlight, Text, LayoutAnimation} from 'react-native';
 import {AnterosFoldView, AnterosSpacer, AnterosNavigationPage} from 'anteros-react-native';
 
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default class FoldViewExample extends AnterosNavigationPage {
+export class FoldViewExample extends AnterosNavigationPage {
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
         title: 'Foldview',
@@ -62,7 +62,7 @@ class Row extends Component {
         };
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.flip = this
             .flip
             .bind(this);
@@ -220,7 +220,7 @@ const stylesInfoCard = StyleSheet.create({
     }
 });
 
-class InfoCard extends React.Component {
+class InfoCard extends Component {
     render() {
         return (
             <View style={stylesInfoCard.container}>
@@ -280,7 +280,7 @@ const stylesPhotoCard = StyleSheet.create({
     }
 });
 
-class PhotoCard extends React.Component {
+class PhotoCard extends Component {
     render() {
         return (
             <View style={stylesPhotoCard.container}>
@@ -316,7 +316,7 @@ class PhotoCard extends React.Component {
 }
 
 class ProfileCard extends Component {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.renderBackface = this
             .renderBackface
             .bind(this);
@@ -453,7 +453,7 @@ const stylesDetailCard = StyleSheet.create({
     }
 });
 
-class ProfileDetailCard extends React.Component {
+class ProfileDetailCard extends Component {
     render() {
         return (
             <View style={stylesDetailCard.container}>
@@ -475,7 +475,7 @@ class ProfileDetailCard extends React.Component {
     }
 }
 
-class AdditionalInfoCard extends React.Component {
+class AdditionalInfoCard extends Component {
     render() {
         return (
             <View

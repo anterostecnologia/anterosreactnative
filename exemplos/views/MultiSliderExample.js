@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+
 
 import {
   StyleSheet,
@@ -10,10 +10,11 @@ import {
   Image,
   Platform,
 } from 'react-native';
+import React,{Component} from "react";
 
 import {AnterosText, AnterosNavigationPage, AnterosMultiSlider, AnterosImage} from 'anteros-react-native';
 
-class CustomMarker extends React.Component {
+class CustomMarker extends Component {
     render() {
       return (
         <AnterosImage
@@ -32,7 +33,7 @@ class CustomMarker extends React.Component {
     }
   });
 
-export default class MultiSliderExample extends AnterosNavigationPage {
+export class MultiSliderExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

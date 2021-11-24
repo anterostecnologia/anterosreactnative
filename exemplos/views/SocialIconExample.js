@@ -1,10 +1,10 @@
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, ActivityIndicator} from 'react-native';
 import {AnterosNavigationPage, AnterosListRow, AnterosToast, AnterosTheme, AnterosSocialIcon} from 'anteros-react-native';
 
-export default class SocialIconExample extends AnterosNavigationPage {
+export class SocialIconExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

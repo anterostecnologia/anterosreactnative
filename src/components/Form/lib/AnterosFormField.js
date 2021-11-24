@@ -1,11 +1,11 @@
 "use strict";
 
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { AnterosHelpText } from "./AnterosHelpText";
 let { View, StyleSheet, Text, TouchableHighlight } = require("react-native");
 
-export class AnterosFormField extends React.Component {
+export class AnterosFormField extends Component {
   render() {
     let fieldHelpText =
       this.props.helpTextComponent ||

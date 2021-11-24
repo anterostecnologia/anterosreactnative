@@ -1,4 +1,4 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import {
     Text,
@@ -20,6 +20,7 @@ import emojiData from 'emoji-datasource';
 import _ from 'lodash';
 import {AnterosScrollableTabView} from '../TabView/AnterosScrollableTabView';
 import splitter from './AnterosEmoticonsGraphemeSplitter';
+import React,{Component} from "react";
 
 
 const {height, width} = Dimensions.get('window');
@@ -63,7 +64,7 @@ const stringify = (text) => {
 
 var backImg = require('../../assets/images/backspace.png');
 
-class WebViewPage extends React.Component {
+class WebViewPage extends Component {
 
     static navigationOptions = ({ navigation, screenProps }) => ({
         title: 'GreatGreatGreatGreat',
@@ -73,7 +74,7 @@ class WebViewPage extends React.Component {
 
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
     }
 
     _onBackPress() {
@@ -323,7 +324,7 @@ const choicenessAndroid = ['grinning', 'grin', 'joy', 'sweat_smile', 'laughing',
     'beers', 'soccer', 'airplane', 'iphone', 'tada', 'heart', 'broken_heart', 'flag_us', 'flag_cn'];
 
 const HISTORY_STORAGE = 'history_storage';
-class AnterosEmoticons extends React.Component {
+class AnterosEmoticons extends Component {
     constructor(props) {
         super(props);
         this._classify = this._classify.bind(this);
@@ -356,7 +357,7 @@ class AnterosEmoticons extends React.Component {
         });
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
 
         if (this.props.showHistoryBar) {
             this.setState({groupIndex: this.state.groupIndex++});
@@ -613,7 +614,7 @@ class AnterosEmoticons extends React.Component {
 
         return (
             (!this.state.showWV) ?
-                <Animated.View style={[this.props.style,styles.container,{bottom: this.state.position}]}>
+                <Animated.View useNativeDriver={true}   style={[this.props.style,styles.container,{bottom: this.state.position}]}>
                     <AnterosScrollableTabView
                         tabBarPosition='overlayBottom'
                         renderTabBar={() => <TabBar {...this.props}/>}
@@ -627,7 +628,7 @@ class AnterosEmoticons extends React.Component {
                     </AnterosScrollableTabView>
 
                 </Animated.View> :
-                <Animated.View style={[styles.wvContainer,{bottom: this.state.wvPosition}]}>
+                <Animated.View useNativeDriver={true}   style={[styles.wvContainer,{bottom: this.state.wvPosition}]}>
                     <WebViewPage onBackPress={this._onCloseWV.bind(this)}/>
                 </Animated.View>
         );
@@ -647,7 +648,7 @@ AnterosEmoticons.propTypes = {
 
 
 
-class TabBar extends React.Component {
+class TabBar extends Component {
     constructor(props) {
         super(props);
         this._setAnimationValue = this._setAnimationValue.bind(this);
@@ -673,7 +674,7 @@ class TabBar extends React.Component {
             },100)
     }
 
-    componentWillUpdate(){
+    UNSAFE_componentWillUpdate(){
 
     }
 
@@ -688,7 +689,7 @@ class TabBar extends React.Component {
     }
 
 
-    componentWillReceiveProps() {
+    UNSAFE_componentWillReceiveProps() {
     }
 
     render() {
@@ -723,7 +724,7 @@ class TabBar extends React.Component {
 }
 
 
-class TabBarDot extends React.Component {
+class TabBarDot extends Component {
     constructor(props) {
         super(props);
         this._setAnimationValue = this._setAnimationValue.bind(this);
@@ -759,7 +760,7 @@ class TabBarDot extends React.Component {
         this.props.goToPage(i);
     }
 
-    componentWillReceiveProps(){
+    UNSAFE_componentWillReceiveProps(){
     }
 
     componentDidUpdate(){

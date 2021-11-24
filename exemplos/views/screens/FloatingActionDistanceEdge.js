@@ -3,7 +3,7 @@ import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
 import {AnterosNavigationPage, AnterosFloatingAction} from 'anteros-react-native';
 import Property from './Property';
 
-export default class FloatingActionDistanceEdge extends AnterosNavigationPage {
+export class FloatingActionDistanceEdge extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

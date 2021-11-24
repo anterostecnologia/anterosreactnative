@@ -1,6 +1,6 @@
 //https://github.com/Jacse/react-native-app-intro-slider
 
-import React from 'react';
+
 import {
   StyleSheet,
   FlatList,
@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import {AnterosText} from '../Text/AnterosText';
 import {AnterosImage} from '../Image/AnterosImage';
+import React,{Component} from "react";
 
 const { width, height } = Dimensions.get('window');
 
@@ -23,7 +24,7 @@ const isIphoneX = (
   (height === 812 || width === 812)
 );
 
-export class AnterosAppIntro extends React.Component {
+export class AnterosAppIntro extends Component {
   static defaultProps = {
     activeDotColor: 'rgba(255, 255, 255, .9)',
     dotColor: 'rgba(0, 0, 0, .2)',
@@ -221,7 +222,7 @@ const styles = StyleSheet.create({
 });
 
 
-class DefaultSlide extends React.PureComponent {
+class DefaultSlide extends PureComponent {
   render() {
     const style = {
       backgroundColor: this.props.backgroundColor,

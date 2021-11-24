@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, PanResponder, View, Image, StyleSheet, InteractionManager, I18nManager } from 'react-native'
 import tinycolor from 'tinycolor2'
@@ -66,7 +66,7 @@ export function toHsv(color) {
     }
   }
 
-export class AnterosTriangleColorPicker extends React.PureComponent {
+export class AnterosTriangleColorPicker extends PureComponent {
 
   constructor(props, ctx) {
     super(props, ctx)
@@ -248,7 +248,7 @@ export class AnterosTriangleColorPicker extends React.PureComponent {
     return { h, s: normalized.s, v: normalized.v }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const handleColorChange = ({ x, y }) => {
       if (this._changingHColor) {
         this._handleHColorChange({ x, y })

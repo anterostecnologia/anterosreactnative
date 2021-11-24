@@ -72,7 +72,7 @@ export class AnterosParallaxView extends Component {
         if (!windowHeight || !backgroundSource) {
             return null;
         }
-        return ( <Animated.Image style = {
+        return ( <Animated.Image  useNativeDriver={true}  style = {
                 [styles.background, {
                     height: windowHeight,
                     transform: [{
@@ -106,7 +106,7 @@ export class AnterosParallaxView extends Component {
         if (!windowHeight || !backgroundSource) {
             return null;
         }
-        return ( <Animated.View style = {
+        return ( <Animated.View useNativeDriver={true}   style = {
                 {
                     position: 'relative',
                     height: windowHeight,

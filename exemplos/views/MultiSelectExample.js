@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import {
   Platform,
   StyleSheet,
@@ -285,7 +285,7 @@ const Toggle = props => (
   </TouchableWithoutFeedback>
 )
 
-export default class MultiSelectExample extends AnterosNavigationPage {
+export class MultiSelectExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
@@ -311,7 +311,7 @@ export default class MultiSelectExample extends AnterosNavigationPage {
   }
 
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
   }
   componentDidMount() {
   }

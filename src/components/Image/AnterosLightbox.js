@@ -1,4 +1,4 @@
-import React, { Component,  Children, cloneElement } from 'react';
+import { Component,  Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableHighlight, Animated, Dimensions, Modal, PanResponder, Platform, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -129,7 +129,7 @@ export class AnterosLightbox extends Component {
         style={this.props.style}
         onLayout={() => {}}
       >
-        <Animated.View style={{opacity: this.state.layoutOpacity}}>
+        <Animated.View useNativeDriver={true}   style={{opacity: this.state.layoutOpacity}}>
           <TouchableHighlight
             underlayColor={this.props.underlayColor}
             onPress={this.open}
@@ -223,7 +223,7 @@ export class AnterosLightboxOverlay extends Component {
     openVal: new Animated.Value(0),
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => !this.state.isAnimating,
@@ -309,7 +309,7 @@ export class AnterosLightboxOverlay extends Component {
     });
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if(this.props.isOpen != props.isOpen && props.isOpen) {
       this.open();
     }
@@ -355,8 +355,8 @@ export class AnterosLightboxOverlay extends Component {
       height: openVal.interpolate({inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT]}),
     }];
 
-    const background = (<Animated.View style={[stylesOverlay.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}></Animated.View>);
-    const header = (<Animated.View style={[stylesOverlay.header, lightboxOpacityStyle]}>{(renderHeader ?
+    const background = (<Animated.View useNativeDriver={true}   style={[stylesOverlay.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}></Animated.View>);
+    const header = (<Animated.View useNativeDriver={true}   style={[stylesOverlay.header, lightboxOpacityStyle]}>{(renderHeader ?
       renderHeader(this.close) :
       (
         <TouchableOpacity onPress={this.close}>
@@ -365,7 +365,7 @@ export class AnterosLightboxOverlay extends Component {
       )
     )}</Animated.View>);
     const content = (
-      <Animated.View style={[openStyle, dragStyle]} {...handlers}>
+      <Animated.View useNativeDriver={true}   style={[openStyle, dragStyle]} {...handlers}>
         {this.props.children}
       </Animated.View>
     );

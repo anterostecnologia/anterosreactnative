@@ -15,14 +15,15 @@ import {
   Dimensions
 } from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-//import AnterosNavigationTitle from './AnterosNavigationTitle';
-import AnterosNavigationButton from './AnterosNavigationButton';
-import AnterosNavigationLinkButton from './AnterosNavigationLinkButton';
-import AnterosNavigationIconButton from './AnterosNavigationIconButton';
-import AnterosNavigationBackButton from './AnterosNavigationBackButton';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+//import {AnterosNavigationTitle} from './AnterosNavigationTitle';
+import {AnterosNavigationButton} from './AnterosNavigationButton';
+import {AnterosNavigationLinkButton} from './AnterosNavigationLinkButton';
+import {AnterosNavigationIconButton} from './AnterosNavigationIconButton';
+import {AnterosNavigationBackButton} from './AnterosNavigationBackButton';
+import shallowCompare from "react-addons-shallow-compare";
 
-export default class AnterosNavigationBar extends Component {
+export class AnterosNavigationBar extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -76,7 +77,7 @@ export default class AnterosNavigationBar extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.hidden != this.props.hidden) {
       this.checkBarHidden(nextProps.hidden, nextProps.animated);
     }
@@ -234,7 +235,7 @@ export default class AnterosNavigationBar extends Component {
       opacity: this.state.barOpacity
     };
 
-    return ({
+    return {
       style,
       type,
       title,
@@ -249,7 +250,7 @@ export default class AnterosNavigationBar extends Component {
       statusBarStyle,
       statusBarInsets,
       ...others
-    });
+    };
   }
 
   checkBarHidden(hidden, animated) {
@@ -306,7 +307,12 @@ export default class AnterosNavigationBar extends Component {
     }
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
+    const props = this.buildProps();
     let {
       style,
       animated,
@@ -321,21 +327,21 @@ export default class AnterosNavigationBar extends Component {
       background,
       backgroundViewStyle,
       ...others
-    } = this.buildProps();
+    } = props;
     return (
-      <Animated.View style={style} {...others} onLayout={e => this.onLayout(e)}>
+      <Animated.View useNativeDriver={true}   style={style} {...others} onLayout={e => this.onLayout(e)}>
         <StatusBar
           backgroundColor={statusBarColor}
           translucent={true}
           barStyle={statusBarStyle}
           animated={animated}
           hidden={statusBarHidden}/>
-        <Animated.View style={backgroundViewStyle}>{background}</Animated.View>
+        <Animated.View useNativeDriver={true}   style={backgroundViewStyle}>{background}</Animated.View>
         
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={leftRightViewStyle}
           onLayout={e => this.onLeftViewLayout(e)}>{leftView}</Animated.View>
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={leftRightViewStyle}
           onLayout={e => this.onRightViewLayout(e)}>{rightView}</Animated.View>
       </Animated.View>
@@ -343,4 +349,4 @@ export default class AnterosNavigationBar extends Component {
   }
 }
 
-//<Animated.View style={titleViewStyle}>{title}</Animated.View>
+//<Animated.View useNativeDriver={true}   style={titleViewStyle}>{title}</Animated.View>

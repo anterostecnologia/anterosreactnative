@@ -1,9 +1,9 @@
 'use strict';
 
-import React from 'react';
-let { View, StyleSheet, Text} = require('react-native');
 
-export class AnterosSeparator extends React.Component{
+let { View, StyleSheet, Text} = require('react-native');
+import React,{Component} from "react";
+export class AnterosSeparator extends Component{
   render(){
      return(<View style={[formStyles.separatorContainer, this.props.containerStyle]}>
        {

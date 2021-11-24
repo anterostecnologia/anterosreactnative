@@ -2,16 +2,16 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import {View} from 'react-native';
 
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosModalIndicatorView from './AnterosModalIndicatorView';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosModalIndicatorView} from './AnterosModalIndicatorView';
 
 let miKey = null;
 let miOverlay = null;
 
-export default class AnterosModalIndicator extends AnterosOverlay {
+export class AnterosModalIndicator extends AnterosOverlay {
 
   static IndicatorView = AnterosModalIndicatorView;
 

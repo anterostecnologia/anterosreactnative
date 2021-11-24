@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
 
 import {AnterosNavigationPage, AnterosGrading} from 'anteros-react-native';
 
-export default class GradingExample extends AnterosNavigationPage {
+export class GradingExample extends AnterosNavigationPage {
   static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
       title: 'Grading',

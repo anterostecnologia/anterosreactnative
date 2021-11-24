@@ -1,4 +1,4 @@
-
+import React from 'react';
 /**
  * Subscriber pattern implementation.
  */
@@ -45,4 +45,4 @@ class SizeSubscriber {
   }
 }
 
-export default SizeSubscriber;
+export {SizeSubscriber};

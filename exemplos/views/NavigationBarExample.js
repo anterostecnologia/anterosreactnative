@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {Platform, View, ScrollView, Switch, Image} from 'react-native';
 
 import {AnterosTheme, AnterosNavigationPage, AnterosListRow, AnterosNavigationBar, AnterosLabel} from 'anteros-react-native';
 import SelectRow from './SelectRow';
 
-export default class NavigationBarExample extends AnterosNavigationPage {
+export class NavigationBarExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

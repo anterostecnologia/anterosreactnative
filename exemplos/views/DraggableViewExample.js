@@ -35,7 +35,7 @@ import iconNoteDisable from '../images/icon_note_disable.png';
 
 import {AnterosDraggableView, AnterosCollapsible, AnterosText, AnterosImage, AnterosNavigationPage} from 'anteros-react-native';
 
-export default class DraggableViewExample extends Component {
+export class DraggableViewExample extends Component {
     render() {
         return (
             <AnterosDraggableView

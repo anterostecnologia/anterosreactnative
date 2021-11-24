@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
@@ -11,7 +11,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import {AnterosText} from '../Text/AnterosText';
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 import {AnterosImage} from '../Image/AnterosImage';
 
 const window = Dimensions.get('window');

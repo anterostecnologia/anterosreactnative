@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import {AnterosNavigationPage, AnterosDial} from 'anteros-react-native';
 
-export default class DialExample extends AnterosNavigationPage {
+export class DialExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

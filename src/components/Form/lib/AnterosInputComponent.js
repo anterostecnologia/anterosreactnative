@@ -1,6 +1,6 @@
 "use strict";
 
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ReactNative, { Platform } from "react-native";
 import { AnterosFormField } from "./AnterosFormField.js";
@@ -14,7 +14,7 @@ function validateEmail(email) {
   return "Invalid email";
 }
 
-export class AnterosInputComponent extends React.Component {
+export class AnterosInputComponent extends Component {
   constructor(props) {
     super(props);
 

@@ -241,7 +241,7 @@ export class AnterosImageViewer extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         const {images, imageIndex, isVisible} = this.state;
 
         if (
@@ -654,7 +654,7 @@ export class AnterosImageViewer extends Component {
                 style={styles.imageContainer}
                 onStartShouldSetResponder={() => true}
             >
-                <Animated.Image
+                <Animated.Image  useNativeDriver={true} 
                     resizeMode="cover"
                     source={image.source}
                     style={this.getImageStyle(image, index)}
@@ -686,7 +686,7 @@ export class AnterosImageViewer extends Component {
                     {backgroundColor},
                 ]}
             >
-                <Animated.View
+                <Animated.View useNativeDriver={true}
                     style={[styles.header, {transform: headerTranslate}]}
                 >
                     <TouchableOpacity
@@ -715,7 +715,7 @@ export class AnterosImageViewer extends Component {
                     getItemLayout={getItemLayout}
                 />
                 {renderFooter && (
-                    <Animated.View
+                    <Animated.View useNativeDriver={true}
                         style={[styles.footer, {transform: footerTranslate}]}
                         onLayout={event => {
                             this.footerHeight = event.nativeEvent.layout.height;

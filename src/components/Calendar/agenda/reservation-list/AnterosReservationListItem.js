@@ -70,4 +70,4 @@ class AnterosReservationListItem extends Component {
   }
 }
 
-export default AnterosReservationListItem;
+export {AnterosReservationListItem}

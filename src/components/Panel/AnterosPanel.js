@@ -93,7 +93,7 @@ export class AnterosPanel extends Component {
     const {expanded, animation} = this.state;
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={[
           styles.container,
           style,

@@ -5,8 +5,9 @@ import PropTypes from "prop-types";
 import ReactNative, { Platform } from "react-native";
 import { AnterosFormField } from "./AnterosFormField.js";
 import {AnterosText} from 'anteros-react-native';
-
+import React,{Component} from "react";
 const { View, StyleSheet, TextInput, Text } = ReactNative;
+import React,{Component} from "react";
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -14,7 +15,7 @@ function validateEmail(email) {
   return "Invalid email";
 }
 
-export class AnterosInputComponent extends React.Component {
+export class AnterosInputComponent extends Component {
   constructor(props) {
     super(props);
 

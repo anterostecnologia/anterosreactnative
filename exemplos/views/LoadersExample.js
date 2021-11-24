@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -43,7 +43,7 @@ import ContentLoaderExample from './ContentLoaderExample';
 const window = Dimensions.get('window');
 
 
-export default class LoadersExample extends AnterosNavigationPage {
+export class LoadersExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

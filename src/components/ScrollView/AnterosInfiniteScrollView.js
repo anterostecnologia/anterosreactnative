@@ -1,7 +1,7 @@
 'use strict';
 
 import PropTypes from 'prop-types';
-import React from 'react';
+
 import {
   ScrollView,
   ListView,
@@ -11,8 +11,10 @@ import {
 } from 'react-native';
 import ScrollableMixin from 'react-native-scrollable-mixin';
 import {cloneReferencedElement} from '../Utils/AnterosUtils';
+import React,{Component} from "react";
 
-export class AnterosInfiniteScrollView extends React.Component {
+
+export class AnterosInfiniteScrollView extends Component {
   static propTypes = {
     ...ScrollView.propTypes,
     distanceToLoadMore: PropTypes.number.isRequired,
@@ -156,7 +158,7 @@ export class AnterosInfiniteScrollView extends React.Component {
 
 
 
-class DefaultLoadingIndicator extends React.Component {
+class DefaultLoadingIndicator extends Component {
   render() {
     return (
       <View style={styles.container}>

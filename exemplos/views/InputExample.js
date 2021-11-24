@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {AnterosNavigationPage, AnterosListRow, AnterosInput, AnterosLabel,} from 'anteros-react-native';
@@ -12,7 +12,7 @@ const API = 'https://swapi.co/api';
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
 
 
-export default class InputExample extends AnterosNavigationPage {
+export class InputExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

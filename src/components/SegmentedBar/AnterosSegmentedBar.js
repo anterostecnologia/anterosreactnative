@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, ScrollView, TouchableOpacity, Animated, ViewPropTypes} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosSegmentedItem from './AnterosSegmentedItem';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosSegmentedItem} from './AnterosSegmentedItem';
 
-export default class AnterosSegmentedBar extends Component {
+export class AnterosSegmentedBar extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -48,7 +48,7 @@ export default class AnterosSegmentedBar extends Component {
     this.paddingHorizontalBar = props.paddingHorizontalBar || 0
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let nextItemsLayout = this.makeArray(this._itemsLayout, nextProps.children);
     if (nextItemsLayout.length != this._itemsLayout.length) {
       this._buttonsLayout = this.makeArray(this._buttonsLayout, nextProps.children);
@@ -214,7 +214,7 @@ export default class AnterosSegmentedBar extends Component {
       style.bottom = indicatorPositionPadding || indicatorPositionPadding === 0 ? indicatorPositionPadding : AnterosTheme.sbIndicatorPositionPadding;
     }
     return (
-      <Animated.View style={style} />
+      <Animated.View useNativeDriver={true}   style={style} />
     );
   }
 

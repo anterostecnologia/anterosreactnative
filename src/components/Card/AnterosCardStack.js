@@ -1,6 +1,7 @@
-import React from 'react';
+
 import { View, LayoutAnimation, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+import React,{Component} from "react";
 
 const { Types, Properties } = LayoutAnimation;
 
@@ -19,7 +20,7 @@ const calcHeight = (indexs, staticHeight, hoverOffset, cardsLength) => {
 	return (selectedIndex === cardIndex) ? staticHeight : 0;
 };
 
-export class AnterosCardStack extends React.Component {
+export class AnterosCardStack extends Component {
 	constructor (props) {
 		super();
 		const childrenLength = props.children && props.children.length || 1;
@@ -38,7 +39,7 @@ export class AnterosCardStack extends React.Component {
 		);
 	}
 
-	componentWillReceiveProps ({ transitionDuration }) {
+	UNSAFE_componentWillReceiveProps ({ transitionDuration }) {
 		if (this.props.transitionDuration !== transitionDuration) {
 			this._PRESET = LayoutAnimation.create(
 				transitionDuration, Types.easeInEaseOut, Properties.opacity
@@ -132,7 +133,7 @@ AnterosCardStack.defaultProps = {
 
 
 
-export class AnterosCard extends React.Component {
+export class AnterosCard extends Component {
 	constructor (props) {
 		super(props);
 		this.handlePressIn = this.handlePressIn.bind(this);

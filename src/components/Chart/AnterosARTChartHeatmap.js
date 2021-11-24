@@ -18,7 +18,7 @@ class AnterosARTChartHeatmap extends Component {
     this._computeChartConstants = this._computeChartConstants.bind(this);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._computeChartConstants();
   }
 
@@ -44,7 +44,7 @@ class AnterosARTChartHeatmap extends Component {
     this.height = y;
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.data !== nextProps.data) {
       this.props = nextProps;
       this._computeChartConstants();
@@ -66,4 +66,4 @@ class AnterosARTChartHeatmap extends Component {
   }
 }
 
-export default AnterosARTChartHeatmap;
+export  {AnterosARTChartHeatmap};

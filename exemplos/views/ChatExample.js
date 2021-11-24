@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   Platform,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
-
+import React,{Component} from "react";
 import {AnterosText, AnterosNavigationPage,AnterosGiftedChat, AnterosActionsChat, 
   AnterosCameraRollPicker, AnterosBubbleChat, AnterosSystemMessage} from 'anteros-react-native';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
@@ -76,7 +76,7 @@ const messages = [
     }
   ];
 
-export default class ChatExample extends AnterosNavigationPage {
+export class ChatExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
@@ -105,7 +105,7 @@ export default class ChatExample extends AnterosNavigationPage {
     this._isAlright = null;
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._isMounted = true;
     this.setState(() => {
       return {
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
 
 
 
- class CustomActions extends React.Component {
+ class CustomActions extends Component {
     constructor(props) {
       super(props);
       this._images = [];

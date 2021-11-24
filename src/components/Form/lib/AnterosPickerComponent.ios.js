@@ -1,6 +1,6 @@
 "use strict";
 
-import React from "react";
+import { cloneElement, Component } from "react";
 import PropTypes from "prop-types";
 import ReactNative from "react-native";
 let { View, StyleSheet, TextInput, Text, Picker } = ReactNative;
@@ -9,7 +9,7 @@ import {AnterosText} from '../../Text/AnterosText';
 
 var PickerItem = Picker.Item;
 
-export class AnterosPickerComponent extends React.Component {
+export class AnterosPickerComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -105,7 +105,7 @@ export class AnterosPickerComponent extends React.Component {
         )}
       </Picker>
     );
-    let pickerWrapper = React.cloneElement(
+    let pickerWrapper = cloneElement(
       this.props.pickerWrapper,
       {
         onHidePicker: () => {

@@ -1,4 +1,4 @@
-import React, {
+import {
     Component,
 } from 'react'
 import {
@@ -11,7 +11,7 @@ import {
 
 import {AnterosButton, AnterosNavigationPage, AnterosGesturePassword} from 'anteros-react-native'
 
-export default class GesturePasswordExample extends AnterosNavigationPage {
+export class GesturePasswordExample extends AnterosNavigationPage {
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
         title: 'Gesture password',

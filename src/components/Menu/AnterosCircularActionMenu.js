@@ -1,4 +1,4 @@
-import React, {
+import React,{
     Component,
   } from 'react';
   import {
@@ -113,7 +113,7 @@ import React, {
                 }
               }}
           >
-            <Animated.View
+            <Animated.View useNativeDriver={true}
               style={
                 [
                   styles.btn,
@@ -219,7 +219,7 @@ import React, {
             style={styles.overlay}
             onPress={() => {this.reset(); this.props.onOverlayPress()}}
           >
-            <Animated.View
+            <Animated.View useNativeDriver={true}
               style={
                 {
                   backgroundColor: this.props.bgColor,
@@ -339,7 +339,7 @@ import React, {
       const offsetX = this.props.radius * Math.cos(this.props.angle);
       const offsetY = this.props.radius * Math.sin(this.props.angle);
       return (
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={[{
             opacity: this.props.anim,
             width: this.props.size,

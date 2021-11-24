@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import { 
 	View, 
@@ -19,7 +19,7 @@ class Hyperlink extends Component {
     this.linkifyIt = props.linkify || require('linkify-it')()
   }
 
-  componentWillReceiveProps ({ linkify = require('linkify-it')() } = {}) {
+  UNSAFE_componentWillReceiveProps ({ linkify = require('linkify-it')() } = {}) {
     this.linkifyIt = linkify
   }
 

@@ -108,7 +108,7 @@ export class AnterosMonthSelector extends Component {
     this.state = { initialView: props.initialView };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     moment.locale(this.props.locale);
   }
 

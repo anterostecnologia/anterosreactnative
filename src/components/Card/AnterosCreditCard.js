@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+
 const {
     PropTypes,
     Component
@@ -42,10 +42,10 @@ export class AnterosCreditCard extends Component {
     getValue(name) {
         return this[name]();
     }
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         this.updateType(nextProps);
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.updateType(this.props);
     }
     updateType(props) {
@@ -147,7 +147,7 @@ export class AnterosCreditCard extends Component {
                     flipVertical={false}
                     flip={this.props.focused === 'cvc'}
                     clickable={this.props.clickable}
-                    onFlipped={(isFlipped)=>{console.log('isFlipped', isFlipped)}}
+                    onFlipped={(isFlipped)=>{}}
                     >
                     <View style={[styles.front, {width: this.props.width, height: this.props.height}]}>
                         {this.props.imageFront ?

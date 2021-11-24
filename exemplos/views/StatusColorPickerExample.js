@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -27,7 +27,7 @@ import {AnterosButton, AnterosNavigationPage, AnterosActionSheet, AnterosIcon,
 
 
 
-export default class LayoutExample extends AnterosNavigationPage {
+export class LayoutExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

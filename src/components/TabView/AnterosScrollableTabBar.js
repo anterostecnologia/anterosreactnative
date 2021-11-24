@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component, PureComponent } from 'react';
+import { Component, PureComponent } from 'react';
 const createReactClass = require('create-react-class');
 import {
   View,
@@ -210,13 +210,13 @@ export const AnterosScrollableTabBar = createReactClass({
             const renderTab = this.props.renderTab || this.renderTab;
             return renderTab(name, page, isTabActive, this.props.goToPage, this.measureTab.bind(this, page));
           })}
-          <Animated.View style={[tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle, ]} />
+          <Animated.View useNativeDriver={true}   style={[tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle, ]} />
         </View>
       </ScrollView>
     </View>;
   },
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // If the tabs change, force the width of the tabs container to be recalculated
     if (JSON.stringify(this.props.tabs) !== JSON.stringify(nextProps.tabs) && this.state._containerWidth) {
       this.setState({ _containerWidth: null, });
@@ -333,7 +333,7 @@ export const AnterosScrollableDefaultTabBar = createReactClass({
           const renderTab = this.props.renderTab || this.renderTab;
           return renderTab(name, page, isTabActive, this.props.goToPage);
         })}
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={[
             tabUnderlineStyle,
             {

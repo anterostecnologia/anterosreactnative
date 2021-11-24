@@ -2,11 +2,11 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {StyleSheet, View, Animated, PanResponder, ViewPropTypes} from 'react-native';
-
-export default class AnterosTransformView extends Component {
+import shallowCompare from "react-addons-shallow-compare";
+export class AnterosTransformView extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -372,22 +372,26 @@ export default class AnterosTransformView extends Component {
         ]
       });
 
-    this.props = {
+    return {
       style,
       containerStyle,
       ...others
     };
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    let props = this.buildProps();
 
     let {
       containerStyle,
       children,
       onLayout,
       ...others
-    } = this.props;
+    } = props;
     return (
       <View
         {...others}
@@ -397,7 +401,7 @@ export default class AnterosTransformView extends Component {
       }}
         ref='view'
         {...this.panResponder.panHandlers}>
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={containerStyle}
           ref='containerView'
           onLayout={e => {

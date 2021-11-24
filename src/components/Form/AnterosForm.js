@@ -1,4 +1,4 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import { View, TextInput,
@@ -11,6 +11,7 @@ import { View, TextInput,
 } from 'react-native';
 import StyleSheetTypes from 'react-native/Libraries/StyleSheet/StyleSheetTypes'
 import ViewPropTypes from 'react-native/Libraries/Components/View/ViewPropTypes'
+import React,{Component} from "react";
 
 // export {AnterosCountDownField} from './fields/AnterosCountDownField';
 // export {AnterosPickerField} from './fields/AnterosPickerField';
@@ -21,7 +22,7 @@ import ViewPropTypes from 'react-native/Libraries/Components/View/ViewPropTypes'
 // export {AnterosDatePickerField} from './fields/AnterosDatePickerField';
 // export {AnterosTimePickerField} from './fields/AnterosTimePickerField';
 
-export class AnterosForm extends React.Component{
+export class AnterosForm extends Component{
   constructor(props){
     super();
 
@@ -77,7 +78,7 @@ export class AnterosForm extends React.Component{
 
 
 
-export class AnterosKeyboardAwareScrollView extends React.Component {
+export class AnterosKeyboardAwareScrollView extends Component {
     constructor (props) {
       super(props)
       this.state = {

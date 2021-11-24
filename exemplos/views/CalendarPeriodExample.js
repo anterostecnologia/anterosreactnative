@@ -1,5 +1,5 @@
 
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     Text,    
@@ -11,7 +11,7 @@ import moment from 'moment';
 import {AnterosButton, AnterosNavigationPage, AnterosText, AnterosLabel, AnterosCalendarPeriod} from 'anteros-react-native';
 
 
-export default class CalendarPeriodExample extends AnterosNavigationPage {
+export class CalendarPeriodExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

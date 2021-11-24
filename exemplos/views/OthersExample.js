@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -55,7 +55,7 @@ const DEVICE_HEIGHT = Dimensions
     .height;
 
 
-export default class OthersExample extends AnterosNavigationPage {
+export class OthersExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

@@ -1,4 +1,4 @@
-import React from 'react'
+import { createElement } from 'react';
 import {
   Text,
   View
@@ -28,7 +28,7 @@ export const Dot = ({
 export const RenderDots = (index, total, props) => {
   let dots = [];
   for (let i = 0; i < total; i++) {
-    dots.push(React.createElement(Dot, { 
+    dots.push(createElement(Dot, { 
       ...props,
       key: i,
       active: i === index

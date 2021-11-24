@@ -1,6 +1,6 @@
 "use strict";
 
-import React from "react";
+import React,{Component} from "react";
 import PropTypes from "prop-types";
 let {
   View,
@@ -11,8 +11,9 @@ let {
 } = require("react-native");
 import { AnterosFormField } from "./AnterosFormField";
 import {AnterosText} from 'anteros-react-native';
+import React,{Component} from "react";
 
-export class AnterosTimePickerComponent extends React.Component {
+export class AnterosTimePickerComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {

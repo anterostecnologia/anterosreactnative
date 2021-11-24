@@ -36,7 +36,7 @@ const itemsAnimationAndSeparator = Array.from(Array(5)).map((_, index) =>
 const itemsAnimation = Array.from(Array(6)).map((_, index) => image(index));
 const itemsSeparator = Array.from(Array(4)).map((_, index) => image(index));
 
-export default class GridListExample extends AnterosNavigationPage {
+export class GridListExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

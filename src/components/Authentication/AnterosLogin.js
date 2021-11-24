@@ -448,7 +448,7 @@ export class AnterosLoginSubmit extends Component {
 
         return (
             <View style={[stylesSubmit.container, this.props.style]}>
-                <Animated.View
+                <Animated.View useNativeDriver={true}
                     style={{
                     width: changeWidth
                 }}>
@@ -462,7 +462,7 @@ export class AnterosLoginSubmit extends Component {
                                 <Text style={[stylesSubmit.text, this.props.styleSubmitTitle]}>{this.props.title}</Text>
                             )}
                     </TouchableOpacity>
-                    <Animated.View
+                    <Animated.View useNativeDriver={true}
                         style={[
                         stylesSubmit.circle, {
                             transform: [

@@ -117,7 +117,7 @@ export class AnterosElasticStack extends Component {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       directions: {
         top: nextProps.directions[0],
@@ -156,7 +156,7 @@ export class AnterosElasticStack extends Component {
       const handlers = this.panResponder.panHandlers;
 
       return (
-        <Animated.View style={swipableItemStyle} {...handlers} key={`${itemIndex}`}>
+        <Animated.View useNativeDriver={true}   style={swipableItemStyle} {...handlers} key={`${itemIndex}`}>
           {renderItem(itemContent, itemWidth, itemHeight)}
         </Animated.View>
       );

@@ -28,7 +28,7 @@ export class AnterosGrid extends Component {
     this.state = this.getDimensions();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.itemDimension !== this.props.itemDimension) {
       this.setState({
         ...this.getDimensions(this.state.totalDimension, nextProps.itemDimension),
@@ -172,7 +172,7 @@ export class AnterosGrid extends Component {
         data={rows}
         renderItem={this.renderRow}
         style={[
-          { ...horizontal ? { paddingLeft: spacing } : { paddingTop: spacing } },
+          { ...(horizontal ? { paddingLeft: spacing } : { paddingTop: spacing }) },
           style,
         ]}
         onLayout={this.onLayout}

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {View} from 'react-native'
 import {AnterosNavigationPage, AnterosIcon, AnterosCircularActionMenu} from 'anteros-react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,7 +17,7 @@ const styles = {
   }
 };
 
-export default class CircularActionMenuExample extends AnterosNavigationPage {
+export class CircularActionMenuExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

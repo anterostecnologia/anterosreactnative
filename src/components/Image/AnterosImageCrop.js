@@ -214,7 +214,7 @@ export class AnterosImageCrop extends Component {
     this.toRemoveImage = '';
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.rectPanResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gs) => !this.state.responderLocked,
       onMoveShouldSetPanResponder: (evt, gs) => !this.state.responderLocked,
@@ -292,7 +292,7 @@ export class AnterosImageCrop extends Component {
     });
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (newProps.image !== this.props.image) {
       this.setState({ image: newProps.image });
     }

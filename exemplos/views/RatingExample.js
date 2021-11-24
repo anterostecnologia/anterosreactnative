@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Platform, ScrollView } from 'react-native';
 import {AnterosText, AnterosRating, AnterosAirbnbRating, AnterosNavigationPage, AnterosButton} from 'anteros-react-native';
 const WATER_IMAGE = require('../images/water.png');
 
-export default class StarRatingExample extends AnterosNavigationPage {
+export class StarRatingExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

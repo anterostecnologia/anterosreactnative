@@ -171,7 +171,7 @@ export class AnterosParallaxImage extends Component {
         };
 
         return (
-            <Animated.Image
+            <Animated.Image  useNativeDriver={true} 
               {...other}
               style={[styles.image, style, requiredStyles, dynamicStyles]}
               onLoad={this._onLoad}

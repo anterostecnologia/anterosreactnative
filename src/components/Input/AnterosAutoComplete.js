@@ -95,7 +95,7 @@ export class AnterosAutoComplete extends Component {
     this.resultList = null;
   }
 
-  componentWillReceiveProps({ data }) {
+  UNSAFE_componentWillReceiveProps({ data }) {
     const dataSource = this.state.dataSource.cloneWithRows(data);
     this.setState({ dataSource });
   }

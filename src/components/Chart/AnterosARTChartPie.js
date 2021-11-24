@@ -35,7 +35,7 @@ class AnterosARTChartPie extends Component {
     this.spring2 = new Spring({friction: 5, frequency: 100});
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.max ? this.sum = this.props.max : this.sum = computeChartSum(this.props.data);
     this.slices = [];
     let startAngle = 0;
@@ -148,7 +148,7 @@ class AnterosARTChartPie extends Component {
            />);
     });
     return(
-      <Animated.View
+      <Animated.View useNativeDriver={true}
       onLayout={this._onLayout.bind(this)}
       ref="piechart"
       {...this._responder}
@@ -166,4 +166,4 @@ class AnterosARTChartPie extends Component {
   }
 }
 
-export default AnterosARTChartPie;
+export { AnterosARTChartPie};

@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('react');
+import React,{Component} from "react";
 var ReactNative = require('react-native');
 
 import {AnterosNavigationPage, AnterosSlider} from 'anteros-react-native';
@@ -17,7 +17,7 @@ var {
 
 var DEFAULT_VALUE = 0.2;
 
-class SliderContainer extends React.Component { 
+class SliderContainer extends Component { 
     constructor(props){
         super(props);
         this.state = { 
@@ -57,7 +57,7 @@ class SliderContainer extends React.Component {
   }
 }
 
-export default class SliderExample extends AnterosNavigationPage {
+export class SliderExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

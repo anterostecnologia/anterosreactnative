@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import {
   Animated,
   StatusBar,
@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 
-export class AnterosLoaderMask extends React.Component {
+export class AnterosLoaderMask extends Component {
   static defaultProps = {
     isLoaded: false,
   };
@@ -18,7 +18,7 @@ export class AnterosLoaderMask extends React.Component {
     animationDone: false,
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.isLoaded && !this.props.isLoaded) {
       Animated.timing(this.state.loadingProgress, {
         toValue: 100,
@@ -78,7 +78,7 @@ export class AnterosLoaderMask extends React.Component {
           style={{ flex: 1 }}
           maskElement={
             <View style={styles.centeredFullScreen}>
-              <Animated.Image
+              <Animated.Image  useNativeDriver={true} 
                 style={[styles.maskImageStyle, imageScale]}
                 source={this.props.imageSource}
               />
@@ -86,7 +86,7 @@ export class AnterosLoaderMask extends React.Component {
           }
         >
           {fullScreenWhiteLayer}
-          <Animated.View style={[opacityClearToVisible, appScale, { flex: 1 }]}>
+          <Animated.View useNativeDriver={true}   style={[opacityClearToVisible, appScale, { flex: 1 }]}>
             {this.props.children}
           </Animated.View>
         </MaskedViewIOS>

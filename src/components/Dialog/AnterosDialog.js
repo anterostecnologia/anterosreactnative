@@ -1,6 +1,6 @@
 // https://github.com/hectahertz/react-native-material-dialog
 
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
@@ -18,7 +18,7 @@ import {
 import { material } from 'react-native-typography';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {AnterosText} from '../Text/AnterosText';
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 import {AnterosButton} from '../Button/AnterosButton';
 
 
@@ -240,7 +240,7 @@ export class AnterosMultiPickerDialog extends Component {
   }
 
   // Refreshing the dataSource when we refresh any prop (such as visible)
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { items, selectedItems } = nextProps;
     const rows = buildSelectedRows(items, selectedItems);
     const dataSource = this.state.dataSource.cloneWithRows(rows);
@@ -366,7 +366,7 @@ export class AnterosSinglePickerDialog extends Component {
 
   // TODO: Extract common logic with the constructor
   // Refreshing the dataSource when we refresh any prop (such as visible)
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { items, selectedItem } = nextProps;
 
     const rows = items.map(item => Object.assign({}, item, { selected: false }));

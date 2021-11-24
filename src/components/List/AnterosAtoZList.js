@@ -14,7 +14,6 @@ import {
   View,
   Platform
 } from 'react-native';
-
 import _ from 'lodash';
 
 
@@ -51,7 +50,7 @@ export class AnterosAtoZList extends Component {
     this.dataSource = dataSource;
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.data !== nextProps.data) {
       this.setState({
         dataSource: this
@@ -149,7 +148,7 @@ class AlphabetPicker extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
@@ -174,7 +173,7 @@ class AlphabetPicker extends Component {
         .bind(this)
     });
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.alphabet !== nextProps.alphabet) {
       this.setState({alphabet: nextProps.alphabet})
     }
@@ -476,7 +475,6 @@ class FixedHeightWindowedListViewDataSource {
   getHeightBeforeRow(i) {
     let height = 0;
 
-    // console.log(this._lookup);
     _.forEach(this._lookup, (section, sectionId) => {
       if (i > section.range[0] && i <= section.range[1]) {
         height += section.sectionHeaderHeight;
@@ -747,7 +745,7 @@ class FixedHeightWindowedListView extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.__computeRowsToRenderSync(nextProps, true);
   }
 
@@ -1128,7 +1126,7 @@ FixedHeightWindowedListView.defaultProps = {
 
 const DEBUG = false;
 
-class CellRenderer extends React.Component {
+class CellRenderer extends Component {
   shouldComponentUpdate(newProps) {
     return newProps.shouldUpdate;
   }

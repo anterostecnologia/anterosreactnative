@@ -3,7 +3,7 @@
 
 const M = 0.8;
 
-export default class Spring {
+export class Spring {
 
     constructor(options) {
         this.options = Object.assign({

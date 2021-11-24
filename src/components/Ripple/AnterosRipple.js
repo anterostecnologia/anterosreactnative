@@ -210,7 +210,7 @@ export class AnterosRipple extends PureComponent {
     };
 
     return (
-      <Animated.View style={[styles.ripple, rippleStyle]} key={unique} />
+      <Animated.View useNativeDriver={true}   style={[styles.ripple, rippleStyle]} key={unique} />
     );
   }
 
@@ -258,7 +258,7 @@ export class AnterosRipple extends PureComponent {
 
     return (
       <TouchableWithoutFeedback {...touchableProps}>
-        <Animated.View {...props} pointerEvents='box-only'>
+        <Animated.View useNativeDriver={true}   {...props} pointerEvents='box-only'>
           {children}
           <View style={[styles.container, containerStyle]}>
             {ripples.map(this.renderRipple)}

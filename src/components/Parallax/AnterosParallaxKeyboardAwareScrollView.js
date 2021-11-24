@@ -103,7 +103,7 @@ export class AnterosParallaxKeyboardAwareScrollView extends Component {
             this.props.backgroundImage !== null
         ) {
             return (
-                <Animated.Image
+                <Animated.Image  useNativeDriver={true} 
                   style={backgroundStyle}
                   source={this.props.backgroundImage}
                   resizeMode="cover"
@@ -113,7 +113,7 @@ export class AnterosParallaxKeyboardAwareScrollView extends Component {
 
         if (typeof this.props.background === 'function') {
             return (
-                <Animated.View
+                <Animated.View useNativeDriver={true}
                   style={backgroundStyle}
                 >
                     {this.props.background()}

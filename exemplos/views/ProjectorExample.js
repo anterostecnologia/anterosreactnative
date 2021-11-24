@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 
 import {
@@ -14,7 +14,7 @@ import {
   AnterosInput
 } from 'anteros-react-native';
 
-export default class ProjectorExample extends AnterosNavigationPage {
+export class ProjectorExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 
@@ -13,7 +13,7 @@ import { ContainerSizeProp, DirectionProp } from '../../shared/props';
 import { checkInsideGrid } from '../../utils';
 import { determineSize, isHidden } from './methods';
 import BlockProps from './props';
-
+import React from 'react';
 
 // We need to ensure that stretch sizing wouldn't collapse to zero width when
 // there is enough elements to already fill the line.
@@ -40,7 +40,7 @@ const style = StyleSheet.create({
  * @type {React.StatelessComponent<{size: string | number, hidden: boolean, visible: boolean, style: any, children: any}>}
  */
 /* eslint-enable */
-const Block = ({
+const AnterosBlock = ({
   children,
   ...props
 }, {
@@ -71,16 +71,16 @@ const Block = ({
   );
 };
 
-Block.defaultProps = {
+AnterosBlock.defaultProps = {
   children: null,
 };
 
-Block.contextTypes = {
+AnterosBlock.contextTypes = {
   containerSizeClass: checkInsideGrid(ContainerSizeProp),
   contentDirection: checkInsideGrid(DirectionProp),
 };
 
-Block.propTypes = {
+AnterosBlock.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -88,4 +88,4 @@ Block.propTypes = {
   ...BlockProps,
 };
 
-export default Block;
+export {AnterosBlock};

@@ -25,7 +25,7 @@ const AnimatedViewPagerAndroid = Platform.OS === 'android' ?
 
 
 
-class StaticContainer extends React.Component {
+class StaticContainer extends Component {
     shouldComponentUpdate(nextProps) {
       return !!nextProps.shouldUpdate;
     }
@@ -131,7 +131,7 @@ export const AnterosScrollableTabView = createReactClass({
     };
   },
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (props.children !== this.props.children) {
       this.updateSceneKeys({ page: this.state.currentPage, children: props.children, });
     }

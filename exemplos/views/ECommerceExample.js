@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -31,7 +31,7 @@ const DEVICE_HEIGHT = Dimensions
     .get('window')
     .height;
 
-export default class ECommerceExample extends AnterosNavigationPage {
+export class ECommerceExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

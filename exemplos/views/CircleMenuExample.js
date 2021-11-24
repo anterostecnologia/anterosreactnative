@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {View} from 'react-native'
 import {AnterosNavigationPage, AnterosCircleMenu} from 'anteros-react-native';
 
@@ -16,7 +16,7 @@ const styles = {
   }
 };
 
-export default class CircleMenuExample extends AnterosNavigationPage {
+export class CircleMenuExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

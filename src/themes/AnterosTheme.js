@@ -4,9 +4,9 @@
 
 import {Platform, Dimensions, NativeModules, DeviceInfo, StatusBar} from 'react-native';
 
-import AnterosThemeDefault from './AnterosThemeDefault';
-import AnterosThemeBlack from './AnterosThemeBlack';
-import AnterosThemeViolet from './AnterosThemeViolet';
+import {AnterosThemeDefault} from './AnterosThemeDefault';
+import {AnterosThemeBlack} from './AnterosThemeBlack';
+import {AnterosThemeViolet} from './AnterosThemeViolet';
 
 // See https://mydevice.io/devices/ for device dimensions
 const X_WIDTH = 375;
@@ -32,7 +32,7 @@ const isIPhoneX = (() => {
   );
 })();
 
-var AnterosTheme = {
+export var AnterosTheme = {
 
   themes: {
     default: AnterosThemeDefault,
@@ -81,4 +81,3 @@ var AnterosTheme = {
 
 AnterosTheme.set(AnterosThemeDefault);
 
-module.exports = AnterosTheme;

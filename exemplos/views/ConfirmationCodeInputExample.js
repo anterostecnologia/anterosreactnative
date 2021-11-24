@@ -11,7 +11,7 @@ import {
 
 import {AnterosNavigationPage, AnterosConfirmationCodeInput} from 'anteros-react-native';
 
-export default class ConfirmationCodeInputexample extends AnterosNavigationPage {
+export class ConfirmationCodeInputexample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

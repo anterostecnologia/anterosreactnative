@@ -1,12 +1,12 @@
 'use strict';
 
-import React from 'react';
+
 import ReactNative from 'react-native';
 import {InputComponent} from '../lib/InputComponent';
-
+import React,{Component} from "react";
 const {StyleSheet} = ReactNative;
 
-export class AnterosInputField extends React.Component{
+export class AnterosInputField extends Component{
 
   handleValidation(isValid, validationErrors){
     this.valid = isValid;

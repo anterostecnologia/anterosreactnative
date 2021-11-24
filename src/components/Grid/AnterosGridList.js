@@ -85,7 +85,7 @@ export class AnterosGridList extends PureComponent {
     animationInitialBackgroundColor: colors.white,
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {
       separatorBorderWidth,
       separatorBorderColor,
@@ -111,7 +111,7 @@ export class AnterosGridList extends PureComponent {
     this.setup(this.props);
     this.animate();
   }
-  componentWillUpdate(nextProps) {
+  UNSAFE_componentWillUpdate(nextProps) {
     this.setup(nextProps);
     this.animate();
   }
@@ -162,7 +162,7 @@ export class AnterosGridList extends PureComponent {
     return (
       <View style={viewStyles}>
         {showAnimation ? (
-          <Animated.View
+          <Animated.View useNativeDriver={true}
             style={[
               this.styles.itemContainerAnimationEnd,
               { opacity: this.animatedValue[index] },

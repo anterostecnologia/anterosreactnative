@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
     StyleSheet,
     Text,
@@ -8,7 +8,7 @@ import {
 
 import {AnterosNavigationPage, AnterosImageCard} from 'anteros-react-native';
 
-export default class ImageCardExample extends AnterosNavigationPage {
+export class ImageCardExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

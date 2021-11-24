@@ -10,9 +10,10 @@ import {
   Text,
   View
 } from 'react-native'
-import AnterosRefreshableScrollView from '../ScrollView/AnterosRefreshableScrollView'
+import {AnterosRefreshableScrollView} from '../ScrollView/AnterosRefreshableScrollView'
 import {AnterosText} from '../Text/AnterosText';
 import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from '../Datasource/AnterosDatasource'
+import shallowCompare from "react-addons-shallow-compare";
 
 const { width, height } = Dimensions.get('window')
 const PaginationStatus = {
@@ -503,6 +504,11 @@ export class AnterosListView extends Component {
       } catch (err) {
         abortFetch() 
       }
+  }
+
+
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

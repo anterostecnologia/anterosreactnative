@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { View, ScrollView, Text } from "react-native";
 import {AnterosNavigationPage, AnterosImage, AnterosZoomable } from "anteros-react-native";
 
-export default class ZoomableExample extends AnterosNavigationPage {
+export class ZoomableExample extends AnterosNavigationPage {
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
     title: "Zoomable image",

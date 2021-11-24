@@ -1,9 +1,9 @@
-import React from 'react';
+
 import {AnterosNavigationPage, AnterosPulseLoader} from 'anteros-react-native';
 
 import { Dimensions } from "react-native";
 
-export default class PulseLoaderExample extends AnterosNavigationPage {
+export class PulseLoaderExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

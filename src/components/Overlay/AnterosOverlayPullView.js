@@ -6,11 +6,11 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import {Animated, View, ViewPropTypes} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosTopView from './AnterosTopView';
-import AnterosOverlayView from './AnterosOverlayView';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosTopView} from './AnterosTopView';
+import {AnterosOverlayView} from './AnterosOverlayView';
 
-export default class AnterosOverlayPullView extends AnterosOverlayView {
+export class AnterosOverlayPullView extends AnterosOverlayView {
 
   static propTypes = {
     ...AnterosOverlayView.propTypes,
@@ -18,46 +18,52 @@ export default class AnterosOverlayPullView extends AnterosOverlayView {
     containerStyle: ViewPropTypes.style,
     rootTransform: PropTypes.oneOfType([
       PropTypes.oneOf(['none', 'translate', 'scale']),
-      PropTypes.arrayOf(PropTypes.shape({translateX: PropTypes.number, translateY: PropTypes.number, scaleX: PropTypes.number, scaleY: PropTypes.number}))
-    ])
+      PropTypes.arrayOf(PropTypes.shape({
+        translateX: PropTypes.number,
+        translateY: PropTypes.number,
+        scaleX: PropTypes.number,
+        scaleY: PropTypes.number,
+      })),
+    ]),
   };
 
   static defaultProps = {
     ...AnterosOverlayView.defaultProps,
     side: 'bottom',
     animated: true,
-    rootTransform: 'none'
+    rootTransform: 'none',
   };
 
   constructor(props) {
     super(props);
-    this.viewLayout = {
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0
-    };
+    this.viewLayout = {x: 0, y: 0, width: 0, height: 0};
     Object.assign(this.state, {
       marginValue: new Animated.Value(0),
-      showed: false
+      showed: false,
     });
   }
 
   get appearAnimates() {
     let animates = super.appearAnimates;
-    animates.push(Animated.spring(this.state.marginValue, {
-      toValue: 0,
-      friction: 9
-    }));
+    animates.push(
+      Animated.spring(this.state.marginValue, {
+        toValue: 0,
+        friction: 9,
+        useNativeDriver: false,
+      })
+    );
     return animates;
   }
-
+  
   get disappearAnimates() {
     let animates = super.disappearAnimates;
-    animates.push(Animated.spring(this.state.marginValue, {
-      toValue: this.marginSize,
-      friction: 9
-    }));
+    animates.push(
+      Animated.spring(this.state.marginValue, {
+        toValue: this.marginSize,
+        friction: 9,
+        useNativeDriver: false,
+      })
+    );
     return animates;
   }
 
@@ -67,12 +73,10 @@ export default class AnterosOverlayPullView extends AnterosOverlayView {
 
   get marginSize() {
     let {side} = this.props;
-    if (side === 'left' || side === 'right') 
-      return -this.viewLayout.width;
-    else 
-      return -this.viewLayout.height;
-    }
-  
+    if (side === 'left' || side === 'right') return -this.viewLayout.width;
+    else return -this.viewLayout.height;
+  }
+
   get rootTransformValue() {
     let {side, rootTransform} = this.props;
     if (!rootTransform || rootTransform === 'none') {
@@ -82,40 +86,14 @@ export default class AnterosOverlayPullView extends AnterosOverlayView {
     switch (rootTransform) {
       case 'translate':
         switch (side) {
-          case 'top':
-            return [
-              {
-                translateY: this.viewLayout.height
-              }
-            ];
-          case 'left':
-            return [
-              {
-                translateX: this.viewLayout.width
-              }
-            ];
-          case 'right':
-            return [
-              {
-                translateX: -this.viewLayout.width
-              }
-            ];
-          default:
-            return [
-              {
-                translateY: -this.viewLayout.height
-              }
-            ];
+          case 'top': return [{translateY: this.viewLayout.height}];
+          case 'left': return [{translateX: this.viewLayout.width}];
+          case 'right': return [{translateX: -this.viewLayout.width}];
+          default: return [{translateY: -this.viewLayout.height}];
         }
         break;
       case 'scale':
-        return [
-          {
-            scaleX: AnterosTheme.overlayRootScale
-          }, {
-            scaleY: AnterosTheme.overlayRootScale
-          }
-        ];
+        return [{scaleX: AnterosTheme.overlayRootScale}, {scaleY: AnterosTheme.overlayRootScale}];
       default:
         return rootTransform;
     }
@@ -123,10 +101,7 @@ export default class AnterosOverlayPullView extends AnterosOverlayView {
 
   appear(animated = this.props.animated) {
     if (animated) {
-      this
-        .state
-        .marginValue
-        .setValue(this.marginSize);
+      this.state.marginValue.setValue(this.marginSize);
     }
     super.appear(animated);
 
@@ -153,87 +128,51 @@ export default class AnterosOverlayPullView extends AnterosOverlayView {
     }
   }
 
-  buildProps() {
-    super.buildProps();
-
-    let {
-      side,
-      style,
-      containerStyle,
-      ...others
-    } = this.props;
-
-    let sideStyle,
-      contentStyle;
+  buildStyle() {
+    let {side} = this.props;
+    let sideStyle;
     //Set flexDirection so that the content view will fill the side
     switch (side) {
       case 'top':
-        sideStyle = {
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'stretch'
-        };
-        contentStyle = {
-          marginTop: this.state.marginValue
-        };
+        sideStyle = {flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch'};
         break;
       case 'left':
-        sideStyle = {
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignItems: 'stretch'
-        };
-        contentStyle = {
-          marginLeft: this.state.marginValue
-        };
+        sideStyle = {flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'stretch'};
         break;
       case 'right':
-        sideStyle = {
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-          alignItems: 'stretch'
-        };
-        contentStyle = {
-          marginRight: this.state.marginValue
-        };
+        sideStyle = {flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'stretch'};
         break;
       default:
-        sideStyle = {
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          alignItems: 'stretch'
-        };
-        contentStyle = {
-          marginBottom: this.state.marginValue
-        };
+        sideStyle = {flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'stretch'};
     }
-    style = []
-      .concat(style)
-      .concat(sideStyle);
-    contentStyle.opacity = this.state.showed
-      ? 1
-      : 0;
-    containerStyle = [
-      {
-          backgroundColor: AnterosTheme.defaultColor, //rgba(0, 0, 0, 0)',
-        }
-      ]
-      .concat(containerStyle)
-      .concat(contentStyle);
-
-    this.props = {
-      side,
-      style,
-      containerStyle,
-      ...others
-    };
+    return super.buildStyle().concat(sideStyle);
   }
 
-  renderContent() {
-    let {containerStyle, children} = this.props;
+  renderContent(content = null) {
+    let {side, containerStyle, children} = this.props;
+
+    let contentStyle;
+    switch (side) {
+      case 'top':
+        contentStyle = {marginTop: this.state.marginValue};
+        break;
+      case 'left':
+        contentStyle = {marginLeft: this.state.marginValue};
+        break;
+      case 'right':
+        contentStyle = {marginRight: this.state.marginValue};
+        break;
+      default:
+        contentStyle = {marginBottom: this.state.marginValue};
+    }
+    contentStyle.opacity = this.state.showed ? 1 : 0;
+    containerStyle = [{
+      backgroundColor: AnterosTheme.defaultColor,
+    }].concat(containerStyle).concat(contentStyle);
+
     return (
-      <Animated.View style={containerStyle} onLayout={(e) => this.onLayout(e)}>
-        {children}
+      <Animated.View useNativeDriver={true}   style={containerStyle} onLayout={(e) => this.onLayout(e)}>
+        {content ? content : children}
       </Animated.View>
     );
   }

@@ -6,8 +6,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, Image} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosNavigationButton from './AnterosNavigationButton';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosNavigationButton} from './AnterosNavigationButton';
 
 const backIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAACXBIWXMAAA' +
     'sTAAALEwEAmpwYAAAKTWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVN3WJP3Fj7f92UPVkLY8L' +
@@ -351,7 +351,7 @@ const backIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6
     'Xw7zgWHd3UPb5k8EWcio6G/S0qTGeio5ta3vuilncuOnqlquml6OhW9enl6PXpge0ENGN40HoueXfrWQ' +
     'Efj9zdyvuITwr4/UHp2ObXt8VBQDfXtzspYt5ud81/AwCftoZDGkpkzwAAAABJRU5ErkJggg==';
 
-export default class AnterosNavigationBackButton extends AnterosNavigationButton {
+export class AnterosNavigationBackButton extends AnterosNavigationButton {
 
   static propTypes = {
     ...AnterosNavigationButton.propTypes,

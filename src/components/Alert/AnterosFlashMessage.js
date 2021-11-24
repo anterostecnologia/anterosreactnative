@@ -3,8 +3,8 @@ import { StyleSheet, TouchableWithoutFeedback, StatusBar, Platform, Dimensions, 
 import PropTypes from "prop-types";
 import {AnterosImage} from '../Image/AnterosImage';
 import {AnterosText} from '../Text/AnterosText';
-import AnterosFlashMessageManager from "./AnterosFlashMessageManager";
-import AnterosFlashMessageWrapper, { styleWithInset } from "./AnterosFlashMessageWrapper";
+import {AnterosFlashMessageManager} from "./AnterosFlashMessageManager";
+import {AnterosFlashMessageWrapper, styleWithInset } from "./AnterosFlashMessageWrapper";
 
 /**
  * MessageComponent `minHeight` property used mainly in vertical transitions
@@ -363,9 +363,7 @@ export class AnterosFlashMessage extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props.canRegisterAsDefault);
     if (this.props.canRegisterAsDefault) {
-      console.log('aqui');
       AnterosFlashMessageManager.register(this);
     }
   }
@@ -534,7 +532,7 @@ export class AnterosFlashMessage extends Component {
     const animStyle = animated ? transitionConfig(visibleValue, position) : {};
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={[
           positionStyle(styles.root, position),
           position === "center" && !!message && styles.rootCenterEnabled,

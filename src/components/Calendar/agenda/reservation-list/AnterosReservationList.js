@@ -4,7 +4,7 @@ import {
   ActivityIndicator,
   View
 } from 'react-native';
-import AnterosReservationListItem from './AnterosReservationListItem';
+import {AnterosReservationListItem} from './AnterosReservationListItem';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
 
@@ -45,7 +45,7 @@ class AnterosReservationList extends Component {
     this.scrollOver = true;
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.updateDataSource(this.getReservations(this.props).reservations);
   }
 
@@ -69,7 +69,7 @@ class AnterosReservationList extends Component {
     this.updateDataSource(reservations.reservations);
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (!dateutils.sameDate(props.topDay, this.props.topDay)) {
       this.setState({
         reservations: []
@@ -201,4 +201,4 @@ class AnterosReservationList extends Component {
   }
 }
 
-export default AnterosReservationList;
+export {AnterosReservationList};

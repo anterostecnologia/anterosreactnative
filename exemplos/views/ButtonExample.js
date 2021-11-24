@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, Text, Image, StyleSheet} from 'react-native';
 
 import {AnterosNavigationPage, AnterosListRow, AnterosLabel, AnterosTheme,
@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import FloatingActionExample from './FloatingActionExample';
 
 
-export default class ButtonExample extends AnterosNavigationPage {
+export class ButtonExample extends AnterosNavigationPage {
 
   static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

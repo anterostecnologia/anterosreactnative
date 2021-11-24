@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 
 const noop = () => {};
 
-export default class BubbleMenuExample extends AnterosNavigationPage {
+export class BubbleMenuExample extends AnterosNavigationPage {
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
       title: "Bubble menu",

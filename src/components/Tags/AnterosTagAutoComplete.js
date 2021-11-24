@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   TouchableHighlight
 } from "react-native";
-import AnterosAutoComplete from "../Input/AnterosAutoComplete";
+import {AnterosAutoComplete} from "../Input/AnterosAutoComplete";
 
-export default class AnterosTagAutoComplete extends Component {
+export class AnterosTagAutoComplete extends Component {
   state = {
     query: ""
   };

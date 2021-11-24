@@ -1,6 +1,6 @@
 //https://github.com/leecade/react-native-swiper
 
-import React, {Component} from 'react'
+import {Component} from 'react'
 import PropTypes from 'prop-types'
 import {
   Text,
@@ -14,11 +14,11 @@ import {
   ActivityIndicator
 } from 'react-native'
 
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
 // missing `module.exports = exports['default'];` with babel6 export default
 // React.createClass({
-export default class AnterosSwiper extends Component {
+export class AnterosSwiper extends Component {
   /**
    * Props Validation
    * @type {Object}
@@ -104,7 +104,7 @@ export default class AnterosSwiper extends Component {
   autoplayTimer = null
   loopJumpTimer = null
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!nextProps.autoplay && this.autoplayTimer) 
       clearTimeout(this.autoplayTimer)
     this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
@@ -119,7 +119,7 @@ export default class AnterosSwiper extends Component {
     this.loopJumpTimer && clearTimeout(this.loopJumpTimer)
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
     // If the index has changed, we notify the parent via the onIndexChanged
     // callback
     if (this.state.index !== nextState.index) 

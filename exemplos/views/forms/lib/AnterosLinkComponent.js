@@ -1,11 +1,11 @@
 "use strict";
 
-import React from "react";
+import React,{Component} from "react";
 let { View, StyleSheet, Text } = require("react-native");
 import { AnterosFormField } from "./AnterosFormField";
 import {AnterosText} from 'anteros-react-native';
 
-export class AnterosLinkComponent extends React.Component {
+export class AnterosLinkComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {};

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { Platform, DatePickerIOS, Text, TouchableHighlight, View, DatePickerAndroid, TimePickerAndroid, StyleSheet, Dimensions } from "react-native";
 import {AnterosModal} from "../Modal/AnterosModal";
 import {AnterosText} from '../Text/AnterosText';
 
 
-class CustomDatePickerAndroid extends React.PureComponent {
+class CustomDatePickerAndroid extends PureComponent {
   static propTypes = {
     date: PropTypes.instanceOf(Date),
     mode: PropTypes.oneOf(["date", "time", "datetime"]),
@@ -208,7 +208,7 @@ const isIphoneX = () => {
     }
   });
 
-class CustomDatePickerIOS extends React.PureComponent {
+class CustomDatePickerIOS extends PureComponent {
   static propTypes = {
     cancelTextIOS: PropTypes.string,
     confirmTextIOS: PropTypes.string,
@@ -254,7 +254,7 @@ class CustomDatePickerIOS extends React.PureComponent {
     minuteInterval: 1
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.date !== nextProps.date) {
       this.setState({
         date: nextProps.date

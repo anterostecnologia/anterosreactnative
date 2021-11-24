@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
@@ -12,11 +12,11 @@ import {
   PanResponder,
   ViewPropTypes
 } from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosWheelItem} from './AnterosWheelItem';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosWheelItem from './AnterosWheelItem';
-
-export default class AnterosWheel extends Component {
+export class AnterosWheel extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -52,7 +52,7 @@ export default class AnterosWheel extends Component {
     this.targetPositionValue = null;
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (!this.positionListenerId) {
       this.positionListenerId = this.currentPosition.addListener(e => this.handlePositionChange(e.value));
     }
@@ -65,7 +65,7 @@ export default class AnterosWheel extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.index || nextProps.index === 0) {
       this.index = nextProps.index;
       this.currentPosition.setValue(nextProps.index * this.holeHeight);
@@ -237,11 +237,15 @@ export default class AnterosWheel extends Component {
     );
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    const props = this.buildProps();
     this.lastRenderIndex = this.index;
 
-    let {items, itemStyle, holeStyle, maskStyle, holeLine, defaultIndex, onChange, onLayout, ...others} = this.props;
+    let {items, itemStyle, holeStyle, maskStyle, holeLine, defaultIndex, onChange, onLayout, ...others} = props;
 
     return (
       <View

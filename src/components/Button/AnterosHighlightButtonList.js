@@ -148,7 +148,7 @@ export class AnterosHighlightButtonList extends Component {
             opacity: highlightOpacityInterpolate
           };
           return (
-            <Animated.View
+            <Animated.View useNativeDriver={true}
               key={index}
               style={[
                 styles.buttonContainer,
@@ -156,7 +156,7 @@ export class AnterosHighlightButtonList extends Component {
                 index > 0 ? styles.divider : null
               ]}
             >
-              <Animated.View
+              <Animated.View useNativeDriver={true}
                 style={[
                   StyleSheet.absoluteFill,
                   styles.highlight,

@@ -1,8 +1,8 @@
-import React from 'react';
+
 import {StyleSheet, Text, ScrollView, View, Animated, Dimensions} from 'react-native';
 import {AnterosNavigationPage, AnterosInteractiveCard, Header, Footer, Content} from 'anteros-react-native';
-
-export default class InteractiveCardExample extends AnterosNavigationPage {
+import React,{Component} from "react";
+export class InteractiveCardExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
@@ -23,7 +23,7 @@ export default class InteractiveCardExample extends AnterosNavigationPage {
 
 
 
-class CardsInView  extends React.Component {
+class CardsInView  extends Component {
 	constructor() {
 		super();
 	}
@@ -64,7 +64,7 @@ const stylesBase = StyleSheet.create({
 const windowDimensions = Dimensions.get('window');
 const cardWidth = (windowDimensions.width < 768) ? "100%" : "50%";
 
-class CardsInScrollView  extends React.Component {
+class CardsInScrollView  extends Component {
 	constructor() {
 		super();
 		this.state = {activeCard : null};
@@ -72,7 +72,7 @@ class CardsInScrollView  extends React.Component {
 		this.layoutAnimationValue = new Animated.Value(0);
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.loadCards()
 	}
 
@@ -253,7 +253,7 @@ const stylesCard = StyleSheet.create({
 
 
 
-class CustomTransition extends React.Component {
+class CustomTransition extends Component {
 	constructor() {
 		super();
 	}

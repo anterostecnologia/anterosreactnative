@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
@@ -13,14 +13,14 @@ AnterosTag.propTypes = {
   onPress: PropTypes.func
 };
 
-export class AnterosTags extends React.Component {
+export class AnterosTags extends Component {
   constructor(props, context){
     super(props, context);
     this.state = {tags: props.initialTags,
                   text: props.initialText};
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (
       nextProps.initialTags === this.state.initialTags &&
       nextProps.initialText === this.state.initialText

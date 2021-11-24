@@ -20,7 +20,7 @@ class AnterosARTSparkyPie extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.max ? this.sum = this.props.max : this.sum = this._computeSum();
     this.slices = [];
     let startAngle = 0;
@@ -67,4 +67,4 @@ class AnterosARTSparkyPie extends Component {
   }
 }
 
-export default AnterosARTSparkyPie;
+export {AnterosARTSparkyPie};

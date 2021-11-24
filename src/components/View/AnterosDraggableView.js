@@ -27,7 +27,6 @@ export class AnterosDraggableView extends Component {
 
 
     var finalDrawerSize = this.props.finalDrawerHeight ? this.props.finalDrawerHeight : 0;
-    // console.log(initialDrawerSize, 'Initila size');
     this.state = {
       touched: 'FALSE',
       position: new Animated.Value(initialDrawerSize),
@@ -45,7 +44,6 @@ export class AnterosDraggableView extends Component {
 
 
   startAnimation = (velocityY, positionY, initialPositon, id, finalPosition) => {
-    // console.log('creating animation ');
     var isGoingToUp = (velocityY < 0) ? true : false;
     var speed = Math.abs(velocityY);
     var currentPosition = Math.abs(positionY / SCREEN_HEIGHT);
@@ -54,16 +52,13 @@ export class AnterosDraggableView extends Component {
     var position = new Animated.Value(positionY);
     position.removeAllListeners();
 
-    // console.log('configuration : '+endPosition)
     Animated.timing(position, {
       toValue: endPosition,
       tension: 30,
       friction: 0,
-      // easing:Easing.elastic,
       velocity: velocityY
     }).start();
 
-    // position.addListener((position) => { console.log('position by', position, endPosition); });
     position.addListener((position) => {
       if (!this.center) return;
       this.onUpdatePosition(position.value);
@@ -71,11 +66,9 @@ export class AnterosDraggableView extends Component {
   }
 
   onUpdatePosition(position) {
-    // console.log('UPDATE_POSITION', position);
     position = position - 50;
     this.state.position.setValue(position);
     this._previousTop = position;
-    // console.log('Position ', position);
     const { initialPosition } = this.state
 
     if (initialPosition === position) {
@@ -83,7 +76,7 @@ export class AnterosDraggableView extends Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panGesture = PanResponder.create({
       onMoveShouldSetPanResponder: (evt, gestureState) => {
         return this.isAValidMovement(gestureState.dx, gestureState.dy) && this.state.touched == 'TRUE';
@@ -99,7 +92,6 @@ export class AnterosDraggableView extends Component {
 
 
   moveDrawerView(gestureState) {
-    // console.log('GESTURE', gestureState);
     if (!this.center) return;
     var currentValue = Math.abs(gestureState.moveY / SCREEN_HEIGHT);
     var isGoingToUp = (gestureState.vy < 0);
@@ -130,7 +122,7 @@ export class AnterosDraggableView extends Component {
         <View style={styles.container}>
           {containerView}
         </View>
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={[drawerPosition, styles.drawer,
             { backgroundColor: this.props.drawerBg ? this.props.drawerBg : 'white' }]}
           ref={(center) => this.center = center}
@@ -138,12 +130,10 @@ export class AnterosDraggableView extends Component {
         >
           <TouchableWithoutFeedback
             onPressIn={() => {
-              console.log('touch in');
               this.setState({ touched: 'TRUE' });
             }}
             onPressOut={() => {
               this.setState({ touched: 'FALSE' });
-              console.log('touch out');
             }}>
             {initDrawerView}
           </TouchableWithoutFeedback>

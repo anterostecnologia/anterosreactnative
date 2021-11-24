@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {View, ViewPropTypes} from 'react-native';
 
 
-export default class AnterosTabSheet extends Component {
+export class AnterosTabSheet extends Component {
 
   static propTypes = {
     type: PropTypes.oneOf(['sheet', 'button']),

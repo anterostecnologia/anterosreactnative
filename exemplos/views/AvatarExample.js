@@ -1,6 +1,6 @@
 "use strict";
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, Text} from 'react-native';
 
 import {AnterosNavigationPage, AnterosListRow, AnterosAvatar, AnterosSpacer, AnterosFacePile} from 'anteros-react-native';
@@ -14,7 +14,7 @@ const avatars = [{imageUrl:'https://randomuser.me/api/portraits/women/88.jpg'},
                  {imageUrl:'https://randomuser.me/api/portraits/men/91.jpg'},
                  {imageUrl:'https://randomuser.me/api/portraits/men/73.jpg'}];
 
-export default class AvatarExample extends AnterosNavigationPage {
+export class AvatarExample extends AnterosNavigationPage {
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
         title: "Avatar",

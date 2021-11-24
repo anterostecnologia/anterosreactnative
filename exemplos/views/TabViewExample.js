@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -23,7 +23,7 @@ import {
   AnterosPullPicker
 } from 'anteros-react-native';
 
-export default class TabViewExample extends AnterosNavigationPage {
+export class TabViewExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosBasePage.defaultProps,

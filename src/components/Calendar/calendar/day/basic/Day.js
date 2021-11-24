@@ -56,10 +56,8 @@ class Day extends Component {
       } else {
         markingChanged = true;
       }
-      // console.log('marking changed', markingChanged);
       return markingChanged;
     } else {
-      // console.log('changed', changed);
       return !!changed;
     }
   }

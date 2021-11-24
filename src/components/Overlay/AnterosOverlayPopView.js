@@ -6,9 +6,9 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import {Animated, View, ViewPropTypes} from 'react-native';
 
-import AnterosOverlayView from './AnterosOverlayView';
+import {AnterosOverlayView} from './AnterosOverlayView';
 
-export default class AnterosOverlayPopView extends AnterosOverlayView {
+export class AnterosOverlayPopView extends AnterosOverlayView {
 
   static propTypes = {
     ...AnterosOverlayView.propTypes,
@@ -48,22 +48,27 @@ export default class AnterosOverlayPopView extends AnterosOverlayView {
       Animated.timing(this.state.opacity, {
         toValue: 1,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.translateX, {
         toValue: 0,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.translateY, {
         toValue: 0,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.scaleX, {
         toValue: 1,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.scaleY, {
         toValue: 1,
         duration,
+        useNativeDriver: false,
       }),
     ]);
     return animates;
@@ -77,22 +82,27 @@ export default class AnterosOverlayPopView extends AnterosOverlayView {
       Animated.timing(this.state.opacity, {
         toValue: 0,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.translateX, {
         toValue: ft.translateX,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.translateY, {
         toValue: ft.translateY,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.scaleX, {
         toValue: ft.scaleX,
         duration,
+        useNativeDriver: false,
       }),
       Animated.timing(this.state.scaleY, {
         toValue: ft.scaleY,
         duration,
+        useNativeDriver: false,
       }),
     ]);
     return animates;
@@ -106,7 +116,7 @@ export default class AnterosOverlayPopView extends AnterosOverlayView {
     let {type, customBounds} = this.props;
     let bounds;
     if (type === 'custom' && !customBounds) {
-      console.error('AnterosOverlayPopView: customBounds can not be null when type is "custom"');
+      console.error('OverlayPopView: customBounds can not be null when type is "custom"');
     }
     if (type === 'custom' && customBounds) {
       bounds = customBounds;
@@ -156,10 +166,8 @@ export default class AnterosOverlayPopView extends AnterosOverlayView {
     }
   }
 
-  buildProps() {
-    super.buildProps();
-
-    let {containerStyle, ...others} = this.props;
+  renderContent(content = null) {
+    let {containerStyle, children} = this.props;
     let {opacity, translateX, translateY, scaleX, scaleY} = this.state;
 
     containerStyle = [{
@@ -171,14 +179,9 @@ export default class AnterosOverlayPopView extends AnterosOverlayView {
       transform: [{translateX}, {translateY}, {scaleX}, {scaleY}],
     });
 
-    this.props = {containerStyle, ...others};
-  }
-
-  renderContent() {
-    let {containerStyle, children} = this.props;
     return (
-      <Animated.View style={containerStyle} pointerEvents='box-none' onLayout={(e) => this.onLayout(e)}>
-        {children}
+      <Animated.View useNativeDriver={true}   style={containerStyle} pointerEvents='box-none' onLayout={(e) => this.onLayout(e)}>
+        {content ? content : children}
       </Animated.View>
     );
   }

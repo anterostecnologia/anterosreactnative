@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, Text, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {AnterosText, AnterosSelect, AnterosNavigationPage, AnterosDateTimePicker,
   AnterosListRow, AnterosLabel, AnterosImage, AnterosLabelSelect} from 'anteros-react-native';
@@ -18,7 +18,7 @@ import StatusColorPickerExample from './StatusColorPickerExample';
 
 
 
-export default class SelectExample extends AnterosNavigationPage {
+export class SelectExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

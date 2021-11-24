@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
   StyleSheet,
   FlatList,
@@ -18,7 +18,7 @@ import {AnterosLabel, AnterosView} from 'anteros-react-native';
 import {AnterosText, AnterosTextArea, AnterosImage, AnterosAvatar} from 'anteros-react-native';
 import {data} from './data';
 
-export default class ArticlesExample extends AnterosNavigationPage {
+export class ArticlesExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

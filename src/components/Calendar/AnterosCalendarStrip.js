@@ -1,7 +1,7 @@
 
 //https://github.com/BugiDev/react-native-calendar-strip
 
-import React, { Component } from "react";
+import React,{ Component } from "react";
 import PropTypes from "prop-types";
 import {polyfill} from 'react-lifecycles-compat';
 import { View, Animated, Easing, Text, LayoutAnimation, StyleSheet, Image,TouchableOpacity } from "react-native";
@@ -542,7 +542,7 @@ export class AnterosCalendarStrip extends Component {
       );
       datesRender.push(
         this.props.calendarAnimation ? (
-          <Animated.View
+          <Animated.View useNativeDriver={true}
             key={i}
             style={{ opacity: this.animatedValue[i], flex: 1 }}
           >

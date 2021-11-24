@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import {AnterosNavigationPage, AnterosEmoticons} from 'anteros-react-native';
 
-export default class EmoticonsExample extends AnterosNavigationPage {
+export class EmoticonsExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

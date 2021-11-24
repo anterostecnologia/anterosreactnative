@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import {
   Dimensions,
   PanResponder,
@@ -30,7 +30,7 @@ export class AnterosDial extends Component {
     this.updateState = throttle(this.updateState.bind(this), 16)
   }
 
-  componentWillMount () {
+  UNSAFE_componentWillMount () {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, gestureState) => true,
       onStartShouldSetPanResponderCapture: (e, gestureState) => {

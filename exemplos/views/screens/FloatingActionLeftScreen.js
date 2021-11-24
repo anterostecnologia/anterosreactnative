@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
 import Property from './Property';
 import {AnterosNavigationPage, AnterosFloatingAction} from 'anteros-react-native';
-export default class FloatingActionLeftScreen extends AnterosNavigationPage {
+export class FloatingActionLeftScreen extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

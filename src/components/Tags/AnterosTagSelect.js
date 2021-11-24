@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import {
   View,
@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 
 
-export class AnterosTagSelect extends React.Component {
+export class AnterosTagSelect extends Component {
   static propTypes = {
     // Pre-selected values
     value: PropTypes.array,
@@ -141,7 +141,7 @@ export class AnterosTagSelect extends React.Component {
 
 
 
-export class AnterosTagSelectItem extends React.Component {
+export class AnterosTagSelectItem extends Component {
     render(){
         return (
         <View style={styles.container_item}>

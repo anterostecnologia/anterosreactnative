@@ -11,7 +11,7 @@ export class AnterosAirbnbRating extends Component {
     defaultRating: 5,
     reviews: ["Terrible", "Bad", "Okay", "Good", "Great"],
     count: 5,
-    onFinishRating: () => console.log('Rating selected. Attach a function here.'),
+    onFinishRating: () => {},
     showRating: true
   };
 

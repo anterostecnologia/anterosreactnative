@@ -29,7 +29,7 @@ export class AnterosBubbleMenu extends Component{
 		}
 	}
 
-	componentWillReceiveProps(nextState){
+	UNSAFE_componentWillReceiveProps(nextState){
 		const {show} = nextState;
 
 		let toValue = show ? screen.width - 25 : 50;
@@ -57,7 +57,7 @@ export class AnterosBubbleMenu extends Component{
 	render(){
 		const {show, items, openBtn, color, style} = this.props;
 		return(
-			<Animated.View style={[styles.container,{
+			<Animated.View useNativeDriver={true}   style={[styles.container,{
 				width : this.state.openMenu,
 				backgroundColor : show ? (color) ? color : "#ffffff" : (color) ? color : "#fafafa"
 			},style]}>
@@ -68,7 +68,7 @@ export class AnterosBubbleMenu extends Component{
 						{openBtn}
 					</View>
 
-					<Animated.View style={[styles.items,{
+					<Animated.View useNativeDriver={true}   style={[styles.items,{
 						opacity : this.state.opacity
 					}]} pointerEvents={show ? "auto" : "none" }>
 						{items}

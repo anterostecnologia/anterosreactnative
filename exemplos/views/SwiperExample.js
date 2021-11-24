@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, Text, Dimensions, StatusBar} from 'react-native';
 
 import {
@@ -48,7 +48,7 @@ var styles = {
   }
 }
 
-export default class SwiperExample extends AnterosNavigationPage {
+export class SwiperExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

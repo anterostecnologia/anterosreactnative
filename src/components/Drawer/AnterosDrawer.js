@@ -5,9 +5,9 @@
 import React, {Component} from "react";
 import {View} from 'react-native';
 
-import AnterosOverlay from '../Overlay/AnterosOverlay';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
 
-export default class AnterosDrawer extends AnterosOverlay {
+export class AnterosDrawer extends AnterosOverlay {
 
   static DrawerView = AnterosOverlay.PullView;
 

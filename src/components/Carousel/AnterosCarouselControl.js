@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View, Text, TouchableOpacity, ViewPropTypes} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-export default class AnterosCarouselControl extends Component {
+export class AnterosCarouselControl extends Component {
 
   static propTypes = {
     ...ViewPropTypes,

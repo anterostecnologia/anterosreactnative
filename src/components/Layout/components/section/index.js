@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React,{PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, ViewPropTypes } from 'react-native';
 
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
  *
  * @type {React.StatelessComponent<{stretch: boolean, style: any, children: any}>}
  */
-class Section extends PureComponent {
+class AnterosSection extends PureComponent {
   constructor(props,context){
     super(props);
   }
@@ -56,12 +56,12 @@ class Section extends PureComponent {
 };
 
 
-Section.contextTypes = {
+AnterosSection.contextTypes = {
   contentDirection: checkInsideGrid(DirectionProp),
   containerStretch: checkInsideGrid(PropTypes.bool),
 };
 
-Section.propTypes = {
+AnterosSection.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -71,9 +71,9 @@ Section.propTypes = {
   index: PropTypes.number
 };
 
-Section.defaultProps = {
+AnterosSection.defaultProps = {
   style: {},
   stretch: false,
 };
 
-export default Section;
+export {AnterosSection};

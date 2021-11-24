@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import {AnterosNavigationPage, AnterosAnalogClock} from 'anteros-react-native';
 
-export default class AnalogClockExample extends AnterosNavigationPage {
+export class AnalogClockExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

@@ -8,7 +8,7 @@ const staticAsset = require('../images/sample-1.jpeg');
 
 import {AnterosNavigationPage, AnterosHero} from 'anteros-react-native';
 
-export default class HeroExample extends AnterosNavigationPage {
+export class HeroExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

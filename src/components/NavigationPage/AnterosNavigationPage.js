@@ -1,33 +1,18 @@
 // AnterosNavigationPage.js
 
-'use strict';
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Platform, View, Dimensions} from 'react-native';
-
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosNavigator from '../Navigator/AnterosNavigator';
-import AnterosBasePage from '../BasePage/AnterosBasePage';
-import AnterosNavigationBar from '../NavigationBar/AnterosNavigationBar';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosNavigator} from '../Navigator/AnterosNavigator';
+import {AnterosBasePage} from '../BasePage/AnterosBasePage';
+import {AnterosNavigationBar} from '../NavigationBar/AnterosNavigationBar';
 import {AnterosKeyboardSpace} from '../KeyboardSpace/AnterosKeyboardSpace';
 
-export default class AnterosNavigationPage extends AnterosBasePage {
+export class AnterosNavigationPage extends AnterosBasePage {
 
-  static propTypes = {
-    ...AnterosBasePage.propTypes,
-    title: PropTypes.string,
-    showBackButton: PropTypes.bool,
-    navigationBarInsets: PropTypes.bool
-  };
-
-  static defaultProps = {
-    ...AnterosBasePage.defaultProps,
-    scene: AnterosNavigator.SceneConfigs.PushFromRight,
-    title: null,
-    showBackButton: false,
-    navigationBarInsets: true
-  };
 
   constructor(props) {
     super(props);
@@ -52,11 +37,11 @@ export default class AnterosNavigationPage extends AnterosBasePage {
           : 0
       }
     ];
-    return ({
+    return {
       navigationBarInsets,
       pageContainerStyle,
       ...others
-    });
+    };
   }
 
   onLayout(e) {
@@ -97,14 +82,19 @@ export default class AnterosNavigationPage extends AnterosBasePage {
     return null;
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
+    const props = this.buildProps();
     let {
       autoKeyboardInsets,
       keyboardTopInsets,
       pageContainerStyle,
       onLayout,
       ...others
-    } = this.buildProps();
+    } = props;
     return (
       <View onLayout={e => this.onLayout(e)} {...others}>
         <View style={{

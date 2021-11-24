@@ -84,14 +84,14 @@ export class AnterosBouncingPreloader extends Component {
     const { size } = this.props;
     return (
       <View style={styles.container}>
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={{
             marginLeft: 60,
             transform: [{ translateY: translateYRight }]
           }}
         >
           {iconRight ? (
-            <Animated.Image
+            <Animated.Image  useNativeDriver={true} 
               source={iconRight}
               style={[
                 styles.image,
@@ -105,7 +105,7 @@ export class AnterosBouncingPreloader extends Component {
             />
           ) : null}
         </Animated.View>
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={{
             marginTop: -100,
             marginLeft: 0,
@@ -113,7 +113,7 @@ export class AnterosBouncingPreloader extends Component {
           }}
         >
           {iconLeft ? (
-            <Animated.Image
+            <Animated.Image  useNativeDriver={true} 
               source={iconLeft}
               resizeMode="contain"
               style={[

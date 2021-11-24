@@ -78,13 +78,13 @@
 //   }
 // }
 
-// class WrappedIcon extends React.Component {
+// class WrappedIcon extends Component {
 //   render() {
 //     return <Icon {...this.props} />;
 //   }
 // }
 
-// export default class FormExample extends AnterosNavigationPage {
+// export class FormExample extends AnterosNavigationPage {
 //   static defaultProps = {
 //     ...AnterosNavigationPage.defaultProps,
 //     title: "Form",
@@ -354,7 +354,7 @@ import {
   Dimensions
 } from 'react-native';
 import moment from 'moment';
-export default class FormExample extends AnterosNavigationPage {
+export class FormExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

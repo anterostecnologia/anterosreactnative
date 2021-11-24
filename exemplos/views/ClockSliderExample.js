@@ -92,7 +92,7 @@ class TimerText extends Component {
 //   return min;
 // }
 
-// export default class ClockSliderExample extends AnterosNavigationPage {
+// export class ClockSliderExample extends AnterosNavigationPage {
 
 //     static defaultProps = {
 //       ...AnterosNavigationPage.defaultProps,
@@ -267,7 +267,7 @@ const WAKE_ICON = (
     return min;
   }
   
-  export default class ClockSliderExample extends AnterosNavigationPage {
+  export class ClockSliderExample extends AnterosNavigationPage {
 
         static defaultProps = {
           ...AnterosNavigationPage.defaultProps,

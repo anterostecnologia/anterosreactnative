@@ -2,15 +2,15 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {View, ScrollView} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosMenuItem from './AnterosMenuItem';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosMenuItem} from './AnterosMenuItem';
 
-export default class AnterosMenuView extends AnterosOverlay.PopoverView {
+export class AnterosMenuView extends AnterosOverlay.PopoverView {
 
   static propTypes = {
     ...AnterosOverlay.PopoverView.propTypes,

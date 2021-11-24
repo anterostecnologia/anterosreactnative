@@ -2,128 +2,105 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {TextInput} from 'react-native';
-import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from "../Datasource/AnterosDatasource";
+import { TextInput } from 'react-native';
+import { AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents } from "../Datasource/AnterosDatasource";
+import shallowCompare from "react-addons-shallow-compare";
+import { AnterosTheme } from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
+class AnterosInput extends Component {
 
-export default class AnterosInput extends TextInput {
-
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    
+
     if (this.props.dataSource) {
-      
+
       let value = this
-          .props
-          .dataSource
-          .fieldByName(this.props.dataField);
+        .props
+        .dataSource
+        .fieldByName(this.props.dataField);
       if (!value) {
-          value = '';
+        value = '';
       }
       this.state = {
-          value: value
+        value: value
       };
-  } else {
-      this.state = {
-          value: this.props.value
-      };
-  }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.dataSource) {
-        let value = nextProps
-            .dataSource
-            .fieldByName(nextProps.dataField);
-        if (!value) {
-            value = '';
-        }
-        this.setState({value: value});
     } else {
-        this.setState({value: nextProps.value});
+      this.state = {
+        value: this.props.value
+      };
     }
-}
+  }
 
-  componentDidMount(){
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.dataSource) {
+      let value = nextProps
+        .dataSource
+        .fieldByName(nextProps.dataField);
+      if (!value) {
+        value = '';
+      }
+      this.setState({ value: value });
+    } else {
+      this.setState({ value: nextProps.value });
+    }
+  }
+
+  componentDidMount() {
 
     if (this.props.dataSource) {
       this
-          .props
-          .dataSource
-          .addEventListener([
-              dataSourceEvents.AFTER_CLOSE, dataSourceEvents.AFTER_OPEN, dataSourceEvents.AFTER_GOTO_PAGE, dataSourceEvents.AFTER_CANCEL, dataSourceEvents.AFTER_SCROLL
-          ], this.onDatasourceEvent);
+        .props
+        .dataSource
+        .addEventListener([
+          dataSourceEvents.AFTER_CLOSE, dataSourceEvents.AFTER_OPEN, dataSourceEvents.AFTER_GOTO_PAGE, dataSourceEvents.AFTER_CANCEL, dataSourceEvents.AFTER_SCROLL
+        ], this.onDatasourceEvent);
       this
-          .props
-          .dataSource
-          .addEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
+        .props
+        .dataSource
+        .addEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     if ((this.props.dataSource)) {
       this
-          .props
-          .dataSource
-          .removeEventListener([
-              dataSourceEvents.AFTER_CLOSE, dataSourceEvents.AFTER_OPEN, dataSourceEvents.AFTER_GOTO_PAGE, dataSourceEvents.AFTER_CANCEL, dataSourceEvents.AFTER_SCROLL
-          ], this.onDatasourceEvent);
+        .props
+        .dataSource
+        .removeEventListener([
+          dataSourceEvents.AFTER_CLOSE, dataSourceEvents.AFTER_OPEN, dataSourceEvents.AFTER_GOTO_PAGE, dataSourceEvents.AFTER_CANCEL, dataSourceEvents.AFTER_SCROLL
+        ], this.onDatasourceEvent);
       this
-          .props
-          .dataSource
-          .removeEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
+        .props
+        .dataSource
+        .removeEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
     }
   }
 
   onDatasourceEvent = (event, error) => {
     let value = this
-        .props
-        .dataSource
-        .fieldByName(this.props.dataField);
-        console.log('onDatasourceEvent',value)
+      .props
+      .dataSource
+      .fieldByName(this.props.dataField);
     if (!value) {
-        value = '';
+      value = '';
     }
-    this.setState({value: value});
-}
-
-handleChange = (valor) => {
-  if (this.props.dataSource) {
-    
-      this
-          .props
-          .dataSource
-          .setFieldByName(this.props.dataField, valor);
-  } else {
-      this.setState({value: valor});
+    this.setState({ value: value });
   }
 
-  
-  
-}
+  handleChange = (valor) => {
+    if (this.props.dataSource) {
+      this
+        .props
+        .dataSource
+        .setFieldByName(this.props.dataField, valor);
+    } else {
+      this.setState({ value: valor });
+    }
+  }
 
-  static propTypes = {
-    ...TextInput.propTypes,
-    dataSource: PropTypes.oneOfType([
-        PropTypes.instanceOf(AnterosLocalDatasource),
-        PropTypes.instanceOf(AnterosRemoteDatasource)
-    ]),
-    dataField: PropTypes.string,
-    size: PropTypes.oneOf(['lg', 'md', 'sm']),
-    disabled: PropTypes.bool
-  };
-
-  static defaultProps = {
-    ...TextInput.defaultProps,
-    size: 'md',
-    disabled: false,
-    dataSource:'',
-    underlineColorAndroid: 'rgba(0, 0, 0, 0)'
-  };
 
   buildProps() {
     let {
@@ -132,7 +109,6 @@ handleChange = (valor) => {
       disabled,
       placeholderTextColor,
       pointerEvents,
-      //onChange,
       opacity,
       ...others
     } = this.props;
@@ -178,7 +154,7 @@ handleChange = (valor) => {
       }
     ].concat(style);
 
-    if (!placeholderTextColor) 
+    if (!placeholderTextColor)
       placeholderTextColor = AnterosTheme.inputPlaceholderTextColor;
     if (disabled) {
       pointerEvents = 'none';
@@ -188,22 +164,50 @@ handleChange = (valor) => {
     //let onChange = this.handleChange
     let value = this.state.value
 
-    this.props = {
+    return {
       style,
       size,
       disabled,
       placeholderTextColor,
       pointerEvents,
       opacity,
-      onChangeText:this.handleChange,
+      onChangeText: this.handleChange,
       value,
       ...others
     };
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
-    return super.render();
+    const props = this.buildProps();
+    return <TextInput {...props}/>;
   }
 
 }
+
+
+
+AnterosInput.propTypes = {
+  ...TextInput.propTypes,
+  dataSource: PropTypes.oneOfType([
+    PropTypes.instanceOf(AnterosLocalDatasource),
+    PropTypes.instanceOf(AnterosRemoteDatasource)
+  ]),
+  dataField: PropTypes.string,
+  size: PropTypes.oneOf(['lg', 'md', 'sm']),
+  disabled: PropTypes.bool
+};
+
+AnterosInput.defaultProps = {
+  ...TextInput.defaultProps,
+  size: 'md',
+  disabled: false,
+  dataSource: '',
+  underlineColorAndroid: 'rgba(0, 0, 0, 0)'
+};
+
+
+export { AnterosInput };

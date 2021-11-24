@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosBadge} from '../Badge/AnterosBadge';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosBadge from '../Badge/AnterosBadge';
-
-export default class AnterosSegmentedItem extends Component {
+export class AnterosSegmentedItem extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -101,7 +101,7 @@ export default class AnterosSegmentedItem extends Component {
 
     children = [title, badge];
 
-    this.props = {
+    return {
       style,
       title,
       titleStyle,
@@ -113,9 +113,13 @@ export default class AnterosSegmentedItem extends Component {
     };
   }
 
-  render() {
-    this.buildProps();
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
-    return <View {...this.props}/>;
+  render() {
+    const props = this.buildProps();
+
+    return <View {...props}/>;
   }
 }

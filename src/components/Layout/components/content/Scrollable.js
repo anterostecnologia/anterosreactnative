@@ -1,8 +1,8 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView } from 'react-native';
 import {AnterosKeyboardScrollView} from '../../../ScrollView/AnterosKeyboardScrollView';
-
+import React,{Component} from "react";
 const styles = StyleSheet.create({
   stretch: {
     flexGrow: 1,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
  * @type {React.StatelessComponent<{stretch: boolean, horizontal: boolean, children: any}>}
  */
 /* eslint-enable */
-class Scrollable extends React.Component{
+class Scrollable extends Component{
 
 
 scrollToPosition = (x, y, animated = true) => {
@@ -53,4 +53,4 @@ Scrollable.defaultProps = {
   horizontal: false,
 };
 
-export default Scrollable;
+export {Scrollable};

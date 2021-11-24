@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {
@@ -35,7 +35,7 @@ const log = () => {
   console.log('Please attach a method to this component');
 };
 
-export default class AnterosButton extends Component {
+export class AnterosButton extends Component {
   constructor(props){
     super(props);
     this.measure = this.measure.bind(this);

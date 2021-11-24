@@ -5,14 +5,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosTabSheet }from './AnterosTabSheet';
+import {AnterosTabButton} from './AnterosTabButton';
+import {AnterosProjector} from '../Projector/AnterosProjector';
+import {AnterosCarousel} from '../Carousel/AnterosCarousel';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosTabSheet from './AnterosTabSheet';
-import AnterosTabButton from './AnterosTabButton';
-import AnterosProjector from '../Projector/AnterosProjector';
-import AnterosCarousel from '../Carousel/AnterosCarousel';
-
-export default class AnterosTabView extends Component {
+export class AnterosTabView extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -156,8 +156,12 @@ export default class AnterosTabView extends Component {
     );
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    let props = this.buildProps();
+    const props = this.buildProps();
 
     let {barStyle, type, children, onChange, ...others} = props; //disable View.onChange
     return (

@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {View} from 'react-native'
 import PropTypes from 'prop-types'
 import SignaturePad from 'react-native-signature-pad'
 
 
-export default class AnterosSignaturePad extends Component{
+export class AnterosSignaturePad extends Component{
 
    render(){
     const {

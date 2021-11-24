@@ -111,7 +111,7 @@ const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
 
 
 
-export default class StepIndicatorExample extends AnterosNavigationPage {
+export class StepIndicatorExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

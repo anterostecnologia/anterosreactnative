@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import {
   Text,
   View,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class ImageCropExample extends AnterosNavigationPage {
+export class ImageCropExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

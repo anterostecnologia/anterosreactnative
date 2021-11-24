@@ -5,13 +5,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosSegmentedSheet} from './AnterosSegmentedSheet';
+import {AnterosSegmentedBar} from '../SegmentedBar/AnterosSegmentedBar';
+import {AnterosProjector} from '../Projector/AnterosProjector';
+import {AnterosCarousel} from '../Carousel/AnterosCarousel';
 
-import AnterosSegmentedSheet from './AnterosSegmentedSheet';
-import AnterosSegmentedBar from '../SegmentedBar/AnterosSegmentedBar';
-import AnterosProjector from '../Projector/AnterosProjector';
-import AnterosCarousel from '../Carousel/AnterosCarousel';
-
-export default class AnterosSegmentedView extends Component {
+export class AnterosSegmentedView extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -48,7 +48,7 @@ export default class AnterosSegmentedView extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.activeIndex != this.props.activeIndex && this.refs.carousel) {
       this
         .refs
@@ -87,7 +87,7 @@ export default class AnterosSegmentedView extends Component {
       }
     children = children.filter(item => item); //remove empty item
 
-    this.props = {
+    return {
       style,
       children,
       ...others
@@ -124,6 +124,20 @@ export default class AnterosSegmentedView extends Component {
     });
   }
 
+  buildChildrens(){
+    let children = React.Children.toArray(this.props.children);
+    let result = [];
+    children.map((item, index) => {     
+      result.push(<AnterosSegmentedBar.Item
+        key={index}
+        title={item.props.title}
+        titleStyle={item.props.titleStyle}
+        activeTitleStyle={item.props.activeTitleStyle}
+        badge={item.props.badge}/>
+      )});
+    return result;  
+  }
+
   renderBar() {
     let {
       barPosition,
@@ -144,6 +158,7 @@ export default class AnterosSegmentedView extends Component {
     if (!indicatorPosition && barPosition == 'bottom') {
       indicatorPosition = 'top';
     }
+    
 
     return (
       <View>
@@ -160,12 +175,7 @@ export default class AnterosSegmentedView extends Component {
           autoScroll={autoScroll}
           activeIndex={this.activeIndex}
           onChange={index => this.onSegmentedBarChange(index)}>
-          {children.map((item, index) => (<AnterosSegmentedBar.Item
-            key={index}
-            title={item.props.title}
-            titleStyle={item.props.titleStyle}
-            activeTitleStyle={item.props.activeTitleStyle}
-            badge={item.props.badge}/>))}
+          {this.buildChildrens()}
         </AnterosSegmentedBar>
       </View>
     );
@@ -198,8 +208,12 @@ export default class AnterosSegmentedView extends Component {
     );
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    const props = this.buildProps();
 
     let {
       type,
@@ -207,7 +221,7 @@ export default class AnterosSegmentedView extends Component {
       children,
       onChange,
       ...others
-    } = this.props; //disable View.onChange
+    } = props; //disable View.onChange
     return (
       <View {...others}>
         {barPosition === 'top'

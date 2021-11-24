@@ -5,10 +5,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-
-export default class AnterosBadge extends Component {
+export class AnterosBadge extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -105,7 +105,7 @@ export default class AnterosBadge extends Component {
       );
     }
 
-    this.props = {
+    return {
       style,
       type,
       count,
@@ -116,9 +116,13 @@ export default class AnterosBadge extends Component {
     };
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
-    return <View {...this.props}/>;
+    const props = this.buildProps();
+    return <View {...props}/>;
   }
 
 }

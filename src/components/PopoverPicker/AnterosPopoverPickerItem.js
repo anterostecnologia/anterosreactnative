@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-
-export default class AnterosPopoverPickerItem extends Component {
+export class AnterosPopoverPickerItem extends Component {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
@@ -66,7 +66,7 @@ export default class AnterosPopoverPickerItem extends Component {
       title = <Text style={titleStyle} numberOfLines={1}>{title}</Text>
     }
 
-    this.props = {
+    return {
       style,
       title,
       accessory,
@@ -75,14 +75,18 @@ export default class AnterosPopoverPickerItem extends Component {
     };
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    const props = this.buildProps();
 
     let {
       title,
       accessory,
       ...others
-    } = this.props;
+    } = props;
     return (
       <TouchableOpacity {...others}>
         {title}

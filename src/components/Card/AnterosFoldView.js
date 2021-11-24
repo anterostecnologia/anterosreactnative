@@ -1,4 +1,4 @@
-import React, {
+import {
     Component
   } from 'react';
   
@@ -69,7 +69,7 @@ function rotateX(deg) {
   };
   /* eslint-enable */
   
-  export class AnterosFoldView extends Component {
+  export default class AnterosFoldView extends Component {
   
     static childContextTypes = {
       registerComponent: PropTypes.func,
@@ -125,7 +125,7 @@ function rotateX(deg) {
       };
     }
   
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       this.collapse = this.collapse.bind(this);
       this.expand = this.expand.bind(this);
       this.getBaseHeight = this.getBaseHeight.bind(this);
@@ -189,7 +189,7 @@ function rotateX(deg) {
       }
     }
   
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
       if (this.isRoot) {
         if (nextProps.expanded !== this.props.expanded) {
           this.flip(nextProps.expanded);
@@ -384,7 +384,7 @@ function rotateX(deg) {
         const pointerEvents = this.props.expanded ? 'box-none' : 'auto';
   
         return (
-          <Animated.View
+          <Animated.View useNativeDriver={true}
             ref={this.setFrontFaceRef}
             style={[styles.face, faceStyle]}
             pointerEvents={pointerEvents}
@@ -423,7 +423,7 @@ function rotateX(deg) {
         }
   
         return (
-          <Animated.View
+          <Animated.View useNativeDriver={true}
             ref={this.setBackFaceRef}
             shouldRasterizeIOS={rasterize}
             renderToHardwareTextureAndroid={rasterize}

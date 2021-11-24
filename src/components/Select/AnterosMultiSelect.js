@@ -1,4 +1,4 @@
-import React, { PureComponent, Component } from 'react'
+import { PureComponent, Component } from 'react'
 import PropTypes from 'prop-types'
 import {
   ScrollView,
@@ -218,8 +218,7 @@ export class AnterosMultiSelect extends PureComponent {
     this.styles = StyleSheet.flatten([styles, props.styles])
   }
 
-   componentWillUpdate() { date = new Date();}
-  // componentDidUpdate() {console.log(new Date().valueOf() - date.valueOf())}
+   UNSAFE_componentWillUpdate() { date = new Date();}
 
 
   find = (id, items) => {

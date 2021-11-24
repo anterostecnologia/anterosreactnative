@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {View, StyleSheet} from 'react-native';
 
 export const AnterosSeparator = ({ style }) => <View style={[styles.separator, style]} />;

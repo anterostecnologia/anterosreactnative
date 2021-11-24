@@ -6,9 +6,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, ViewPropTypes} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-export default class AnterosSegmentedSheet extends Component {
+export class AnterosSegmentedSheet extends Component {
 
   static propTypes = {
     ...ViewPropTypes,

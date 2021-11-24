@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-
-export default class AnterosMenuItem extends Component {
+export class AnterosMenuItem extends Component {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
@@ -88,14 +88,18 @@ export default class AnterosMenuItem extends Component {
     };
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    const props = this.buildProps();
 
     let {
       title,
       icon,
       ...others
-    } = this.props;
+    } = props;
     return (
       <TouchableOpacity {...others}>
         {icon}

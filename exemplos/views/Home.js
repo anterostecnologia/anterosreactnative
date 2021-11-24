@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView} from 'react-native';
 
 import {AnterosTheme, AnterosNavigationPage, AnterosNavigationBar, AnterosListRow} from 'anteros-react-native';
@@ -36,7 +36,6 @@ import MenuExample from './MenuExample';
 import DrawerExample from './DrawerExample';
 import ModalIndicatorExample from './ModalIndicatorExample';
 import SwiperExample from './SwiperExample';
-import MasonryExample from './MasonryExample';
 import TagSelectExample from './TagSelectExample';
 import PanelExample from './PanelExample';
 import DeckSwiperExample from './DeckSwiperExample';
@@ -81,7 +80,7 @@ import CircleMenuExample from './CircleMenuExample';
 import BigSliderExample from './BigSliderExample';
 
 
-export default class Home extends AnterosNavigationPage {
+export class Home extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

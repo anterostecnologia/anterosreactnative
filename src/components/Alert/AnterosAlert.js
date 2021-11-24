@@ -171,7 +171,7 @@ export class AnterosAlert extends Component {
         <TouchableWithoutFeedback onPress={this._onTapOutside} >
           <View style={[styles.overlay, overlayStyle]} />
         </TouchableWithoutFeedback>
-        <Animated.View style={[styles.contentContainer, animation, contentContainerStyle]}>
+        <Animated.View useNativeDriver={true}   style={[styles.contentContainer, animation, contentContainerStyle]}>
           <View style={styles.content}>
             {showProgress && <ActivityIndicator size={progressSize} color={progressColor} />}
             {title && <AnterosText style={[styles.title, titleStyle]}>{title}</AnterosText>}
@@ -196,7 +196,7 @@ export class AnterosAlert extends Component {
     return null;
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { show } = nextProps;
 
     if (show)

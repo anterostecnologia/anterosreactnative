@@ -316,7 +316,7 @@ class LineGauge extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.scrollMax = this._getScrollMax(nextProps)
 
     if (nextProps.value !== this._value) {
@@ -637,7 +637,7 @@ const getStyles = (size) => ({
 
 const ActiveState = "active"
 
-class GaugeProgress extends React.Component {
+class GaugeProgress extends Component {
 
   state = {
     show: true
@@ -733,7 +733,7 @@ GaugeProgress.defaultProps = {
 const AnimatedProgressGauge = Animated.createAnimatedComponent(GaugeProgress);
 
 
-class AnimatedGaugeProgress extends React.Component {
+class AnimatedGaugeProgress extends Component {
 
   state = {
     chartFillAnimation: new Animated.Value(this.props.prefill || 0)

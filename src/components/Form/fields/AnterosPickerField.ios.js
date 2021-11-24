@@ -1,14 +1,12 @@
 'use strict';
 
-import React from 'react';
+
 import ReactNative from 'react-native';
 let { View, StyleSheet, TextInput, Text, PickerIOS} = ReactNative;
-
-
-
+import React,{Component} from "react";
 import {AnterosPickerComponent} from '../lib/AnterosPickerComponent';
 
-export class AnterosPickerField extends React.Component{
+export class AnterosPickerField extends Component{
   setValue(value){
     this.refs.fieldComponent.setValue(value)
   }

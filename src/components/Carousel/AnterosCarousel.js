@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View, ScrollView} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosCarouselControl from './AnterosCarouselControl';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosCarouselControl} from './AnterosCarouselControl';
 
-export default class AnterosCarousel extends Component {
+export class AnterosCarousel extends Component {
 
   static propTypes = {
     ...ScrollView.propTypes,
@@ -67,7 +67,7 @@ export default class AnterosCarousel extends Component {
     this.removeTimer();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.initByProps(nextProps);
     this.setupTimer();
   }

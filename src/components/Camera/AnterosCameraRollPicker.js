@@ -30,11 +30,11 @@ export class AnterosCameraRollPicker extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.fetch();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       selected: nextProps.selected,
     });
@@ -311,8 +311,6 @@ AnterosCameraRollPicker.defaultProps = {
   backgroundColor: 'white',
   selected: [],
   callback: function(selectedImages, currentImage) {
-    console.log(currentImage);
-    console.log(selectedImages);
   },
   emptyText: 'No photos.',
 }
@@ -324,7 +322,7 @@ class ImageItem extends Component {
       super(props)
     }
   
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       var { width } = Dimensions.get('window');
       var { imageMargin, imagesPerRow, containerWidth } = this.props;
   

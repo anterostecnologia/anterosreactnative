@@ -2,28 +2,23 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import {View} from 'react-native';
 
-import AnterosTopView from './AnterosTopView';
-import AnterosOverlayView from './AnterosOverlayView';
-import AnterosOverlayPullView from './AnterosOverlayPullView';
-import AnterosOverlayPopView from './AnterosOverlayPopView';
-import AnterosOverlayPopoverView from './AnterosOverlayPopoverView';
+import {AnterosTopView} from './AnterosTopView';
+import {AnterosOverlayView} from './AnterosOverlayView';
+import {AnterosOverlayPullView} from './AnterosOverlayPullView';
+import {AnterosOverlayPopView} from './AnterosOverlayPopView';
+import {AnterosOverlayPopoverView} from './AnterosOverlayPopoverView';
 
-export default class AnterosOverlay {
+export class AnterosOverlay {
 
   static View = AnterosOverlayView;
   static PullView = AnterosOverlayPullView;
   static PopView = AnterosOverlayPopView;
   static PopoverView = AnterosOverlayPopoverView;
 
-  // base props
-  //   style: ViewPropTypes.style,
-  //   modal: PropTypes.bool,
-  //   animated: PropTypes.bool,
-  //   overlayOpacity: PropTypes.number,
-  //   overlayPointerEvents: ViewPropTypes.pointerEvents,
+
   static show(overlayView) {
     let key;
     let onDisappearCompletedSave = overlayView.props.onDisappearCompleted;
@@ -46,7 +41,7 @@ export default class AnterosOverlay {
   }
 
   static restoreRoot(animated, animatesOnly = null) {
-    AnterosTopView.restore(animated, animatesOnly);
+    TopView.restore(animated, animatesOnly);
   }
 
 }

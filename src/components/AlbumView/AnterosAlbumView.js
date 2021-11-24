@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 import {StyleSheet, View, Image, Animated, ViewPropTypes} from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosAlbumSheet from './AnterosAlbumSheet';
-import AnterosCarouselControl from '../Carousel/AnterosCarouselControl';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosAlbumSheet} from './AnterosAlbumSheet';
+import {AnterosCarouselControl} from '../Carousel/AnterosCarouselControl';
 
-export default class AnterosAlbumView extends Component {
+export class AnterosAlbumView extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -61,7 +61,7 @@ export default class AnterosAlbumView extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if ((nextProps.index || nextProps.index === 0) && nextProps.index != this.props.index) {
       this.changeIndex(nextProps.index);
     }

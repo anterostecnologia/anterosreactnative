@@ -7,7 +7,7 @@ import {
     Dimensions,
     TouchableOpacity,
 } from 'react-native';
-import React, {Component} from 'react'
+import {Component} from 'react'
 import PropTypes from 'prop-types';
 import {AnterosText} from '../Text/AnterosText';
 

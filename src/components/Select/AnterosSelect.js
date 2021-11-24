@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
@@ -13,12 +13,13 @@ import {
   ScrollView
 } from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosPullPicker from '../PullPicker/AnterosPullPicker';
-import AnterosPopoverPicker from '../PopoverPicker/AnterosPopoverPicker';
-import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from "../Datasource/AnterosDatasource";
+import { AnterosTheme } from '../../themes/AnterosTheme';
+import { AnterosPullPicker } from '../PullPicker/AnterosPullPicker';
+import { AnterosPopoverPicker } from '../PopoverPicker/AnterosPopoverPicker';
+import { AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents } from "../Datasource/AnterosDatasource";
+import shallowCompare from "react-addons-shallow-compare";
 
-export default class AnterosSelect extends Component {
+export class AnterosSelect extends Component {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
@@ -36,7 +37,7 @@ export default class AnterosSelect extends Component {
     pickerTitle: PropTypes.string, //PullPicker only
     editable: PropTypes.bool,
     icon: PropTypes.oneOfType([
-      PropTypes.element, PropTypes.shape({uri: PropTypes.string}),
+      PropTypes.element, PropTypes.shape({ uri: PropTypes.string }),
       PropTypes.number,
       PropTypes.oneOf(['none', 'default'])
     ]),
@@ -54,15 +55,16 @@ export default class AnterosSelect extends Component {
     pickerType: 'auto'
   };
 
-  constructor(props){
+
+  constructor(props) {
     super(props);
 
-    if(!this.props.dataSource && this.props.value){
+    if (!this.props.dataSource && this.props.value) {
       this.state.value = this.props.value;
-    }else if(this.props.dataSource){
-      if(!this.props.fieldText){
+    } else if (this.props.dataSource) {
+      if (!this.props.fieldText) {
         this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField) : ''
-      }else{
+      } else {
         this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText] : ''
       }
     }
@@ -83,29 +85,29 @@ export default class AnterosSelect extends Component {
   }
 
   get selectedIndex() {
-    let {value, items, getItemValue} = this.props;
+    let { value, items, getItemValue } = this.props;
     if (items instanceof Array) {
       if (getItemValue) {
         for (let i = 0; i < items.length; ++i) {
-          if (getItemValue(items[i], i) === value) 
+          if (getItemValue(items[i], i) === value)
             return i;
-          }
-        } else {
-        for (let i = 0; i < items.length; ++i) {
-          if (items[i] === value) 
-            return i;
-          }
         }
+      } else {
+        for (let i = 0; i < items.length; ++i) {
+          if (items[i] === value)
+            return i;
+        }
+      }
     }
     return -1;
   }
 
   state = {
-    value:''
+    value: ''
   }
 
   valueText = () => {
-    let {value, items, getItemValue, getItemText} = this.props;
+    let { value, items, getItemValue, getItemText } = this.props;
     let text = value;
     if (getItemText && items instanceof Array) {
       if (getItemValue) {
@@ -146,9 +148,9 @@ export default class AnterosSelect extends Component {
     } = this.props;
 
     //value
-    value = this.props.onSelected ? this.props.value : this.state.value
+    value = this.props.onSelected ? this.props.value : this.state.value;
     //onSelected
-    onSelected = this.props.onSelected ? this.props.onSelected : this.onChangeSelect
+    onSelected = this.onChangeSelect;
 
 
     //style
@@ -192,24 +194,24 @@ export default class AnterosSelect extends Component {
     }
     style = [
       {
-          backgroundColor: AnterosTheme.selectColor,
-          borderColor: AnterosTheme.selectBorderColor,
-          borderWidth: AnterosTheme.selectBorderWidth,
-          borderRadius: borderRadius,
-          paddingTop: paddingTop,
-          paddingBottom: paddingBottom,
-          paddingLeft: paddingLeft,
-          paddingRight: paddingRight,
-          height: height
-        }
-      ]
+        backgroundColor: AnterosTheme.selectColor,
+        borderColor: AnterosTheme.selectBorderColor,
+        borderWidth: AnterosTheme.selectBorderWidth,
+        borderRadius: borderRadius,
+        paddingTop: paddingTop,
+        paddingBottom: paddingBottom,
+        paddingLeft: paddingLeft,
+        paddingRight: paddingRight,
+        height: height
+      }
+    ]
       .concat(style)
-      .concat({flexDirection: 'row', alignItems: 'center'});
-    if (disabled) 
-      style = style.concat({opacity: AnterosTheme.btnDisabledOpacity});
-    
+      .concat({ flexDirection: 'row', alignItems: 'center' });
+    if (disabled)
+      style = style.concat({ opacity: AnterosTheme.btnDisabledOpacity });
+
     //value
-    if (!placeholderTextColor) 
+    if (!placeholderTextColor)
       placeholderTextColor = AnterosTheme.selectPlaceholderTextColor;
     valueStyle = [
       {
@@ -220,7 +222,7 @@ export default class AnterosSelect extends Component {
       }
     ].concat(valueStyle);
     if (value === null || value === undefined) {
-      valueStyle = valueStyle.concat({color: placeholderTextColor});
+      valueStyle = valueStyle.concat({ color: placeholderTextColor });
       valueElement = <Text style={valueStyle} numberOfLines={this.props.numberOfLines ? this.props.numberOfLines : 1} allowFontScaling={false}>{placeholder}</Text>;
     } else {
       let valueText = value;
@@ -232,10 +234,10 @@ export default class AnterosSelect extends Component {
     }
 
     //iconTintColor
-    if (!iconTintColor) 
+    if (!iconTintColor)
       iconTintColor = AnterosTheme.selectIconTintColor;
-    
-    this.props = {
+
+    return {
       style,
       size,
       value,
@@ -252,19 +254,21 @@ export default class AnterosSelect extends Component {
   }
 
   showPullPicker() {
-    let {pickerTitle, items, getItemText, onSelected} = this.props;
+    const props = this.buildProps();
+    let { pickerTitle, items, getItemText, onSelected } = props;
     let its;
-    if(!getItemText){
-    its = items.map(item => {
-      return item[this.props.fieldText]
-    })
-  }
-    AnterosPullPicker.show(pickerTitle,!getItemText ? its : items, this.selectedIndex, onSelected, {getItemText},this.props.pickerTitleStyle,this.props.popupHeight);
+    if (!getItemText) {
+      its = items.map(item => {
+        return item[props.fieldText]
+      })
+    }
+    AnterosPullPicker.show(pickerTitle, !getItemText ? its : items, this.selectedIndex, onSelected, { getItemText }, props.pickerTitleStyle, props.popupHeight);
   }
 
   showPopoverPicker() {
+    const props = this.buildProps();
     this.measure((x, y, width, height, pageX, pageY) => {
-      let {items, getItemText, onSelected} = this.props;
+      let { items, getItemText, onSelected } = props;
       let its = items.map(item => {
         return item.text
       })
@@ -273,28 +277,29 @@ export default class AnterosSelect extends Component {
         y: pageY,
         width,
         height
-      }, its, this.selectedIndex, onSelected, {getItemText, align: 'end'});
+      }, its, this.selectedIndex, onSelected, { getItemText, align: 'end' });
     });
   }
 
   showPicker() {
+    const props = this.buildProps();
     switch (this.props.pickerType) {
       case 'pull':
-        this.showPullPicker();
+        this.showPullPicker(props);
         break;
       case 'popover':
-        this.showPopoverPicker();
+        this.showPopoverPicker(props);
         break;
       default:
         AnterosTheme.isPad
-          ? this.showPopoverPicker()
-          : this.showPullPicker();
+          ? this.showPopoverPicker(props)
+          : this.showPullPicker(props);
         break;
     }
   }
 
-  renderIconElement() {
-    let {icon, iconTintColor, iconSize} = this.props;
+  renderIconElement(props) {
+    let { icon, iconTintColor, iconSize } = props;
     let iconElement;
     if (icon === null || icon === undefined || icon === 'none') {
       iconElement = null;
@@ -303,91 +308,98 @@ export default class AnterosSelect extends Component {
     } else {
       iconElement = (<Image
         style={{
-        width: iconSize,
-        height: iconSize,
-        tintColor: iconTintColor
-      }}
+          width: iconSize,
+          height: iconSize,
+          tintColor: iconTintColor
+        }}
         source={icon === 'default'
-        ? require('../../assets/icons/select.png')
-        : icon}/>);
+          ? require('../../assets/icons/select.png')
+          : icon} />);
     }
     return iconElement;
   }
 
   onChangeSelect = (newValue) => {
-    
     if (this.props.dataSource) {
-        let valor
-        this.props.items.map(item => {
-          if(typeof(item) === "string"){
-            valor = newValue
-            this.props.dataSource.setFieldByName(this.props.dataField, valor);
-          }else{
-          if(item[this.props.fieldText] === newValue[this.props.fieldText] || item[this.props.fieldText] === newValue){
+      let valor;
+      this.props.items.map(item => {
+        if (typeof (item) === "string") {
+          valor = newValue
+          this.props.dataSource.setFieldByName(this.props.dataField, valor);
+        } else {
+          if (item[this.props.fieldText] === newValue[this.props.fieldText] || item[this.props.fieldText] === newValue) {
             this.props.dataSource.setFieldByName(this.props.dataField, item);
-            valor = this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText]
+            valor = this.props.dataSource.fieldByName(this.props.dataField)
+            if (valor){
+              valor = valor[this.props.fieldText];
+            }
           }
         }
-        })
-        
-        
-        this.setState({ value: valor });
+      })
+      this.setState({ value: valor });
     } else {
-        this.setState({ value: valor });
+      this.setState({ value: newValue });
     }
 
-}
+    if (this.props.onSelected){
+      this.props.onSelected(newValue);
+    }
 
-  componentWillReceiveProps(nextProps){
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.dataSource) {
       let value = nextProps.dataSource.fieldByName(this.props.dataField);
       if (!value) {
-          value = '';
+        value = '';
       }
+    }
   }
-}
+
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
   componentDidMount() {
-    
     if (this.props.dataSource) {
-        this.props.dataSource.addEventListener(
-            [dataSourceEvents.AFTER_CLOSE,
-            dataSourceEvents.AFTER_OPEN,
-            dataSourceEvents.AFTER_GOTO_PAGE,
-            dataSourceEvents.AFTER_CANCEL,
-            dataSourceEvents.AFTER_SCROLL], this.onDatasourceEvent);
-            this.props.dataSource.addEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
+      this.props.dataSource.addEventListener(
+        [dataSourceEvents.AFTER_CLOSE,
+        dataSourceEvents.AFTER_OPEN,
+        dataSourceEvents.AFTER_GOTO_PAGE,
+        dataSourceEvents.AFTER_CANCEL,
+        dataSourceEvents.AFTER_SCROLL], this.onDatasourceEvent);
+      this.props.dataSource.addEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
     }
   }
 
   componentWillUnmount() {
-    
+
     if ((this.props.dataSource)) {
-        this.props.dataSource.removeEventListener(
-            [dataSourceEvents.AFTER_CLOSE,
-            dataSourceEvents.AFTER_OPEN,
-            dataSourceEvents.AFTER_GOTO_PAGE,
-            dataSourceEvents.AFTER_CANCEL,
-            dataSourceEvents.AFTER_SCROLL], this.onDatasourceEvent);
-        this.props.dataSource.removeEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
+      this.props.dataSource.removeEventListener(
+        [dataSourceEvents.AFTER_CLOSE,
+        dataSourceEvents.AFTER_OPEN,
+        dataSourceEvents.AFTER_GOTO_PAGE,
+        dataSourceEvents.AFTER_CANCEL,
+        dataSourceEvents.AFTER_SCROLL], this.onDatasourceEvent);
+      this.props.dataSource.removeEventListener(dataSourceEvents.DATA_FIELD_CHANGED, this.onDatasourceEvent, this.props.dataField);
     }
   }
 
-  onDatasourceEvent(event, error) {
-    console.log('Datasource',event)
-    if (event == dataSourceEvents.AFTER_OPEN || event == dataSourceEvents.AFTER_CLOSE) {
-        
-    } else {
-        /*let value = this.props.dataSource.fieldByName(this.props.dataField);
-        if (!value) {
-            value = '';
-        }*/
-        
+  onDatasourceEvent=(event, error) => {
+    if (this.props.dataSource && this.props.dataField){
+      let valor = this.props.dataSource.fieldByName(this.props.dataField)
+      if (valor){
+        valor = valor[this.props.fieldText];
+        if (valor !== this.state.value){
+          this.setState({value: valor});
+        }
+      }
     }
   }
+
 
   render() {
-    this.buildProps();
+    const props = this.buildProps();
 
     let {
       style,
@@ -401,39 +413,39 @@ export default class AnterosSelect extends Component {
       onPress,
       onLayout,
       ...others
-    } = this.props;
+    } = props;
     let ViewClass = disabled
       ? View
       : TouchableOpacity;
 
-      
+
     return (
       <ViewClass
         style={style}
         disabled={disabled || !editable}
         onPress={e => onPress
-        ? onPress(e)
-        : this.showPicker()}
+          ? onPress(e)
+          : this.showPicker()}
         onLayout={e => {
-        this.measure((x, y, width, height, pageX, pageY) => {
-          this.popoverView && this
-            .popoverView
-            .updateFromBounds({x: pageX, y: pageY, width, height});
-        });
-        onLayout && onLayout(e);
-      }}
+          this.measure((x, y, width, height, pageX, pageY) => {
+            this.popoverView && this
+              .popoverView
+              .updateFromBounds({ x: pageX, y: pageY, width, height });
+          });
+          onLayout && onLayout(e);
+        }}
         {...others}
         ref='selectView'>
         {valueElement}
         <View
           style={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          right: 0,
-          justifyContent: 'center'
-        }}>
-          {this.renderIconElement()}
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            right: 0,
+            justifyContent: 'center'
+          }}>
+          {this.renderIconElement(props)}
         </View>
       </ViewClass>
     );

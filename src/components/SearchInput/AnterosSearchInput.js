@@ -13,10 +13,10 @@ import {
   LayoutAnimation,
   ViewPropTypes
 } from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-
-export default class AnterosSearchInput extends Component {
+export class AnterosSearchInput extends Component {
 
   static propTypes = {
     ...TextInput.propTypes,
@@ -45,7 +45,7 @@ export default class AnterosSearchInput extends Component {
     };
   }
 
-  componentWillUpdate(props, state) {
+  UNSAFE_componentWillUpdate(props, state) {
     if (state.editing !== this.state.editing) {
       LayoutAnimation.configureNext({
         duration: 500,
@@ -138,7 +138,7 @@ export default class AnterosSearchInput extends Component {
     if (disabled) 
       pointerEvents = 'none';
     
-    this.props = {
+    return {
       style,
       inputStyle,
       iconSize,
@@ -179,8 +179,12 @@ export default class AnterosSearchInput extends Component {
       .onChangeText(text);
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    const props = this.buildProps();
 
     let {
       style,
@@ -195,7 +199,7 @@ export default class AnterosSearchInput extends Component {
       onFocus,
       onChangeText,
       ...others
-    } = this.props;
+    } = props;
 
     if (value === undefined) 
       value = this.state.value;

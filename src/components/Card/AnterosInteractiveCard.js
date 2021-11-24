@@ -1,6 +1,6 @@
 //https://github.com/billoosijok/React-Native-Interactive-Card
 
-import React, { Component } from 'react'
+import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import {
 	Text,
@@ -70,7 +70,7 @@ export class AnterosInteractiveCard extends Component {
 	}
 
 	// -- Component lifecycle methods -- //
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		console.log("Rendering " + this.props.name);
 
 		// yay
@@ -425,9 +425,9 @@ export class AnterosInteractiveCard extends Component {
 		        disabled={this.state.isActive}>
 
 			    <TouchableWithoutFeedback onPress={this.close.bind(this)}>
-				    <Animated.View style={this.state.overlayStyles}/>
+				    <Animated.View useNativeDriver={true}   style={this.state.overlayStyles}/>
 			    </TouchableWithoutFeedback>
-			    <Animated.View style={this.state.wrapperStyles}>
+			    <Animated.View useNativeDriver={true}   style={this.state.wrapperStyles}>
 				    <Header style={this.header.props.style} panHandlers={this.state.panResponder.panHandlers}>
 					    {this.header.props.children}
 				    </Header>
@@ -455,7 +455,7 @@ export class Content extends Component {
 
 	render() {
 		return (
-		    <Animated.View style={[{alignItems: 'center'}, this.props.style]}>
+		    <Animated.View useNativeDriver={true}   style={[{alignItems: 'center'}, this.props.style]}>
 			    { this.props.children }
 		    </Animated.View>
 		)
@@ -469,8 +469,6 @@ export class DismissButton extends Component {
 		this.state = {
 			card : null
 		};
-		console.log(this);
-
 	}
 	setCard(card) {
 		this.state.card = card
@@ -487,7 +485,7 @@ export class DismissButton extends Component {
 		return (
 		    <TouchableOpacity onPress={this.props.onPress}
 		                      style={[styles.dismissButton, this.props.style]}>
-			    <Animated.Image source={this.getImage()}
+			    <Animated.Image  useNativeDriver={true}  source={this.getImage()}
 			                    resizeMode={'contain'}/>
 		    </TouchableOpacity>
 		)

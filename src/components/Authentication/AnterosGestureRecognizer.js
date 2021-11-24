@@ -26,11 +26,11 @@ class AnterosGestureRecognizer extends Component {
     this.swipeConfig = Object.assign(swipeConfig, props.config);
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.swipeConfig = Object.assign(swipeConfig, props.config);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const responderEnd = this._handlePanResponderEnd.bind(this);
     const shouldSetResponder = this._handleShouldSetPanResponder.bind(this);
     this._panResponder = PanResponder.create({ //stop JS beautify collapse

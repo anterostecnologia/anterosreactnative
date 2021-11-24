@@ -7,7 +7,7 @@ import { interpolateHcl as interpolateGradient } from 'd3-interpolate';
 
 
 
-export default class ClockFace extends PureComponent {
+export class ClockFace extends PureComponent {
 
   static propTypes = {
     r: PropTypes.number,
@@ -137,7 +137,7 @@ export class AnterosClockSlider extends PureComponent {
     circleCenterY: false,
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._sleepPanResponder = PanResponder.create({
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,

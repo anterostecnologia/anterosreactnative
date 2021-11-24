@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import {View} from 'react-native';
 
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosActionSheetView from './AnterosActionSheetView';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosActionSheetView} from './AnterosActionSheetView';
 
-export default class AnterosActionSheet extends AnterosOverlay {
+export class AnterosActionSheet extends AnterosOverlay {
 
   static ActionSheetView = AnterosActionSheetView;
 

@@ -1,4 +1,4 @@
-import React, {Component } from 'react';
+import {Component } from 'react';
 import {
   Image,
   View,
@@ -136,7 +136,7 @@ export class AnterosImageSlider extends Component {
     this._setInterval();
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._setInterval();
   }
 

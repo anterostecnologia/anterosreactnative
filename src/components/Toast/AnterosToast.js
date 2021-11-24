@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 
 
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosToastView from './AnterosToastView';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosToastView} from './AnterosToastView';
 
 
-export default class AnterosToast extends AnterosOverlay {
+export class AnterosToast extends AnterosOverlay {
 
   static ToastView = AnterosToastView;
   static defaultDuration = 'short';

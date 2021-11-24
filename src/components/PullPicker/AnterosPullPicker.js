@@ -2,20 +2,24 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import {View} from 'react-native';
 
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosPullPickerView from './AnterosPullPickerView';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosPullPickerView} from './AnterosPullPickerView';
 
-export default class AnterosPullPicker extends AnterosOverlay {
+export class AnterosPullPicker extends AnterosOverlay {
+
+  constructor(props){
+    super(props);
+  }
 
   static PullPickerView = AnterosPullPickerView;
 
   // items: array of string
-  static show(title, items, selectedIndex, onSelected, options = {},pickerTitleStyle,popupHeight) {
+  static show(title, items, selectedIndex, onSelected, options = {}, pickerTitleStyle,popupHeight) {
     return super.show(
-      <AnterosPullPicker.PullPickerView
+      <this.PullPickerView
         popupHeight={popupHeight}
         pickerTitleStyle={pickerTitleStyle}
         title={title}
@@ -26,5 +30,4 @@ export default class AnterosPullPicker extends AnterosOverlay {
         />
     );
   }
-
 }

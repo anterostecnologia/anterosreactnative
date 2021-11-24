@@ -3,7 +3,7 @@
 'use strict'
 
 import { PanResponder, Platform, ScrollView, StyleSheet, View, ViewPagerAndroid } from 'react-native'
-import React, { Component } from 'react'
+import React,{ Component } from 'react'
 
 const SCROLLVIEW_REF = 'scrollView'
 const VIEWPAGER_REF = 'viewPager'

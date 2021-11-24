@@ -1,13 +1,13 @@
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
 
 import {AnterosNavigationPage, AnterosProgressBar, AnterosProgressCircle, AnterosAnimatedProgressbar,
     AnterosCircularProgress} from 'anteros-react-native';
 
 
-export default class ProgressbarExample extends AnterosNavigationPage {
+export class ProgressbarExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

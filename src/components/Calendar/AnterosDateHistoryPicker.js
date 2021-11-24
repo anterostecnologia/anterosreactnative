@@ -100,7 +100,7 @@ const HistoryDateItem = ({
   return (
     <View style={[styles.container,{height: daySize,
       width: daySize}]}>
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={[
           styles.highlight,
           {
@@ -114,7 +114,7 @@ const HistoryDateItem = ({
           }
         ]}
       />
-      <Animated.View style={[styles.itemContainer, {height: daySize,
+      <Animated.View useNativeDriver={true}   style={[styles.itemContainer, {height: daySize,
       width: daySize}]}>
         {data.prefer && (
           <TouchableWithoutFeedback onPress={() => onSelect(index)}>

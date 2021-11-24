@@ -2,12 +2,12 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView} from 'react-native';
 
 import {AnterosNavigationPage, AnterosListRow, AnterosModalIndicator} from 'anteros-react-native';
 
-export default class ModalIndicatorExample extends AnterosNavigationPage {
+export class ModalIndicatorExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

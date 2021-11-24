@@ -36,7 +36,7 @@ const items = [
   { backgroundColor: MAIN_DISMISS_COLOR, type: 'close', title: 'close' },
 ];
 
-export default class DropdownAlertExample extends AnterosNavigationPage {
+export class DropdownAlertExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

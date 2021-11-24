@@ -1,11 +1,11 @@
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
 
 import {AnterosNavigationPage, AnterosPricingCard} from 'anteros-react-native';
 
-export default class PricingCardExample extends AnterosNavigationPage {
+export class PricingCardExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

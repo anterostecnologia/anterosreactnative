@@ -19,7 +19,7 @@ import {AnterosNavigationPage, AnterosDialog,AnterosText,AnterosImage,
 
 const map = require('../images/map.jpg');
 
-export default class DialogExample extends AnterosNavigationPage {
+export class DialogExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

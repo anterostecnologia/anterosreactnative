@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 import {StyleSheet, View, Image, Animated} from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosTransformView from '../TransformView/AnterosTransformView';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosTransformView} from '../TransformView/AnterosTransformView';
 
-export default class AnterosAlbumSheet extends AnterosTransformView {
+export class AnterosAlbumSheet extends AnterosTransformView {
 
   static propTypes = {
     ...AnterosTransformView.propTypes,
@@ -54,7 +54,7 @@ export default class AnterosAlbumSheet extends AnterosTransformView {
     this.loadImage(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.image != this.props.image || nextProps.load != this.props.load) {
       this.loadImage(nextProps);
     }

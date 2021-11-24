@@ -1,6 +1,6 @@
 "use strict";
 
-import React from "react";
+import { cloneElement, Component } from "react";
 import PropTypes from "prop-types";
 let {
   View,
@@ -12,7 +12,7 @@ let {
 import { AnterosFormField } from "./AnterosFormField";
 import {AnterosText} from '../../Text/AnterosText';
 
-export class AnterosDatePickerComponent extends React.Component {
+export class AnterosDatePickerComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -82,7 +82,7 @@ export class AnterosDatePickerComponent extends React.Component {
       />
     );
 
-    let pickerWrapper = React.cloneElement(
+    let pickerWrapper = cloneElement(
       this.props.pickerWrapper,
       {
         onHidePicker: () => {

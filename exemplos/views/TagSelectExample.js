@@ -1,6 +1,6 @@
 //https://github.com/rafaelmotta/react-native-tag-select/blob/master/Demo/App.js
 
-import React from 'react';
+
 import {
   View,
   ScrollView,
@@ -12,7 +12,7 @@ import {
 
 import { AnterosButton, AnterosNavigationPage, AnterosTagSelect } from 'anteros-react-native';
 
-export default class TagSelectExample extends AnterosNavigationPage {
+export class TagSelectExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

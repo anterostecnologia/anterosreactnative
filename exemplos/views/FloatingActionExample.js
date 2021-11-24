@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   StyleSheet,
   FlatList,
@@ -24,7 +24,7 @@ import FloatingActionStatusProgramatically from './screens/FloatingActionStatusP
 import FloatingActionChangeActionColor from './screens/FloatingActionChangeActionColor';
 import {AnterosNavigationPage, AnterosListRow} from 'anteros-react-native';
 
-export default class FloatingActionExample extends AnterosNavigationPage {
+export class FloatingActionExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

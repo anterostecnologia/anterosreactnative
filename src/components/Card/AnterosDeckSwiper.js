@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { PanResponder, Text, View, Dimensions, Animated, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual';
@@ -42,7 +42,7 @@ export class AnterosDeckSwiper extends Component {
     });    
   }
 
-  componentWillReceiveProps (newProps) {
+  UNSAFE_componentWillReceiveProps (newProps) {
     if(!isEqual(this.props.cards, newProps.cards) || this.props.cardIndex !== newProps.cardIndex) {
       this.setState({
         ...this.calculateCardIndexes(newProps.cardIndex, newProps.cards),
@@ -63,7 +63,7 @@ export class AnterosDeckSwiper extends Component {
     return {firstCardIndex, secondCardIndex, previousCardIndex}
   }
 
-  componentWillMount () {
+  UNSAFE_componentWillMount () {
     this._animatedValueX = 0
     this._animatedValueY = 0
 
@@ -675,11 +675,11 @@ export class AnterosDeckSwiper extends Component {
 
     const notInfinite = !this.props.infinite
     if (notInfinite && this.state.swipedAllCards) {
-      return <Animated.View />
+      return <Animated.View useNativeDriver={true}   />
     }
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={swipableCardStyle}
         key={this.getCardKey(firstCardContent, firstCardIndex)}
         {...this._panResponder.panHandlers}
@@ -708,11 +708,11 @@ export class AnterosDeckSwiper extends Component {
       const lastCardOrSwipedAllCards = stackCount === 1 || this.state.swipedAllCards;
       const key = this.getCardKey(stackCardContent, index)
       if (notInfinite && lastCardOrSwipedAllCards) {
-        return <Animated.View key={key} />;
+        return <Animated.View useNativeDriver={true}   key={key} />;
       }
 
       renderedCards.push(
-        <Animated.View key={key} style={stackCardZoomStyle}>
+        <Animated.View useNativeDriver={true}   key={key} style={stackCardZoomStyle}>
           {null}
           {stackCard}
         </Animated.View>,
@@ -731,7 +731,7 @@ export class AnterosDeckSwiper extends Component {
     const key = this.getCardKey(previousCardContent, previousCardIndex)
 
     return (
-      <Animated.View key={key} style={previousCardStyle}>
+      <Animated.View useNativeDriver={true}   key={key} style={previousCardStyle}>
         {null}
         {previousCard}
       </Animated.View>
@@ -766,7 +766,7 @@ export class AnterosDeckSwiper extends Component {
     }
 
     return (
-      <Animated.View style={this.calculateOverlayLabelWrapperStyle()}>
+      <Animated.View useNativeDriver={true}   style={this.calculateOverlayLabelWrapperStyle()}>
         { !overlayLabels[labelType].element &&
           <Text style={this.calculateOverlayLabelStyle()}>
             {overlayLabels[labelType].title}

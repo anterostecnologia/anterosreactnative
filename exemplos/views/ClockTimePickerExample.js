@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {View, Animated, Dimensions, StyleSheet, Easing} from 'react-native'
 import {AnterosNavigationPage, AnterosClockTimePicker, AnterosCircularActionMenu} from 'anteros-react-native';
 
 const { width, height } = Dimensions.get("window");
 
 
-export default class ClockTimePickerExample extends AnterosNavigationPage {
+export class ClockTimePickerExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

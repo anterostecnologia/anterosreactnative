@@ -2,12 +2,12 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {AnterosTheme, AnterosListRow, AnterosSelect} from 'anteros-react-native';
 
-export default class SelectRow extends AnterosListRow {
+export class SelectRow extends AnterosListRow {
 
   static propTypes = {
     ...AnterosListRow.propTypes,

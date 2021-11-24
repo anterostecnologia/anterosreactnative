@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import {
   Animated,
   PanResponder,
@@ -34,7 +34,7 @@ export class AnterosBigSlider extends Component {
 
 
 
-  componentWillMount () {
+  UNSAFE_componentWillMount () {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderGrant: () => {

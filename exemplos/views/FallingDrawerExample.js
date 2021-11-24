@@ -32,7 +32,7 @@ const SCREENS = [
   getScreen("profile", "Profile", "#F7AE90", "#fff", "#fff", "person"),
 ]
 
-export default class FallingDrawerExample extends AnterosNavigationPage {
+export class FallingDrawerExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

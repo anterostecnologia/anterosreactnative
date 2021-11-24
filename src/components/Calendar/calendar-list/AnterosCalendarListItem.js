@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
-import AnterosCalendar from '../calendar/AnterosCalendar';
+import {AnterosCalendar} from '../calendar/AnterosCalendar';
 import styleConstructor from './style';
 
 class AnterosCalendarListItem extends Component {
@@ -50,4 +50,4 @@ class AnterosCalendarListItem extends Component {
   }
 }
 
-export default AnterosCalendarListItem;
+export {AnterosCalendarListItem}

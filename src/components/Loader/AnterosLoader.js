@@ -378,7 +378,7 @@ class RotationCircleScale extends Component {
             outputRange: ['0deg', '360deg']
         });
         return (
-            <Animated.View style={{transform: [{rotate: degree}], backgroundColor: 'rgba(0,0,0,0)'}}>
+            <Animated.View useNativeDriver={true}   style={{transform: [{rotate: degree}], backgroundColor: 'rgba(0,0,0,0)'}}>
                 <Surface width={size} height={size}>
                     <Group>
                         <AnimatedCircle fill={color} radius={size/2} x={size/2} y={size/4}
@@ -1208,7 +1208,7 @@ class RotationCircle extends Component {
             outputRange: ['0deg', '360deg']
         });
         return (
-            <Animated.View style={{transform: [{rotate: degree}], backgroundColor: 'rgba(0,0,0,0)'}}>
+            <Animated.View useNativeDriver={true}   style={{transform: [{rotate: degree}], backgroundColor: 'rgba(0,0,0,0)'}}>
                 <Surface width={size} height={size}>
                     <Group>
                         <AnimatedCircle fill={color} radius={size} x={size/2} y={size/2}/>
@@ -1270,7 +1270,7 @@ class RotationHole extends Component {
             outputRange: ['0deg', '360deg']
         });
         return (
-            <Animated.View style={{transform: [{rotate: degree}], backgroundColor: 'rgba(0,0,0,0)'}}>
+            <Animated.View useNativeDriver={true}   style={{transform: [{rotate: degree}], backgroundColor: 'rgba(0,0,0,0)'}}>
                 <Surface width={size+strokeWith*2} height={size+strokeWith*2}>
                     <Group>
                         <AnimatedCircle stroke={color} opacity={0.3} strokeWidth={strokeWith} radius={size} x={size/2+strokeWith} y={size/2+strokeWith}/>

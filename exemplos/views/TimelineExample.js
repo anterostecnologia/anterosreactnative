@@ -9,7 +9,7 @@ import {
 
 import {AnterosNavigationPage, AnterosListRow, AnterosTimeline} from 'anteros-react-native';
 
-export default class TimelineExample extends AnterosNavigationPage {
+export class TimelineExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

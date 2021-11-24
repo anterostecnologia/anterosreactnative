@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, Text, StyleSheet} from 'react-native';
 import {AnterosNavigationPage, AnterosSwitchSelector, AnterosDivider} from 'anteros-react-native';
 
@@ -14,7 +14,7 @@ const optionsSex = [
     { label: 'None', value: '2' }
 ];
 
-export default class SwitchSelectorExample extends AnterosNavigationPage {
+export class SwitchSelectorExample extends AnterosNavigationPage {
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
         title: "Switch selector",

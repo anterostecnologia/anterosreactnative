@@ -32,7 +32,7 @@ export class AnterosSwitchSelector extends Component {
             .Value(this.props.initial ? (I18nManager.isRTL ? -(this.props.initial / this.props.options.length) : (this.props.initial / this.props.options.length)) : 0);
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: this.shouldSetResponder,
             onMoveShouldSetPanResponder: this.shouldSetResponder,
@@ -41,7 +41,7 @@ export class AnterosSwitchSelector extends Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.value !== this.props.value) {
             this.toggleItem(nextProps.value);
         }
@@ -147,7 +147,7 @@ export class AnterosSwitchSelector extends Component {
                                 flex: 1, flexDirection: 'row', borderColor: borderColor || '#c9c9c9', borderRadius: 60, borderWidth: hasPadding ? 1 : 0
                             }}>
                             {this.state.sliderWidth && (
-                                <Animated.View
+                                <Animated.View useNativeDriver={true}
                                     style={[
                                         {
                                             height: hasPadding ? 34 : 40,

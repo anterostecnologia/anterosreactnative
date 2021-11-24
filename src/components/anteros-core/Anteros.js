@@ -102,4 +102,4 @@ class AnterosDefaults {
 
 var Anteros = new AnterosDefaults();
 
-export default Anteros;
+export {Anteros};

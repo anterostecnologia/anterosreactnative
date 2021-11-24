@@ -27,7 +27,7 @@ const renderCarousel = () => (
     <View style={{ backgroundColor: '#E67E22', flex: 1 }}/>
   </AnterosCarousel>
 )
-export default class LightboxExample extends AnterosNavigationPage {
+export class LightboxExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

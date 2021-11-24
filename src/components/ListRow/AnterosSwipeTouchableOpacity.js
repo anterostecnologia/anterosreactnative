@@ -4,23 +4,22 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Text, TouchableOpacity, Animated} from 'react-native';
+import {StyleSheet, View, Text, Animated} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {TouchableOpacity} from './TouchableOpacity';
 
-export default class AnterosSwipeTouchableOpacity extends TouchableOpacity {
+export class AnterosSwipeTouchableOpacity extends TouchableOpacity {
 
   static propTypes = {
-    ...TouchableOpacity.propTypes,
     swipeable: PropTypes.bool,
     swipeWidth: PropTypes.number,
     onSwipeStsChange: PropTypes.func, //(swipeSts), - none, - moving, - closing, - opening, - opened
   };
 
   static defaultProps = {
-    ...TouchableOpacity.defaultProps,
     swipeable: true,
-    swipeWidth: 100
+    swipeWidth: 100,
   };
 
   constructor(props) {
@@ -29,9 +28,10 @@ export default class AnterosSwipeTouchableOpacity extends TouchableOpacity {
     this.translateX = 0;
     this.prevTouches = [];
     this.replaceSuperFunction();
-    Object.assign(this.state, {
-      translateX: new Animated.Value(0)
-    });
+    this.state = {
+      ...this.state,
+      translateX: new Animated.Value(0),
+    };
   }
 
   get swipeSts() {
@@ -40,36 +40,32 @@ export default class AnterosSwipeTouchableOpacity extends TouchableOpacity {
 
   set swipeSts(value) {
     this._swipeSts = value;
-    this.props.onSwipeStsChange && this
-      .props
-      .onSwipeStsChange(this._swipeSts);
+    this.props.onSwipeStsChange && this.props.onSwipeStsChange(this._swipeSts);
   }
 
   replaceSuperFunction() {
     let touchableHandleResponderMove = this.touchableHandleResponderMove;
     this.touchableHandleResponderMove = (e) => {
-      touchableHandleResponderMove(e);
+      touchableHandleResponderMove.call(this, e);
       this.swiping(e);
     }
 
     let touchableHandleActivePressOut = this.touchableHandleActivePressOut;
     this.touchableHandleActivePressOut = (e) => {
       this.swipeOver();
-      touchableHandleActivePressOut(e);
+      touchableHandleActivePressOut.call(this, e);
     }
 
     let touchableHandlePress = this.touchableHandlePress;
     this.touchableHandlePress = (e) => {
-      if (!this.checkPress()) 
-        touchableHandlePress(e);
-      }
-    
+      if (!this.checkPress()) touchableHandlePress.call(this, e);
+    }
+
     let touchableHandleLongPress = this.touchableHandleLongPress;
     this.touchableHandleLongPress = (e) => {
-      if (!this.checkPress()) 
-        touchableHandleLongPress(e);
-      }
-    
+      if (!this.checkPress()) touchableHandleLongPress.call(this, e);
+    }
+
   }
 
   swiping(e) {
@@ -91,7 +87,7 @@ export default class AnterosSwipeTouchableOpacity extends TouchableOpacity {
     }
 
     let dx = touches[0].pageX - prevTouches[0].pageX;
-    if (Math.abs(this.translateX) > this.props.swipeWidth) {
+    if (Math.abs(this.translateX) > this.props.swipeWidth){
       this.translateX += dx / 3;
     } else {
       this.translateX += dx;
@@ -101,22 +97,11 @@ export default class AnterosSwipeTouchableOpacity extends TouchableOpacity {
     }
 
     if (this.swipeSts === 'moving') {
-      this
-        .state
-        .translateX
-        .setValue(this.translateX);
+      this.state.translateX.setValue(this.translateX);
     } else if (Math.abs(this.translateX) > 5) {
       let childStyle = StyleSheet.flatten(this.props.style) || {};
-      this
-        .state
-        .anim
-        .setValue(childStyle.opacity === undefined
-          ? 1
-          : childStyle.opacity); //TouchableOpacity
-      this
-        .state
-        .translateX
-        .setValue(this.translateX);
+      this.state.anim.setValue(childStyle.opacity === undefined ? 1 : childStyle.opacity); //TouchableOpacity
+      this.state.translateX.setValue(this.translateX);
       this.swipeSts = 'moving';
     }
   }
@@ -131,7 +116,7 @@ export default class AnterosSwipeTouchableOpacity extends TouchableOpacity {
       } else {
         this.timingClose();
       }
-    }
+    }    
   }
 
   checkPress() {
@@ -144,67 +129,41 @@ export default class AnterosSwipeTouchableOpacity extends TouchableOpacity {
   springClose() {
     this.swipeSts = 'closing';
     this.translateX = 0;
-    Animated
-      .spring(this.state.translateX, {
+    Animated.spring(this.state.translateX, {
       toValue: this.translateX,
       friction: 5,
-      useNativeDriver: true
-    })
-      .start(() => {
-        this.swipeSts = 'none';
-      });
+      useNativeDriver: true,
+    }).start(() => {
+      this.swipeSts = 'none';
+    });
   }
 
   timingClose() {
     this.swipeSts = 'closing';
     this.translateX = 0;
-    Animated
-      .timing(this.state.translateX, {
+    Animated.timing(this.state.translateX, {
       toValue: this.translateX,
       duration: 150,
-      useNativeDriver: true
-    })
-      .start(() => {
-        this.swipeSts = 'none';
-      });
+      useNativeDriver: true,
+    }).start(() => {
+      this.swipeSts = 'none';
+    });
   }
 
   timingOpen() {
     this.swipeSts = 'opening';
     this.translateX = -this.props.swipeWidth;
-    Animated
-      .timing(this.state.translateX, {
+    Animated.timing(this.state.translateX, {
       toValue: this.translateX,
       duration: 150,
-      useNativeDriver: true
-    })
-      .start(() => {
-        this.swipeSts = 'opened';
-      });
-  }
-
-  buildProps() {
-    let {
-      style,
-      ...others
-    } = this.props;
-    style = []
-      .concat(style)
-      .concat({
-        transform: [
-          {
-            translateX: this.state.translateX
-          }
-        ]
-      });
-    this.props = {
-      style,
-      ...others
-    };
+      useNativeDriver: true,
+    }).start(() => {
+      this.swipeSts = 'opened';
+    });
   }
 
   render() {
-    this.buildProps();
-    return super.render();
+    let view = super.render();
+    return React.cloneElement(view, {style: view.props.style.concat({transform: [{translateX: this.state.translateX}]})});
   }
 }

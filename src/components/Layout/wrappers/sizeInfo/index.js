@@ -1,10 +1,11 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import { SIZE_NAMES } from '../../shared/constants';
 import { ContainerSizeProp } from '../../shared/props';
 import { checkInsideGrid, warn } from '../../utils';
 import { getSize } from './methods';
+import React,{Component} from "react";
 
 /**
  * @typedef {Object} Info
@@ -44,7 +45,7 @@ SizeInfo.contextTypes = {
  *  and returns closest size that is relevant, this enables style selection to
  *  match grid size
  *
- * @param { React.ComponentType<Info> } Component
+ * @param { ComponentType<Info> } Component
  */
 export const withSizeInfo = (Component) => {
   /** @type {React.StatelessComponent} */
@@ -74,7 +75,7 @@ export const withSizeInfo = (Component) => {
  *  match grid size
  *
  * @deprecated Use either `withSizeInfo` HOC or equivalent `SizeInfo` FaCC.
- * @param { React.ComponentType<Info> } Component
+ * @param { ComponentType<Info> } Component
  */
 export const withSizeClass = (Component) => {
   if (process.env.NODE_ENV === 'development') {

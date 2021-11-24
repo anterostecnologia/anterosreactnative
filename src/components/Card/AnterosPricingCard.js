@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+
 import { View, StyleSheet, Platform,  ViewPropTypes as RNViewPropTypes } from 'react-native';
 import {AnterosText, fonts, normalize} from '../Text/AnterosText';
 import {AnterosButton} from '../Button/AnterosButton';

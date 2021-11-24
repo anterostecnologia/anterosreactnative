@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {Button, StyleSheet, Text, View} from 'react-native'
 import {AnterosNavigationPage, AnterosDeckSwiper} from 'anteros-react-native';
 
-export default class DeckSwiperExample extends AnterosNavigationPage {
+export class DeckSwiperExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

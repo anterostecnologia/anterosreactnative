@@ -1,4 +1,4 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import {
@@ -10,10 +10,11 @@ import {
   I18nManager,
   Text
 } from 'react-native';
+import React,{Component} from "react";
 
 const ViewPropTypes = require('react-native').ViewPropTypes || View.propTypes;
 
-class DefaultMarker extends React.Component {
+class DefaultMarker extends Component {
     static propTypes = {
       pressed: PropTypes.bool,
       pressedMarkerStyle: ViewPropTypes.style,
@@ -83,7 +84,7 @@ class DefaultMarker extends React.Component {
 
 
 
-export class AnterosMultiSlider extends React.Component {
+export class AnterosMultiSlider extends Component {
   static propTypes = {
     values: PropTypes.arrayOf(PropTypes.number),
 
@@ -179,7 +180,7 @@ export class AnterosMultiSlider extends React.Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     var customPanResponder = (start, move, end) => {
       return PanResponder.create({
         onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -207,7 +208,7 @@ export class AnterosMultiSlider extends React.Component {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.onePressed || this.state.twoPressed) {
       return;
     }
@@ -396,7 +397,6 @@ export class AnterosMultiSlider extends React.Component {
   };
 
   render() {
-      console.log(this.props);
     const { positionOne, positionTwo } = this.state;
     const { selectedStyle, unselectedStyle, sliderLength, markerOffsetX, markerOffsetY } = this.props;
     const twoMarkers = this.props.values.length == 2;   // when allowOverlap, positionTwo could be 0, identified as string '0' and throwing 'RawText 0 needs to be wrapped in <Text>' error
@@ -657,7 +657,6 @@ const closest = (array, n) => {
     var direction = start - end > 0 ? -1 : 1;
     var result = [];
     if (!step) {
-      //console.log('invalid step: ', step);
       return result;
     } else {
       length = Math.abs((start - end) / step) + 1;

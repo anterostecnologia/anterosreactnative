@@ -17,7 +17,7 @@ import {
   Dimensions
 } from 'react-native';
 import PropTypes from 'prop-types';
-import AnterosLabel from '../Label/AnterosLabel';
+import {AnterosLabel} from '../Label/AnterosLabel';
 
 
 const StatusBarDefaultBarStyle = StatusBar._defaultProps ? StatusBar._defaultProps.barStyle.value : 'default';
@@ -170,7 +170,7 @@ export class AnterosDropdownAlert extends Component {
       topValue: 0,
     };
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.createPanResponder();
   }
   componentWillUnmount() {
@@ -496,7 +496,7 @@ export class AnterosDropdownAlert extends Component {
       };
       if (this.props.zIndex != null) wrapperStyle['zIndex'] = this.props.zIndex;
       return (
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           ref={ref => this.mainView = ref}
           {...this._panResponder.panHandlers}
           style={wrapperStyle}
@@ -527,11 +527,11 @@ export class AnterosDropdownAlert extends Component {
 
 const validateType = function(type) {
     if (type.length === 0 || type === null) {
-      console.warn('Missing AnterosDropdownAlert type. Available types: info, warn, error or custom');
+      console.warn('Tipo ['+type+'] inválido para AnterosDropdownAlert. Tipos disponíveis: info, warn, error or custom');
       return false;
     }
     if (type != 'info' && type != 'warn' && type != 'error' && type != 'custom' && type != 'success') {
-      console.warn('Invalid AnterosDropdownAlert type. Available types: info, warn, error, success, or custom');
+      console.warn('Tipo ['+type+'] inválido para AnterosDropdownAlert. Tipos disponíveis: info, warn, error, success, or custom');
       return false;
     }
     return true;

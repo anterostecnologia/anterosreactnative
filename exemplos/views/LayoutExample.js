@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import { Component, PureComponent } from "react";
 import {
   StyleSheet,
   FlatList,
@@ -97,7 +97,7 @@ const sliderWidth = viewportWidth;
 const itemWidth = slideWidth + itemHorizontalMargin * 2;
 const entryBorderRadius = 8;
 
-export default class LayoutExample extends AnterosNavigationPage {
+export class LayoutExample extends AnterosNavigationPage {
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
     title: "Layout and containers",

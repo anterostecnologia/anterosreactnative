@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {View, Text, ActivityIndicator} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosOverlay from '../Overlay/AnterosOverlay';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
 
-export default class AnterosModalIndicatorView extends AnterosOverlay.View {
+export class AnterosModalIndicatorView extends AnterosOverlay.View {
 
   static propTypes = {
     ...AnterosOverlay.View.propTypes,

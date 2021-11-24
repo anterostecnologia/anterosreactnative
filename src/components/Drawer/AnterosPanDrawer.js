@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react'
+import {Component} from 'react'
 import {
     View,
     PanResponder,
@@ -60,7 +60,7 @@ const drawerWidth = CSS.width()-68;
 const drawerRatio = 0.85;
 const drawerVx = Platform.OS == 'ios' ? 3/10 : 1/10000000;
 
-export default class AnterosPanDrawer extends Component {
+export class AnterosPanDrawer extends Component {
     constructor(props) {
         super(props);
         this.lastX = 0;
@@ -75,7 +75,7 @@ export default class AnterosPanDrawer extends Component {
         };
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this._panInit();
         Emitter.on('drawerOpen', this._drawerOpen);
         Emitter.on('drawerClose', this._drawerClose);
@@ -217,10 +217,10 @@ export default class AnterosPanDrawer extends Component {
                 <View style = {{flex: 1}}>
                     {this.props.backgroundView ? this.props.backgroundView() : null}
                 </View>
-                <Animated.View style = {{position: 'absolute', left: this.state.listX, top: 0, width: drawerWidth, height: CSS.height(), transform: [{scaleX: this.state.listScaleX}, {scaleY: this.state.listScaleY}]}}>
+                <Animated.View useNativeDriver={true}   style = {{position: 'absolute', left: this.state.listX, top: 0, width: drawerWidth, height: CSS.height(), transform: [{scaleX: this.state.listScaleX}, {scaleY: this.state.listScaleY}]}}>
                     {this.props.leftView ? this.props.leftView() : null}
                 </Animated.View>
-                <Animated.View style = {{position: 'absolute', left: 0, top: 0, width: CSS.width(), height: CSS.height(), transform: [{scaleY: this.state.scaleY}, {translateX: this.state.drawerX}]}}>
+                <Animated.View useNativeDriver={true}   style = {{position: 'absolute', left: 0, top: 0, width: CSS.width(), height: CSS.height(), transform: [{scaleY: this.state.scaleY}, {translateX: this.state.drawerX}]}}>
                     {this.props.rightView ? this.props.rightView() : null}
                     <View style = {{position: 'absolute', left: 0, bottom: 0, width: !this.state.toggle ? CSS.pixel(40) : 68, height: CSS.height()-CSS.pixel(150), backgroundColor: 'rgba(0,0,0,0)'}} {...this.panResponder.panHandlers} />
                 </Animated.View>

@@ -10,8 +10,8 @@ import XDate from 'xdate';
 import {xdateToData, parseDate} from '../interface';
 import styleConstructor from './style';
 import dateutils from '../AnterosCalendarUtils';
-import AnterosCalendar from '../calendar/AnterosCalendar';
-import AnterosCalendarListItem from './AnterosCalendarListItem';
+import {AnterosCalendar} from '../calendar/AnterosCalendar';
+import {AnterosCalendarListItem} from './AnterosCalendarListItem';
 
 const {width} = Dimensions.get('window');
 
@@ -106,12 +106,10 @@ class AnterosCalendarList extends Component {
     const scrollTo = month || this.state.openDate;
     let diffMonths = Math.round(this.state.openDate.clone().setDate(1).diffMonths(scrollTo.clone().setDate(1)));
     const scrollAmount = (this.calendarHeight * this.pastScrollRange) + (diffMonths * this.calendarHeight);
-    //console.log(month, this.state.openDate);
-    //console.log(scrollAmount, diffMonths);
     this.listView.scrollToOffset({offset: scrollAmount, animated: false});
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const current = parseDate(this.props.current);
     const nextCurrent = parseDate(props.current);
     if (nextCurrent && current && nextCurrent.getTime() !== current.getTime()) {
@@ -212,4 +210,4 @@ AnterosCalendarList.defaultProps = {
   calendarHeight: 360
 };
 
-export default AnterosCalendarList;
+export {AnterosCalendarList};

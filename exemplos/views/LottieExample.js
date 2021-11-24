@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   View,
   Animated,
@@ -15,6 +15,7 @@ import {
 import PropTypes from 'prop-types';
 import {AnterosNavigationPage, AnterosLottie} from 'anteros-react-native';
 import LottieView from 'lottie-react-native';
+import React,{Component} from "react";
 
 const playIcon = require('../images/play.png');
 const pauseIcon = require('../images/pause.png');
@@ -39,7 +40,7 @@ const EXAMPLES = [
   return acc;
 }, {});
 
-export default class LottieExample extends AnterosNavigationPage {
+export class LottieExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
 
 
   
-class ExamplePicker extends React.Component {
+class ExamplePicker extends Component {
     render() {
       return (
         <Picker

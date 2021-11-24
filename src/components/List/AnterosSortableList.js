@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, View, StyleSheet, Platform, RefreshControl, PanResponder, ViewPropTypes, Animated} from 'react-native';
 
@@ -116,7 +116,7 @@ export class AnterosSortableList extends Component {
     scrollEnabled: this.props.scrollEnabled
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.state.order.forEach((key) => {
       this._rowsLayouts[key] = new Promise((resolve) => {
         this._resolveRowLayout[key] = resolve;
@@ -139,7 +139,7 @@ export class AnterosSortableList extends Component {
     this._onUpdateLayouts();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const {data, order} = this.state;
     let {data: nextData, order: nextOrder} = nextProps;
 
@@ -823,7 +823,7 @@ class Row extends Component {
     },
   });
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this._active && !shallowEqual(this._location, nextProps.location)) {
       const animated = !this._active && nextProps.animated;
       this._relocate(nextProps.location, animated);
@@ -852,7 +852,7 @@ class Row extends Component {
     ];
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         {...this._panResponder.panHandlers}
         style={rowStyle}
         onLayout={this._onLayout}>

@@ -19,7 +19,7 @@ import {AnterosNavigationPage, AnterosPagination, AnterosPaginationDot, AnterosP
 import Ionicons from 'react-native-vector-icons/Ionicons'
 const { width, height } = Dimensions.get("window");
 
-export default class PaginationExample extends AnterosNavigationPage {
+export class PaginationExample extends AnterosNavigationPage {
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
     title: "Pagination",

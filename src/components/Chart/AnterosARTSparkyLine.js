@@ -16,7 +16,7 @@ class AnterosARTSparkyLine extends Component {
     this.makeLineChartPath = this.makeLineChartPath.bind(this);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._computeChartConstants();
   }
 
@@ -25,7 +25,7 @@ class AnterosARTSparkyLine extends Component {
     this.maxValue = Math.max(...this.props.data);   
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.data !== nextProps.data) {
       this.props = nextProps;
       this._computeChartConstants();
@@ -61,4 +61,4 @@ class AnterosARTSparkyLine extends Component {
   }
 }
 
-export default AnterosARTSparkyLine;
+export {AnterosARTSparkyLine};

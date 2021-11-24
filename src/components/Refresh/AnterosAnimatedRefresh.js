@@ -1,4 +1,4 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import {
   View,
@@ -8,10 +8,11 @@ import {
   UIManager,
   Dimensions,
 } from 'react-native';
+import React,{Component} from "react";
 
 import Animation from 'lottie-react-native';
 
-export class AnterosAnimatedRefresh extends React.Component {
+export class AnterosAnimatedRefresh extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +73,7 @@ export class AnterosAnimatedRefresh extends React.Component {
     animationBackgroundColor: 'white',
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder.bind(
         this,
@@ -86,7 +87,7 @@ export class AnterosAnimatedRefresh extends React.Component {
     });
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (this.props.isRefreshing !== props.isRefreshing) {
       // Finish the animation and set refresh panel height to 0
       if (!props.isRefreshing) {
@@ -281,7 +282,7 @@ export class AnterosAnimatedRefresh extends React.Component {
           onScrollEndDrag={() => {
             this.isScrolledToTop();
           }}>
-          <Animated.View style={{marginTop: animateHeight}}>
+          <Animated.View useNativeDriver={true}   style={{marginTop: animateHeight}}>
             {React.cloneElement(this.props.contentView, {
               scrollEnabled: false,
               ref: 'scrollComponentRef',

@@ -109,7 +109,6 @@ class AnterosObjectUtils {
 	 * @returns the object or the the property value if found
 	 */
 	getNestedProperty(object, property) {
-		console.log('[DEBUG]','object: '+object+ 'property: ' + property)
 		if (object && typeof object == "object") {
 			if (typeof property == "string" && property !== "") {
 				var split = property.split(".");

@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View, ViewPropTypes} from 'react-native';
 
-export default class AnterosProjector extends Component {
+export class AnterosProjector extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -24,7 +24,7 @@ export default class AnterosProjector extends Component {
     this.slideShowns = this.initSlideShowns(props.children);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let nextSlideShowns = this.initSlideShowns(nextProps.children);
     if (nextSlideShowns.length != this.slideShowns.length) {
       this.slideShowns = nextSlideShowns;

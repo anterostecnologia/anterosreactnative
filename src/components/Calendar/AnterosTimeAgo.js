@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import distanceAgo from 'date-fns/distance_in_words';
+import distanceAgo from 'date-fns/formatDistance';
 import {AnterosText} from '../Text/AnterosText';
 
 export class AnterosTimeAgo extends Component {

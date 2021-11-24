@@ -21,7 +21,7 @@ const pixelSize = (function() {
   else return 1;
 })();
 
-export default {
+export const AnterosThemeViolet = {
   //General
   screenColor: '#000',
   primaryColor: primaryColor,

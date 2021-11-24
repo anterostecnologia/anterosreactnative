@@ -1,11 +1,11 @@
 //https://github.com/mastermoo/react-native-pulse-loader
 
-import React from "react";
+import React, { Component } from "react";
 import { View, Image, TouchableOpacity, Animated, Easing, Dimensions, StyleSheet } from "react-native";
 import PropTypes from 'prop-types';
 const { height, width } = Dimensions.get('window');
 
-export default class AnterosPulseLoader extends React.Component {
+export class AnterosPulseLoader extends Component {
   constructor(props) {
     super(props);
 
@@ -126,7 +126,7 @@ AnterosPulseLoader.defaultProps = {
 };
 
 
-class AnterosPulse extends React.Component {
+class AnterosPulse extends Component {
 	constructor(props) {
 		super(props);
 	
@@ -157,7 +157,7 @@ class AnterosPulse extends React.Component {
 				marginLeft: -pulseMaxSize/2,
 				marginTop: -pulseMaxSize/2,
 			}]}>
-				<Animated.View
+				<Animated.View useNativeDriver={true}
 					style={[styles.circle, {
 						borderColor,
 						backgroundColor,

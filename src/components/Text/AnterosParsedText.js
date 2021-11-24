@@ -1,7 +1,8 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
 import {AnterosText} from '../Text/AnterosText';
+import React,{Component} from "react";
 
 
 
@@ -21,7 +22,7 @@ const customParseShape = PropTypes.shape({
   pattern: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(RegExp)]).isRequired,
 });
 
-export class AnterosParsedText extends React.Component {
+export class AnterosParsedText extends Component {
 
   static displayName = 'AnterosParsedText';
 

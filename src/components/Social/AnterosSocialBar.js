@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {
+import {
   Component,
 } from "react";
 
@@ -15,7 +15,7 @@ import {
 
 import {AnterosIcon} from '../Icon/AnterosIcon';
 import PropTypes from 'prop-types';
-import AnterosLabel from '../Label/AnterosLabel';
+import {AnterosLabel} from '../Label/AnterosLabel';
 
 
 const styles = StyleSheet.create({

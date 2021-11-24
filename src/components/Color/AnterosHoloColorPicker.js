@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Slider, PanResponder, View, Image, StyleSheet, InteractionManager, I18nManager } from 'react-native'
 import tinycolor from 'tinycolor2'
@@ -68,7 +68,7 @@ export function toHsv(color) {
   
   
 
-export class AnterosHoloColorPicker extends React.PureComponent {
+export class AnterosHoloColorPicker extends PureComponent {
 
   constructor(props, ctx) {
     super(props, ctx)
@@ -168,7 +168,7 @@ export class AnterosHoloColorPicker extends React.PureComponent {
     return tinycolor(this._getColor()).toHexString()
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const handleColorChange = ({ x, y }) => {
       const { s, v } = this._getColor()
       const marginLeft = (this._layout.width - this.state.pickerSize) / 2

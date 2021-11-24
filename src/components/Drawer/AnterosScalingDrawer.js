@@ -31,7 +31,7 @@ export class AnterosScalingDrawer extends Component {
     this.drawerAnimation = new Animated.Value(0);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this._onStartShouldSetPanResponder,
       onMoveShouldSetPanResponder: this._onMoveShouldSetPanResponder,
@@ -169,7 +169,7 @@ export class AnterosScalingDrawer extends Component {
 
     return (
       <View style={styles.container}>
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           {...this.panResponder.panHandlers}
           ref={ref => this.frontRef = ref}
           style={[styles.front, {

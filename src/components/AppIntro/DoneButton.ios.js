@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Text,
   View,
@@ -14,7 +13,7 @@ export const DoneButton = ({
 }) => {
   return (
     <View style={styles.btnContainer}>
-      <Animated.View style={[styles.full, { height: 0 }, {
+      <Animated.View useNativeDriver={true}   style={[styles.full, { height: 0 }, {
         opacity: doneFadeOpacity,
         transform: [{
           translateX: skipFadeOpacity.interpolate({
@@ -32,7 +31,7 @@ export const DoneButton = ({
           </Text>
         </View>
       </Animated.View>
-      <Animated.View style={[styles.full, { height: 0 }, { opacity: nextOpacity }]}>
+      <Animated.View useNativeDriver={true}   style={[styles.full, { height: 0 }, { opacity: nextOpacity }]}>
         <TouchableOpacity style={styles.full}
           onPress={ isDoneBtnShow ? onDoneBtnClick : onNextBtnClick}>
          <Text style={[styles.nextButtonText, { color: rightTextColor }]}>

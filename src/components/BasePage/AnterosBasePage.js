@@ -1,34 +1,17 @@
 // AnterosBasePage.js
 
-'use strict';
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactNative, {Platform, View, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosNavigator} from '../Navigator/AnterosNavigator';
+import {AnterosKeyboardSpace} from '../KeyboardSpace/AnterosKeyboardSpace';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosNavigator from '../Navigator/AnterosNavigator';
-import AnterosKeyboardSpace from '../KeyboardSpace/AnterosKeyboardSpace';
+export class AnterosBasePage extends Component {
 
-export default class AnterosBasePage extends Component {
-
-  static propTypes = {
-    ...ViewPropTypes,
-    scene: PropTypes.object,
-    autoKeyboardInsets: PropTypes.bool,
-    keyboardTopInsets: PropTypes.number
-  };
-
-  static defaultProps = {
-    ...View.defaultProps,
-    scene: AnterosNavigator.SceneConfigs.Replace,
-    autoKeyboardInsets: Platform.OS === 'ios',
-    keyboardTopInsets: 0
-  };
-
-  static contextTypes = {
-    navigator: PropTypes.func
-  };
+  
 
   constructor(props) {
     super(props);
@@ -38,7 +21,7 @@ export default class AnterosBasePage extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (!this.backListener && Platform.OS === 'android') {
       let BackHandler = ReactNative.BackHandler
         ? ReactNative.BackHandler
@@ -108,22 +91,27 @@ export default class AnterosBasePage extends Component {
         backgroundColor: AnterosTheme.pageColor
       }
     ].concat(style);
-    return ({
+    return {
       style,
       ...others
-    });
+    };
   }
 
   renderPage() {
     return null;
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
+    const props = this.buildProps();
     let {
       autoKeyboardInsets,
       keyboardTopInsets,
       ...others
-    } = this.buildProps();
+    } = props;
     return (
       <View {...others}>
         {this.renderPage()}
@@ -134,3 +122,22 @@ export default class AnterosBasePage extends Component {
     );
   }
 }
+
+
+AnterosBasePage.propTypes = {
+  ...ViewPropTypes,
+  scene: PropTypes.object,
+  autoKeyboardInsets: PropTypes.bool,
+  keyboardTopInsets: PropTypes.number
+};
+
+AnterosBasePage.defaultProps = {
+   ...View.defaultProps,
+  // scene: AnterosNavigator.SceneConfigs.Replace,
+  autoKeyboardInsets: Platform.OS === 'ios',
+  keyboardTopInsets: 0
+};
+
+AnterosBasePage.contextTypes = {
+  navigator: PropTypes.func
+};

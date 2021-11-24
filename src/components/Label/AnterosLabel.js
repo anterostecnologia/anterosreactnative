@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
-
-import AnterosTheme from '../../themes/AnterosTheme';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 import {scale} from '../../utils/AnterosUtils';
 
-export default class AnterosLabel extends Component {
+export class AnterosLabel extends Component {
 
   static propTypes = {
     ...Text.propTypes,
@@ -92,6 +92,10 @@ export default class AnterosLabel extends Component {
       ...others
     };
     return newProps;
+  }
+
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

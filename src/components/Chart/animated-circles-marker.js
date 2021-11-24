@@ -67,7 +67,7 @@ class AmimatedCirclesMarker extends Component {
     this._playStartAnimation();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
       if (nextProps.active !== this.active) {
         this.active = nextProps.active;
           nextProps.active ? this._playActiveAnimation() : this._playInactiveAnimation();

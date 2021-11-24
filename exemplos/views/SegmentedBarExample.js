@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {StyleSheet, View, Image, ScrollView, Switch} from 'react-native';
 
 import {
@@ -16,7 +16,7 @@ import {
 } from 'anteros-react-native';
 import SelectRow from './SelectRow';
 
-export default class SegmentedBarExample extends AnterosNavigationPage {
+export class SegmentedBarExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

@@ -1,5 +1,5 @@
 
-import React, {    
+import {    
     Component,
 } from 'react';
 
@@ -77,7 +77,7 @@ export class AnterosGesturePassword extends Component {
         this._sequence = []
     }
 
-    componentWillMount () {
+    UNSAFE_componentWillMount () {
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: () => true,
@@ -89,7 +89,7 @@ export class AnterosGesturePassword extends Component {
 
     }
 
-    componentWillReceiveProps (nextProps) {
+    UNSAFE_componentWillReceiveProps (nextProps) {
         this.setState({
             isWarning: nextProps.isWarning
         });

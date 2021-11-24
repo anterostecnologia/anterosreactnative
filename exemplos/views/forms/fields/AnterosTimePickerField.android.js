@@ -1,13 +1,13 @@
 'use strict';
 
-import React from 'react';
+
 import ReactNative from 'react-native';
 let { View, StyleSheet, TextInput, Text} = ReactNative;
-
+import React,{Component} from "react";
 
 import {AnterosTimePickerField} from '../lib/AnterosTimePickerComponent';
 
-export class AnterosTimePickerField extends React.Component{
+export class AnterosTimePickerField extends Component{
   setTime(date){
     this.refs.datePickerComponent.setTime(date);
   }

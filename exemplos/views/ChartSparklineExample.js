@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -24,7 +24,7 @@ const props = {
     margin: 10
   }
 }
-export default class ChartSparklineExample extends AnterosNavigationPage {
+export class ChartSparklineExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

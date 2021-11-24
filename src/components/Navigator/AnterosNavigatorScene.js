@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React from 'react';
+
 import {Dimensions, PixelRatio} from 'react-native';
 
 import NavigatorSceneConfigs from 'react-native-deprecated-custom-components/src/NavigatorSceneConfigs.js';

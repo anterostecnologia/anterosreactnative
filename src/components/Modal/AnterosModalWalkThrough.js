@@ -173,7 +173,7 @@ export class AnterosModalWalkThrough extends Component {
    * @param {Object} param0 Options param
    * @param {Object} param0.item Item component to render
    * @param {Nummber} param0.index Index of component
-   * @returns {React.Component} component
+   * @returns {Component} component
    */
   renderChild({ item, index }) {
     return (

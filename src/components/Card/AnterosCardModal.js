@@ -232,10 +232,8 @@ export class AnterosCardModal extends Component {
             this.refs.container.measure((fx, fy, width, height, px, py) => {
                 this.setState({offset: py}, () => {
                     if(this.state.pressed) {
-                        console.log('growing with offset', this.state.offset);
                         this.grow();
                     } else {
-                        console.log('shrinking with offset', this.state.offset);
                         this.shrink();
                     }
 
@@ -257,7 +255,7 @@ export class AnterosCardModal extends Component {
         var back = this.state.pressed
             ?
             <TouchableOpacity style={[styles.backButton, {opacity: this.state.back_opac}]} onPress={this._onPress}>
-                <Animated.View >
+                <Animated.View useNativeDriver={true}   >
                     <Text style={{color: 'white'}}><Icon name='chevron-left' /></Text>
                 </Animated.View>
             </TouchableOpacity>
@@ -266,7 +264,7 @@ export class AnterosCardModal extends Component {
         var borderStyles = !this.state.pressed ? {borderRadius: this.state.TopBorderRadius, borderBottomLeftRadius: 0} :
         {borderTopRightRadius: this.state.TopBorderRadius, borderTopLeftRadius: this.state.TopBorderRadius};
         return (
-            <Animated.Image source={this.props.image}
+            <Animated.Image  useNativeDriver={true}  source={this.props.image}
                             style={[styles.top, borderStyles, {
                             width: this.state.top_width,
                             height: this.state.top_height,
@@ -285,7 +283,7 @@ export class AnterosCardModal extends Component {
         var button = this.state.pressed
             ?
             <TouchableOpacity onPress={this.activate}>
-                <Animated.View style={{opacity: this.state.button_opac, backgroundColor: this.props.color,
+                <Animated.View useNativeDriver={true}   style={{opacity: this.state.button_opac, backgroundColor: this.props.color,
                 marginTop: 10, borderRadius: 10, width: width-64, height: 50,
                 alignItems: 'center', justifyContent: 'center'}}>
                     {loading}
@@ -296,16 +294,16 @@ export class AnterosCardModal extends Component {
 
         var plusButton = !this.state.activated
             ?
-        <Animated.View style={{opacity: this.state.plus, justifyContent: 'center', alignItems: 'center'}}>
+        <Animated.View useNativeDriver={true}   style={{opacity: this.state.plus, justifyContent: 'center', alignItems: 'center'}}>
             <Icon name='plus-circle' style={{fontSize: 24, color: this.props.color}}/>
         </Animated.View>
             :
-            <Animated.View style={{opacity: this.state.plus, justifyContent: 'center', alignItems: 'center'}}>
+            <Animated.View useNativeDriver={true}   style={{opacity: this.state.plus, justifyContent: 'center', alignItems: 'center'}}>
             <Icon name='check-circle' style={{fontSize: 24, color: this.props.color}}/>
         </Animated.View>
 
         return (
-            <Animated.View style={[styles.bottom,
+            <Animated.View useNativeDriver={true}   style={[styles.bottom,
             {
                 width: this.state.bottom_width,
                 height: this.state.bottom_height,
@@ -331,7 +329,7 @@ export class AnterosCardModal extends Component {
             return
         }
         return (
-            <Animated.View style={{opacity: this.state.content_opac, marginTop: 40, width: width, height: this.state.content_height, zIndex: -1,
+            <Animated.View useNativeDriver={true}   style={{opacity: this.state.content_opac, marginTop: 40, width: width, height: this.state.content_height, zIndex: -1,
             backgroundColor: '#ddd', transform: this.state.content_pan.getTranslateTransform()}}>
                 <View style={{backgroundColor: 'white', flex: 1, margin: 16, padding: 16}}>
                     <Text style={{fontSize: 24, fontWeight: '700', color: 'black'}}>Description</Text>

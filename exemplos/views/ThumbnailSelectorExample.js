@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 import {
   View,
   ScrollView,
@@ -11,7 +11,7 @@ import {
 
 import {AnterosButton, AnterosText, AnterosNavigationPage, AnterosImage, AnterosThumbnailSelector} from 'anteros-react-native';
 
-export default class ThumbnailSelectorExample extends AnterosNavigationPage {
+export class ThumbnailSelectorExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

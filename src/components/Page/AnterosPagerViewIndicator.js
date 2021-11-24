@@ -1,6 +1,6 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, View, ViewPropTypes } from 'react-native'
 import {AnterosPagerView} from './AnterosPagerView'
@@ -44,7 +44,7 @@ export class AnterosPagerViewIndicator extends Component {
         else this._stopAutoPlay()
     }
 
-    componentWillUpdate (nextProps, nextState) {
+    UNSAFE_componentWillUpdate (nextProps, nextState) {
         this._childrenCount = React.Children.count(nextProps.children)
         if (this.props.autoPlayEnable !== nextProps.autoPlayEnable) {
             nextProps.autoPlayEnable ? this._startAutoPlay() : this._stopAutoPlay()

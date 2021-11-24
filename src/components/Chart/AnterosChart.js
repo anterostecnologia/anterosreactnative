@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import {
   LinearGradient,
   Line,
@@ -18,15 +18,15 @@ import { View } from 'react-native'
 import _ from 'lodash'
 import { ART } from 'react-native'
 import * as helper from './AnterosChartSparklineHelper'
-import AnterosARTChart from './AnterosARTChart';
-import AnterosARTChartBar from './AnterosARTChartBar';
-import AnterosARTChartDonut from './AnterosARTChartDonut';
-import AnterosARTChartHeatmap from './AnterosARTChartHeatmap';
-import AnterosARTChartPie from './AnterosARTChartPie';
-import AnterosARTChartRadar from './AnterosARTChartRadar';
-import AnterosARTChartXY from './AnterosARTChartXY';
-import AnterosARTSparkyLine from './AnterosARTSparkyLine';
-import AnterosARTSparkyPie from './AnterosARTSparkyPie';
+import {AnterosARTChart} from './AnterosARTChart';
+import {AnterosARTChartBar} from './AnterosARTChartBar';
+import {AnterosARTChartDonut} from './AnterosARTChartDonut';
+import {AnterosARTChartHeatmap} from './AnterosARTChartHeatmap';
+import {AnterosARTChartPie} from './AnterosARTChartPie';
+import {AnterosARTChartRadar} from './AnterosARTChartRadar';
+import {AnterosARTChartXY} from './AnterosARTChartXY';
+import {AnterosARTSparkyLine} from './AnterosARTSparkyLine';
+import {AnterosARTSparkyPie} from './AnterosARTSparkyPie';
 import { AreaChart, BarChart, LineChart, Grid, XAxis, YAxis, StackedAreaChart } from 'react-native-svg-charts'
 
 
@@ -169,7 +169,7 @@ export class ContributionGraph extends AbstractChart {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       valueCache: this.getValueCache(nextProps.values)
     })

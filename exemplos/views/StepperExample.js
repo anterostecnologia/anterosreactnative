@@ -11,7 +11,7 @@ import {
   AnterosStepper
 } from "anteros-react-native";
 
-export default class StepperExample extends AnterosNavigationPage {
+export class StepperExample extends AnterosNavigationPage {
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
     title: "Stepper",

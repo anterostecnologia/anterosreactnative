@@ -1,10 +1,10 @@
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView} from 'react-native';
 import {AnterosNavigationPage, AnterosModalIndicator, AnterosText,AnterosModalWalkThrough} from 'anteros-react-native';
 
-export default class ModalWalkThroughExample extends AnterosNavigationPage {
+export class ModalWalkThroughExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

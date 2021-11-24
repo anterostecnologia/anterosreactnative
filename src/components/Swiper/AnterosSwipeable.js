@@ -1,7 +1,7 @@
 //https://github.com/jshanson7/react-native-swipeable
 
 /* eslint-disable import/no-unresolved, import/extensions */
-import React, {PureComponent} from 'react';
+import {PureComponent} from 'react';
 import {Animated, Easing, PanResponder, StyleSheet, View, ViewPropTypes} from 'react-native';
 import {PropTypes} from 'prop-types';
 /* eslint-enable import/no-unresolved, import/extensions */
@@ -168,7 +168,7 @@ export class AnterosSwipeable extends PureComponent {
     rightButtonsOpen: false
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {onPanAnimatedValueRef, onRef} = this.props;
 
     onRef(this);
@@ -588,7 +588,7 @@ export class AnterosSwipeable extends PureComponent {
       ];
 
       return (
-        <Animated.View key={index} style={buttonStyle}>
+        <Animated.View useNativeDriver={true}   key={index} style={buttonStyle}>
           {buttonContent}
         </Animated.View>
       );
@@ -625,13 +625,13 @@ export class AnterosSwipeable extends PureComponent {
     return (
       <View onLayout={this._handleLayout} style={[styles.container, style]} {...this._panResponder.panHandlers} {...props}>
         {canSwipeRight && (
-          <Animated.View style={[{transform, marginLeft: -width, width}, leftContainerStyle]}>
+          <Animated.View useNativeDriver={true}   style={[{transform, marginLeft: -width, width}, leftContainerStyle]}>
             {leftContent || this._renderButtons(leftButtons, true)}
           </Animated.View>
         )}
-        <Animated.View style={[{transform}, styles.content, contentContainerStyle]}>{children}</Animated.View>
+        <Animated.View useNativeDriver={true}   style={[{transform}, styles.content, contentContainerStyle]}>{children}</Animated.View>
         {canSwipeLeft && (
-          <Animated.View style={[{transform, marginRight: -width, width}, rightContainerStyle]}>
+          <Animated.View useNativeDriver={true}   style={[{transform, marginRight: -width, width}, rightContainerStyle]}>
             {rightContent || this._renderButtons(rightButtons, false)}
           </Animated.View>
         )}

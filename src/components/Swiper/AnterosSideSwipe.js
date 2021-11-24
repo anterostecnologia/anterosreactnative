@@ -49,7 +49,7 @@ export class AnterosSideSwipe extends Component {
     };
   }
 
-  componentWillMount = () => {
+  UNSAFE_componentWillMount = () => {
     this.panResponder = PanResponder.create({
       onMoveShouldSetPanResponder: this.handleGestureCapture,
       onPanResponderMove: this.handleGestureMove,

@@ -1,6 +1,6 @@
 'use strict'
 
-import React, { Component } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, View, ViewPropTypes, Text, TouchableOpacity,ScrollView ,Dimensions} from 'react-native'
 import {AnterosPagerViewIndicator} from './AnterosPagerViewIndicator'
@@ -56,7 +56,7 @@ export class AnterosPagerTitleIndicator extends Component {
             this.props.selectedItemTextStyle != nextProps.selectedItemTextStyle ||
             this.props.selectedBorderStyle != nextProps.selectedBorderStyle
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         this._titleCount = nextProps.titles.length;
     }
 

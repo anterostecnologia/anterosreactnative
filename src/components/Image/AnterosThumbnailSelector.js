@@ -90,7 +90,7 @@ export class AnterosThumbnailSelector extends Component {
       this.show();
     }
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const {visible, items} = this.props;
     if (nextProps.visible !== visible) {
       if (nextProps.visible) {
@@ -233,7 +233,7 @@ export class AnterosThumbnailSelector extends Component {
     const {startDelta, endDelta, fadeAnim, dataSource, items} = this.state;
     const {zIndex, backgroundColor, flatlistProps, containerStyle} = this.props;
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={[
           containerStyle,
           {

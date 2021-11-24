@@ -6,10 +6,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosNavigationButton from './AnterosNavigationButton';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosNavigationButton} from './AnterosNavigationButton';
 
-export default class AnterosNavigationLinkButton extends AnterosNavigationButton {
+export class AnterosNavigationLinkButton extends AnterosNavigationButton {
 
   static propTypes = {
     ...AnterosNavigationButton.propTypes,

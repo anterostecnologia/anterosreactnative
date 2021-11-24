@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -13,7 +13,7 @@ import {
 
 import {AnterosNavigationPage, AnterosDateHistoryPicker, AnterosSeparator} from 'anteros-react-native';
 
-export default class DatehistoryPickerExample extends AnterosNavigationPage {
+export class DatehistoryPickerExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View, Text, TouchableOpacity, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-
-export default class AnterosStepper extends Component {
+export class AnterosStepper extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -114,7 +114,7 @@ export default class AnterosStepper extends Component {
       opacity = AnterosTheme.stepperDisabledOpacity;
     }
 
-    this.props = {
+    return {
       style,
       valueStyle,
       subButton,
@@ -158,8 +158,12 @@ export default class AnterosStepper extends Component {
     onChange && onChange(value);
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    const props = this.buildProps();
 
     let {
       style,
@@ -176,7 +180,7 @@ export default class AnterosStepper extends Component {
       onLayout,
       onChange,
       ...others
-    } = this.props; //disable View.onChange
+    } = props; //disable View.onChange
 
     if (value === undefined) 
       value = this.state.value;

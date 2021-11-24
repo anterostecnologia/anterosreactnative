@@ -1,6 +1,6 @@
 // https://github.com/thegamenicorus/react-native-flexi-radio-button
 
-import React, { Component } from 'react'
+import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 import {
     StyleSheet,
@@ -14,7 +14,7 @@ export class AnterosRadioButton extends Component {
         super(props, context)
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         this.setState({
             selectedIndex: nextProps.selectedIndex
         })
@@ -106,7 +106,7 @@ export class AnterosRadioGroup extends Component {
         this.onSelect = this.onSelect.bind(this)
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.selectedIndex != this.prevSelected) {
             this.prevSelected = nextProps.selectedIndex
             this.setState({

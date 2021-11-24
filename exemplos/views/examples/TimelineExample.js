@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from "react";
+import {Component, PureComponent} from "react";
 import PropTypes from "prop-types";
 import {
   Text,
@@ -25,7 +25,7 @@ import {View} from "react-native-animatable";
 import {AnterosSearchBox,AnterosTheme,AnterosNavigationPage, AnterosText, AnterosListRow, AnterosButton,AnterosIcon,AnterosImage} from "anteros-react-native";
 import {AnterosInputSearchText,AnterosContainer, AnterosContent, AnterosSection, AnterosBlock} from "anteros-react-native";
 
-export default class NewsFeedExample extends AnterosNavigationPage {
+export class NewsFeedExample extends AnterosNavigationPage {
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
     title: "News",

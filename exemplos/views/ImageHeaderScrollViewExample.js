@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ImageHeaderScrollViewExample extends AnterosNavigationPage {
+export class ImageHeaderScrollViewExample extends AnterosNavigationPage {
 
   static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

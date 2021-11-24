@@ -7,7 +7,7 @@ import {
 
 import {AnterosText, AnterosNavigationPage, AnterosBreadCrumb, AnterosSeparator} from 'anteros-react-native';
 
-export default class BreadCrumbExample extends AnterosNavigationPage {
+export class BreadCrumbExample extends AnterosNavigationPage {
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
       title: "Breadcrumb example",

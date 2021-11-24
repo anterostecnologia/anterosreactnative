@@ -177,7 +177,7 @@ export function styleWithInsetMargin(style, wrapperInset, hideStatusBar = false)
 /**
  * Utility component wrapper to handle orientation changes and extra padding controle for iOS (specially iPads and iPhone X)
  */
-export default class AnterosFlashMessageWrapper extends Component {
+export class AnterosFlashMessageWrapper extends Component {
   static defaultProps = {
     /**
      * Default AnterosFlashMessage position is "top"

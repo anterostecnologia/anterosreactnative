@@ -1,11 +1,12 @@
 'use strict';
 
-import React from 'react';
+
 let { View, StyleSheet, Text, Switch} = require('react-native');
 
 import {AnterosSwitchComponent} from '../lib/AnterosSwitchComponent';
+import React,{Component} from "react";
 
-export class AnterosSwitchField extends React.Component{
+export class AnterosSwitchField extends Component{
   setValue(value){
     this.refs.fieldComponent.setValue(value)
   }

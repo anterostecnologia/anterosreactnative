@@ -31,7 +31,7 @@ class AnterosARTChartXY extends Component {
     this.spring = new Spring({friction: 25, frequency: 200});
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
    this._computeChartDimensions();
    this._makeXaxis();
    this._makeYaxis();
@@ -149,4 +149,4 @@ class AnterosARTChartXY extends Component {
   }
 }
 
-export default AnterosARTChartXY;
+export {AnterosARTChartXY};

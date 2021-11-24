@@ -1,4 +1,4 @@
-import React, { PureComponent, Component } from 'react';
+import React,{ PureComponent, Component } from 'react';
 import { Animated, Easing, FlatList, I18nManager, Platform, 
     StyleSheet, TouchableOpacity, ScrollView, View, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
@@ -215,7 +215,7 @@ export class AnterosAdvancedCarousel extends Component {
         }
     }
 
-    componentWillReceiveProps (nextProps) {
+    UNSAFE_componentWillReceiveProps (nextProps) {
         const { interpolators } = this.state;
         const { firstItem, itemHeight, itemWidth, scrollEnabled, sliderHeight, sliderWidth } = nextProps;
         const itemsLength = this._getCustomDataLength(nextProps);
@@ -1991,7 +1991,7 @@ class PaginationDot extends PureComponent {
         }
     }
 
-    componentWillReceiveProps (nextProps) {
+    UNSAFE_componentWillReceiveProps (nextProps) {
         if (nextProps.active !== this.props.active) {
             this._animate(nextProps.active ? 1 : 0);
         }
@@ -2093,7 +2093,7 @@ class PaginationDot extends PureComponent {
               activeOpacity={tappable ? activeOpacity : 1}
               onPress={onPress}
             >
-                <Animated.View style={dotStyle} />
+                <Animated.View useNativeDriver={true}   style={dotStyle} />
             </TouchableOpacity>
         );
     }

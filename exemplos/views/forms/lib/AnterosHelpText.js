@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React from 'react';
-import PropTypes from 'prop-types';
 
+import PropTypes from 'prop-types';
+import React,{Component} from "react";
 import { View, StyleSheet, Text} from 'react-native';
 import {AnterosText} from 'anteros-react-native';
 
-export class AnterosHelpText extends React.Component{
+export class AnterosHelpText extends Component{
   render(){
     if(!this.props.text) return null;
     return (

@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import {Animated, PanResponder, View} from "react-native";
 import PropTypes from 'prop-types';
 
@@ -27,7 +27,7 @@ export class AnterosBounceable extends Component {
 
   panResponder = {};
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
@@ -73,7 +73,7 @@ export class AnterosBounceable extends Component {
 
   render () {
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={[{
           transform: [
             {

@@ -110,7 +110,7 @@ class AnterosARTChart extends Component {
     this.makeChartFillColors();
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.init();
   }
 
@@ -269,7 +269,7 @@ class AnterosARTChart extends Component {
     });
   }
 
-componentWillReceiveProps(nextProps) {
+UNSAFE_componentWillReceiveProps(nextProps) {
   if (this.props.data !== nextProps.data || this.props.pointsOnScreen !== nextProps.pointsOnScreen) {
     this.props = nextProps;
     this.resetState();
@@ -630,4 +630,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AnterosARTChart;
+export {AnterosARTChart};

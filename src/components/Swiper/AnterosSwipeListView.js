@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {
+import {
 	Component,
 } from 'react';
 import PropTypes from 'prop-types';
@@ -47,7 +47,7 @@ export class AnterosSwipeRow extends Component {
 		this._translateX = new Animated.Value(0);
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this._panResponder = PanResponder.create({
 			onMoveShouldSetPanResponder: (e, gs) => this.handleOnMoveShouldSetPanResponder(e, gs),
 			onPanResponderMove: (e, gs) => this.handlePanResponderMove(e, gs),
@@ -261,7 +261,7 @@ export class AnterosSwipeRow extends Component {
 		// We don't want the onLayout func to run after it runs once.
 		if (this.state.dimensionsSet) {
 			return (
-				<Animated.View
+				<Animated.View useNativeDriver={true}
 					manipulationModes={['translateX']}
 					{...this._panResponder.panHandlers}
 					style={{
@@ -276,7 +276,7 @@ export class AnterosSwipeRow extends Component {
 			);
 		} else {
 			return (
-				<Animated.View
+				<Animated.View useNativeDriver={true}
 					manipulationModes={['translateX']}
 					{...this._panResponder.panHandlers}
 					onLayout={ (e) => this.onContentLayout(e) }

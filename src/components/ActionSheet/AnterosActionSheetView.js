@@ -2,15 +2,15 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosActionSheetItem from './AnterosActionSheetItem';
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosActionSheetItem} from './AnterosActionSheetItem';
 
-export default class AnterosActionSheetView extends AnterosOverlay.PullView {
+export class AnterosActionSheetView extends AnterosOverlay.PullView {
 
   static propTypes = {
     ...AnterosOverlay.PullView.propTypes,

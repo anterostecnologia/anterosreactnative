@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {StyleSheet, View, Text, Animated, ViewPropTypes} from 'react-native';
 
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-export default class AnterosWheelItem extends Component {
+export class AnterosWheelItem extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -32,7 +32,7 @@ export default class AnterosWheelItem extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (!this.positionListenerId) {
       this.positionListenerId = this
         .props
@@ -54,7 +54,7 @@ export default class AnterosWheelItem extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let {itemHeight, wheelHeight, index} = this.props;
     if (nextProps.index != index || nextProps.itemHeight != itemHeight || nextProps.wheelHeight != wheelHeight) {
       this.handlePositionChange(nextProps.currentPosition._value, nextProps);
@@ -145,7 +145,7 @@ export default class AnterosWheelItem extends Component {
       }
     ].concat(style);
     return (
-      <Animated.View style={style} {...others}>
+      <Animated.View useNativeDriver={true}   style={style} {...others}>
         {children}
       </Animated.View>
     );

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dimensions, Platform, StatusBar } from 'react-native';
 
 export function isIphoneX() {

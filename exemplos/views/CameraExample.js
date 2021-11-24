@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {AnterosText, AnterosNavigationPage, AnterosCameraRollPicker} from 'anteros-react-native';
 
-export default class CameraExample extends AnterosNavigationPage {
+export class CameraExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

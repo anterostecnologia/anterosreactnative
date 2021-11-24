@@ -30,7 +30,7 @@ class AnterosARTChartRadar extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.computeChartStats();
     this.polarGrid = this.makePolarGrid(AXIS_TICKS);
     this.axisLabel = this.makeAxisLabel(AXIS_TICKS)
@@ -44,7 +44,7 @@ class AnterosARTChartRadar extends Component {
     this.animateChartTweener.resetAndPlay();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
   }
 
   componentWillUnmount() {
@@ -201,4 +201,4 @@ class AnterosARTChartRadar extends Component {
   }
 }
 
-export default AnterosARTChartRadar;
+export {AnterosARTChartRadar};

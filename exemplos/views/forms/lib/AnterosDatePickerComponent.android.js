@@ -11,8 +11,8 @@ let {
 } = require("react-native");
 import { AnterosFormField } from "./AnterosFormField";
 import {AnterosText} from 'anteros-react-native';
-
-export class AnterosDatePickerComponent extends React.Component {
+import React,{Component} from "react";
+export class AnterosDatePickerComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {

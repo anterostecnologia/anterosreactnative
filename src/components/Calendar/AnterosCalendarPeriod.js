@@ -598,7 +598,7 @@ class MonthList extends Component {
     this._getWeekNums = this._getWeekNums.bind(this);
     this._scrollToSelecetdMonth = this._scrollToSelecetdMonth.bind(this);
   }
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     let isDateUpdated = ['startDate', 'endDate', 'minDate', 'maxDate'].reduce((prev, next) => {
       if (prev || nextProps[next] !== this.props[next]) {
         return true;

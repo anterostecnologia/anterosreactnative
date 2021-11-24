@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react';
 import {PanResponder,View} from 'react-native'
 import Svg,{Path,Circle,G,Text} from 'react-native-svg'
 import PropTypes from 'prop-types';
@@ -32,7 +32,7 @@ export class AnterosCircularSlider extends Component {
     textColor: '#fff'
   }
 
-  componentWillMount = () => {
+  UNSAFE_componentWillMount = () => {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,

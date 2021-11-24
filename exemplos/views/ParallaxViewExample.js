@@ -13,7 +13,7 @@ import {AnterosNavigationPage, AnterosParallaxView, AnterosText} from 'anteros-r
 
 
 
-export default class ParallaxViewExample extends AnterosNavigationPage {
+export class ParallaxViewExample extends AnterosNavigationPage {
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
         title: 'Parallax view',

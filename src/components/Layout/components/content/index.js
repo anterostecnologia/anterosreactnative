@@ -12,8 +12,8 @@ import {
 import { ContainerSizeProp, DirectionProp } from '../../shared/props';
 import { determineSizeClass } from './methods';
 import { BreakpointsProp } from './props';
-import SizeSubscriber from './Subscriber';
-import Scrollable from './Scrollable';
+import {SizeSubscriber} from './Subscriber';
+import {Scrollable} from './Scrollable';
 
 
 const styles = StyleSheet.create({
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
  * @augments {Component<{breakpoints: Object, horizontal: boolean, scrollable: boolean, relativeTo: 'window' | 'self', stretchable: boolean, style: any, children: any}>}
  */
 /* eslint-enable */
-class Content extends Component {
+class AnterosContent extends Component {
   constructor(props) {
     super(props);
 
@@ -162,7 +162,7 @@ class Content extends Component {
 }
 
 
-Content.propTypes = {
+AnterosContent.propTypes = {
   breakpoints: BreakpointsProp,
   horizontal: PropTypes.bool,
   scrollable: PropTypes.bool,
@@ -181,7 +181,7 @@ Content.propTypes = {
 };
 
 
-Content.defaultProps = {
+AnterosContent.defaultProps = {
   breakpoints: BREAKPOINT_VALUES,
   horizontal: false,
   scrollable: true,
@@ -191,7 +191,7 @@ Content.defaultProps = {
 };
 
 
-Content.childContextTypes = {
+AnterosContent.childContextTypes = {
   /**
    * Determines how content should flow in both Section and Block element. It
    * is always based on provided direction prop.
@@ -216,4 +216,4 @@ Content.childContextTypes = {
 };
 
 
-export default Content;
+export {AnterosContent};

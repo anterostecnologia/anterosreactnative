@@ -1,6 +1,6 @@
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import React from 'react';
+
 import {
   ScrollView,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import ScrollableMixin from 'react-native-scrollable-mixin';
 import {cloneReferencedElement} from '../Utils/AnterosUtils';
-  
+import React from 'react';  
 
 export const AnterosInvertibleScrollView = createReactClass({
   mixins: [ScrollableMixin],

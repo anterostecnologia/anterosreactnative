@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -11,7 +11,7 @@ import {
 import {AnterosNavigationPage, AnterosContentLoader} from 'anteros-react-native';
 import {Circle, Rect} from 'react-native-svg'
 
-export default class ContentLoaderExample extends AnterosNavigationPage {
+export class ContentLoaderExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

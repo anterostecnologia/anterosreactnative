@@ -12,7 +12,7 @@ import {
   View,
   ViewPropTypes
 } from 'react-native';
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 const containerHeight = 40;
@@ -254,7 +254,7 @@ export class AnterosSearchBox extends PureComponent {
     const isRtl = this.props.direction === 'rtl';
     const styles = getStyles(this.props.inputHeight, isRtl);
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         ref="searchContainer"
         style={[
           styles.container,
@@ -309,12 +309,12 @@ export class AnterosSearchBox extends PureComponent {
         />
         <TouchableWithoutFeedback onPress={this.onFocus}>
         {this.props.iconSearch
-          ? <Animated.View
+          ? <Animated.View useNativeDriver={true}
               style={[styles.iconSearch, { left: this.iconSearchAnimated }]}
             >
               {this.props.iconSearch}
             </Animated.View>
-          : <Animated.Image
+          : <Animated.Image  useNativeDriver={true} 
               source={require('../../assets/images/search_loupe.png')}
               style={[
                 styles.iconSearch,
@@ -330,7 +330,7 @@ export class AnterosSearchBox extends PureComponent {
           </TouchableWithoutFeedback>
         {this.props.useClearButton && <TouchableWithoutFeedback onPress={this.onDelete}>
           {this.props.iconDelete
-            ? <Animated.View
+            ? <Animated.View useNativeDriver={true}
                 style={[
                   styles.iconDelete,
                   this.props.positionRightDelete && {
@@ -341,7 +341,7 @@ export class AnterosSearchBox extends PureComponent {
               >
                 {this.props.iconDelete}
               </Animated.View>
-            : <Animated.Image
+            : <Animated.Image  useNativeDriver={true} 
                 source={require('../../assets/images/search_delete.png')}
                 style={[
                   styles.iconDelete,
@@ -358,7 +358,7 @@ export class AnterosSearchBox extends PureComponent {
         </TouchableWithoutFeedback>}
 
         <TouchableOpacity onPress={this.onCancel}>
-          <Animated.View
+          <Animated.View useNativeDriver={true}
             style={[
               styles.cancelButton,
               this.props.cancelButtonStyle && this.props.cancelButtonStyle,

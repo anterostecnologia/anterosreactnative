@@ -2,12 +2,12 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosActionPopoverView from './AnterosActionPopoverView';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosActionPopoverView} from './AnterosActionPopoverView';
 
-export default class AnterosActionPopover extends AnterosOverlay {
+export class AnterosActionPopover extends AnterosOverlay {
 
   static ActionPopoverView = AnterosActionPopoverView;
 

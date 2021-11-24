@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent, Children } from 'react';
+import { PureComponent, Children } from 'react';
 import { View, ScrollView, Animated, Platform, ViewPropTypes, StyleSheet } from 'react-native';
+import React from 'react';
 
 const styles = StyleSheet.create({
     rtl: {
@@ -137,7 +138,7 @@ export class AnterosPage extends PureComponent {
     this.mounted = false;
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     let { progress } = props;
 
     if (progress !== this.props.progress) {
@@ -406,7 +407,7 @@ class Indicator extends PureComponent {
         let style = { opacity, backgroundColor };
   
         return (
-          <Animated.View style={[stylesIndicator.dot, style]} key={index} />
+          <Animated.View useNativeDriver={true}   style={[stylesIndicator.dot, style]} key={index} />
         );
       });
   

@@ -1,6 +1,6 @@
 'use strict'
 
-import React, { Component } from "react";
+import React,{ Component } from "react";
 import PropTypes from "prop-types";
 
 import {
@@ -44,7 +44,7 @@ export class AnterosFlipCard extends Component {
       back: { width: 0, height: 0 }
     }
   }
-  componentWillReceiveProps (nextProps) {
+  UNSAFE_componentWillReceiveProps (nextProps) {
     if (this.state.isFlipped !== nextProps.flip) {
       this._toggleCard()
     }
@@ -179,7 +179,7 @@ export class AnterosFlipCard extends Component {
           activeOpacity={1}
           onPress={() => { this._toggleCard(); }}
         >
-          <Animated.View
+          <Animated.View useNativeDriver={true}
             {...this.props}
             style={[
               S.flipCard,
@@ -196,7 +196,7 @@ export class AnterosFlipCard extends Component {
       )
     } else {
       return (
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           {...this.props}
           style={[S.flipCard,
           {transform: transform},

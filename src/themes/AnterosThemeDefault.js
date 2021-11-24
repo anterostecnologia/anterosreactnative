@@ -23,7 +23,7 @@ const pixelSize = (function() {
   else return 1;
 })();
 
-export default {
+export const AnterosThemeDefault = {
   //General
   screenColor: '#444',
   primaryColor: primaryColor,

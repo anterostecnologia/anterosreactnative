@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Text,
   View,
@@ -13,7 +12,7 @@ export const SkipButton = ({
   skipFadeOpacity
 }) => {
   return (
-    <Animated.View style={[styles.btnContainer, {
+    <Animated.View useNativeDriver={true}   style={[styles.btnContainer, {
       opacity: skipFadeOpacity,
       transform: [{
         translateX: skipFadeOpacity.interpolate({

@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import {View} from 'react-native';
 
-import AnterosOverlay from '../Overlay/AnterosOverlay';
-import AnterosPopoverPickerView from './AnterosPopoverPickerView';
+import {AnterosOverlay} from '../Overlay/AnterosOverlay';
+import {AnterosPopoverPickerView} from './AnterosPopoverPickerView';
 
-export default class AnterosPopoverPicker extends AnterosOverlay {
+export class AnterosPopoverPicker extends AnterosOverlay {
 
   static PopoverPickerView = AnterosPopoverPickerView;
 

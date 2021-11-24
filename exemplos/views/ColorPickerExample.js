@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -13,7 +13,7 @@ import {AnterosColorPickerSliders,AnterosColorHueGradient,AnterosColorSaturation
 import tinycolor from 'tinycolor2';
 
 
-export default class ColorPickerExample extends AnterosNavigationPage {
+export class ColorPickerExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

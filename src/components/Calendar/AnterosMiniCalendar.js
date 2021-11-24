@@ -9,7 +9,7 @@ import {
   StyleSheet,
 } from 'react-native'
 
-export class AnterosMiniCalendar extends React.Component {
+export class AnterosMiniCalendar extends Component {
 
   constructor(props) {
     super(props)

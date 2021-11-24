@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { StyleSheet, View, Text, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {AnterosNavigationPage, AnterosIcon, AnterosAppIntro} from 'anteros-react-native';
@@ -52,7 +52,7 @@ const slides = [
   },
 ];
 
-export default class App extends AnterosNavigationPage {
+export class App extends AnterosNavigationPage {
   static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
       title: "App intro",

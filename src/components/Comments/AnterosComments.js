@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react'
 import {
   View,
   Text,
@@ -325,7 +325,7 @@ export class AnterosComments extends PureComponent {
     this.setState({ editModalVisible: visible });
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.data) {
       this.setState({
         commentsLastUpdated: new Date().getTime(),
@@ -361,11 +361,9 @@ export class AnterosComments extends PureComponent {
   }
 
   focusOnReplyInput(id) {
-    console.log(id);
     let input = this.textInputs["input" + id];
 
     input.measure((x, y, width, height, pageX, pageY) => {
-      console.log(pageY);
       input.focus();
       this.props.replyAction(pageY);
     });
@@ -500,7 +498,7 @@ export class AnterosComments extends PureComponent {
       >
         <View style={[styles.likeContainer]}>
           <AnterosImage style={[styles.likeImage]} source={{ uri: like.image }} />
-          <AnterosText style={[styles.likeName]}>{like.name}></AnterosText>
+          <AnterosText style={[styles.likeName]}>{like.name}</AnterosText>
         </View>
       </TouchableHighlight>
     );

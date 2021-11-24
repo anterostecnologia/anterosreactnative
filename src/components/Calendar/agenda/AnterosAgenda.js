@@ -12,8 +12,8 @@ import XDate from 'xdate';
 
 import {parseDate, xdateToData} from '../interface';
 import dateutils from '../AnterosCalendarUtils';
-import AnterosCalendarList from '../calendar-list/AnterosCalendarList';
-import ReservationsList from './reservation-list/AnterosReservationList';
+import {AnterosCalendarList} from '../calendar-list/AnterosCalendarList';
+import {ReservationsList} from './reservation-list/AnterosReservationList';
 import styleConstructor from './style';
 
 
@@ -23,7 +23,7 @@ const KNOB_HEIGHT = 24;
 //Fallback when RN version is < 0.44
 const viewPropTypes = ViewPropTypes || View.propTypes;
 
-export default class AnterosAgenda extends Component {
+export class AnterosAgenda extends Component {
   static propTypes = {
     // Specify theme properties to override specific styles for calendar parts. Default = {}
     theme: PropTypes.object,
@@ -198,7 +198,7 @@ export default class AnterosAgenda extends Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._isMounted = true;
     this.loadReservations(this.props);
   }
@@ -207,7 +207,7 @@ export default class AnterosAgenda extends Component {
     this._isMounted = false;
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (props.items) {
       this.setState({
         firstResevationLoad: false
@@ -376,8 +376,8 @@ export default class AnterosAgenda extends Component {
         <View style={this.styles.reservations}>
           {this.renderReservations()}
         </View>
-        <Animated.View style={headerStyle}>
-          <Animated.View style={{flex:1, transform: [{ translateY: contentTranslate }]}}>
+        <Animated.View useNativeDriver={true}   style={headerStyle}>
+          <Animated.View useNativeDriver={true}   style={{flex:1, transform: [{ translateY: contentTranslate }]}}>
             <AnterosCalendarList
               theme={this.props.theme}
               onVisibleMonthsChange={this.onVisibleMonthsChange.bind(this)}
@@ -401,7 +401,7 @@ export default class AnterosAgenda extends Component {
           </Animated.View>
           {knob}
         </Animated.View>
-        <Animated.View style={weekdaysStyle}>
+        <Animated.View useNativeDriver={true}   style={weekdaysStyle}>
           {weekDaysNames.map((day) => (
             <Text allowFontScaling={false} key={day} style={this.styles.weekday} numberOfLines={1}>{day}</Text>
           ))}

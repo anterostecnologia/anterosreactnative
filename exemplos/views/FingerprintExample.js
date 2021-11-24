@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
 
 import {AnterosNavigationPage, AnterosFingerprint} from 'anteros-react-native';
 
-export default class FingerprintExample extends AnterosNavigationPage {
+export class FingerprintExample extends AnterosNavigationPage {
   static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
       title: 'Fingerprint',

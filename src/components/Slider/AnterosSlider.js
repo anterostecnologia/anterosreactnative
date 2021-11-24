@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {
+import {
   PureComponent,
 } from "react";
 
@@ -51,7 +51,7 @@ var DEFAULT_ANIMATION_CONFIGS = {
   // }
 };
 
-export class AnterosSlider extends React.PureComponent {
+export class AnterosSlider extends PureComponent {
   static propTypes = {
     /**
      * Initial value of the slider. The value should be between minimumValue
@@ -192,7 +192,7 @@ export class AnterosSlider extends React.PureComponent {
     value: new Animated.Value(this.props.value),
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder,
       onMoveShouldSetPanResponder: this._handleMoveShouldSetPanResponder,
@@ -204,7 +204,7 @@ export class AnterosSlider extends React.PureComponent {
     });
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     var newValue = nextProps.value;
 
     if (this.props.value !== newValue) {
@@ -259,10 +259,10 @@ export class AnterosSlider extends React.PureComponent {
           style={[{backgroundColor: maximumTrackTintColor,}, mainStyles.track, trackStyle]}
           renderToHardwareTextureAndroid={true}
           onLayout={this._measureTrack} />
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           renderToHardwareTextureAndroid={true}
           style={[mainStyles.track, trackStyle, minimumTrackStyle]} />
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           onLayout={this._measureThumb}
           renderToHardwareTextureAndroid={true}
           style={[
@@ -495,7 +495,7 @@ export class AnterosSlider extends React.PureComponent {
     };
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={[defaultStyles.debugThumbTouchArea, positionStyle]}
         pointerEvents='none'
       />

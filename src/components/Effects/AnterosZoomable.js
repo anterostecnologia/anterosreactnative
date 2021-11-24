@@ -1,8 +1,9 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
+import React,{Component} from "react";
 
-export class AnterosZoomable extends React.Component {
+export class AnterosZoomable extends Component {
 
   static state = {
     lastTouchStartNativeEvent: {},

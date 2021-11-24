@@ -5,8 +5,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {TouchableOpacity} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
 
-export default class AnterosNavigationButton extends TouchableOpacity {
+export class AnterosNavigationButton extends TouchableOpacity {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
@@ -34,6 +35,10 @@ export default class AnterosNavigationButton extends TouchableOpacity {
     }].concat(style);
 
     this.props = {style, ...others};
+  }
+
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

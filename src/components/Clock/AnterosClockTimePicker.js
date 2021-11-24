@@ -109,7 +109,7 @@ const Hand = ({
     outputRange: ["0deg", "360deg"]
   });
   return (
-    <Animated.View
+    <Animated.View useNativeDriver={true}
       style={[
         styles.handContainer,
         { width, left: CLOCK_SIZE / 2 - width / 2 },

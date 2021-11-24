@@ -5,10 +5,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-
-export default class AnterosNavigationTitle extends Text {
+export class AnterosNavigationTitle extends Text {
 
   static propTypes = {
     ...Text.propTypes,
@@ -54,6 +54,10 @@ export default class AnterosNavigationTitle extends Text {
       children,
       ...others
     };
+  }
+
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

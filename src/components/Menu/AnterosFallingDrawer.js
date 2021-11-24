@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import {
     Dimensions,
     TouchableOpacity,
@@ -27,7 +27,7 @@ export class AnterosFallingDrawer extends Component {
         selectedScreen: null
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const { screens } = this.props
         if (!screens || screens.length == 0) {
             return

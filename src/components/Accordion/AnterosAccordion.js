@@ -38,7 +38,7 @@ export class AnterosAccordion extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.collapsed !== this.state.collapsed) {
       this.setState({
         collapsed: nextProps.collapsed

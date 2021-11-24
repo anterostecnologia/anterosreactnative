@@ -19,7 +19,7 @@ export class AnterosCollapsible extends Component {
       };
     }
   
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
       if (nextProps.collapsed !== this.props.collapsed) {
         this.toggleCollapsed(nextProps.collapsed);
       }
@@ -92,7 +92,7 @@ export class AnterosCollapsible extends Component {
         contentStyle.opacity = 0;
       }
       return (
-        <Animated.View style={containerStyle}>
+        <Animated.View useNativeDriver={true}   style={containerStyle}>
           <View ref="content" style={contentStyle}
             onLayout={(event) => {
               !animating && this.setState({ contentHeight: event.nativeEvent.layout.height });

@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -28,7 +28,7 @@ import {AnterosButton, AnterosNavigationPage, AnterosLabel, AnterosListRow, Ante
 import {data} from './data';
 const window = Dimensions.get('window');
 
-export default class CardExample extends AnterosNavigationPage {
+export class CardExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
@@ -365,7 +365,7 @@ class CreditCardExample extends AnterosNavigationPage {
         this.refs['number'].focus();
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         
     }
 

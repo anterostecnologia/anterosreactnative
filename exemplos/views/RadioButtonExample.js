@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 
 import {AnterosNavigationPage, AnterosRadioGroup, AnterosRadioButton} from 'anteros-react-native';
 
-export default class RadioButtonExample extends AnterosNavigationPage {
+export class RadioButtonExample extends AnterosNavigationPage {
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
     title: "Radio button",

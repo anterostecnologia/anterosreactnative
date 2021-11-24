@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, Image, TouchableOpacity, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
+import {AnterosBadge} from '../Badge/AnterosBadge';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-import AnterosBadge from '../Badge/AnterosBadge';
-
-export default class AnterosTabButton extends Component {
+export class AnterosTabButton extends Component {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
@@ -119,7 +119,7 @@ export default class AnterosTabButton extends Component {
       }
     ].concat(iconContainerStyle);
 
-    this.props = {
+    return {
       style,
       title,
       titleStyle,
@@ -133,8 +133,12 @@ export default class AnterosTabButton extends Component {
     };
   }
 
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    this.buildProps();
+    const props = this.buildProps();
 
     let {
       title,
@@ -144,7 +148,7 @@ export default class AnterosTabButton extends Component {
       badge,
       iconContainerStyle,
       ...others
-    } = this.props;
+    } = props;
     let useIcon = active
       ? activeIcon
       : icon;

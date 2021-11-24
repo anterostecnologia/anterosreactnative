@@ -2,14 +2,14 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {StyleSheet, View, ViewPropTypes} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
 
-
-export default class AnterosPopover extends Component {
+export class AnterosPopover extends Component {
 
   static propTypes = {
     ...ViewPropTypes,
@@ -170,7 +170,7 @@ export default class AnterosPopover extends Component {
       backgroundColor: useArrow === 'none' ? AnterosTheme.popoverColor : 'rgba(0, 0, 0, 0)', //Transparent background will cause a warning at debug mode
     }].concat(popoverLayouts[useArrow]);
 
-    this.props = {style, arrow, paddingCorner, headerStyle, arrowStyle, contentStyle, popoverStyle, ...others};
+    return {style, arrow, paddingCorner, headerStyle, arrowStyle, contentStyle, popoverStyle, ...others};
   }
 
   onLayout(e) {
@@ -181,10 +181,14 @@ export default class AnterosPopover extends Component {
     this.props.onLayout && this.props.onLayout(e);
   }
 
-  render() {
-    this.buildProps();
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
-    let {style, arrow, headerStyle, arrowStyle, contentStyle, popoverStyle, children, onLayout, ...others} = this.props;
+  render() {
+    const props = this.buildProps();
+
+    let {style, arrow, headerStyle, arrowStyle, contentStyle, popoverStyle, children, onLayout, ...others} = props;
     return (
       <View style={popoverStyle} onLayout={(e) => this.onLayout(e)} {...others}>
         <View style={contentStyle} activeOpacity={1}>

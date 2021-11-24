@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import {AnterosNavigationPage, AnterosHyperlink, AnterosDivider, AnterosGrid} from 'anteros-react-native';
 
-export default class HyperlinkExample extends AnterosNavigationPage {
+export class HyperlinkExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

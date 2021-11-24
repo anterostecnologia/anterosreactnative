@@ -96,7 +96,7 @@ export class AnterosImageCard extends Component {
         var {title, description, titleColor, descColor} = this.state;
         var {opacity} = this.state;
         return (
-            <Animated.View style={{opacity, padding: 16}}>
+            <Animated.View useNativeDriver={true}   style={{opacity, padding: 16}}>
                 <Text style={{fontSize: 24, color: titleColor, fontWeight: '800'}}>{title}</Text>
                 <Text style={{fontSize: 12, color: descColor}}>{description}</Text>
             </Animated.View>
@@ -109,10 +109,10 @@ export class AnterosImageCard extends Component {
         return (
             <TouchableWithoutFeedback onPress={this.flip}>
                 <View style={{margin: 16}}>
-                    <Animated.View style={{height: frontHeight, width: frontWidth}}>
+                    <Animated.View useNativeDriver={true}   style={{height: frontHeight, width: frontWidth}}>
                         <Image source={source} style={styles.image}/>
                     </Animated.View>
-                    <Animated.View style={[{justifyContent: 'center', alignItems: 'center',
+                    <Animated.View useNativeDriver={true}   style={[{justifyContent: 'center', alignItems: 'center',
                     backgroundColor, height: backHeight, width: frontWidth}]}>
                         {this.renderBack()}
                     </Animated.View>

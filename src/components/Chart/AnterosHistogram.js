@@ -14,7 +14,7 @@ import {AnterosText} from '../Text/AnterosText';
 var bar_width = 15
 var graph_width = 15
 
-export class AnterosHistogram extends React.Component {
+export class AnterosHistogram extends Component {
   constructor() {
     super()
     this.state = {
@@ -30,7 +30,7 @@ export class AnterosHistogram extends React.Component {
   componentDidMount() {
     this._initGraph(this.props)
   }
-  componentWillReceiveProps(NextProps) {
+  UNSAFE_componentWillReceiveProps(NextProps) {
     this._initGraph(NextProps)
   }
   _initGraph(props) {
@@ -276,7 +276,7 @@ var styles = StyleSheet.create({
   });
 
 
-class Bar extends React.Component {
+class Bar extends Component {
     constructor() {
       super()
       this.state = {
@@ -306,7 +306,7 @@ class Bar extends React.Component {
           onPressIn={this._onTouchStart.bind(this)}
           onPressOut={this._onRelease.bind(this)}
           >
-          <Animated.View style={[
+          <Animated.View useNativeDriver={true}   style={[
             styles.bar,
             {
               backgroundColor: this.state.color.interpolate({

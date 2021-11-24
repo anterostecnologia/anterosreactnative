@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -14,7 +14,7 @@ import {
 
 import {AnterosNavigationPage, AnterosInput} from 'anteros-react-native';
 
-export default class PanResponderExample extends AnterosNavigationPage {
+export class PanResponderExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

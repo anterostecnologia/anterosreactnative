@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
 
 import {AnterosNavigationPage, AnterosText, AnterosImage, AnterosGauge, AnterosPercentageCircle} from 'anteros-react-native';
 
-export default class GaugeExample extends AnterosNavigationPage {
+export class GaugeExample extends AnterosNavigationPage {
   static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
       title: 'Gauge',

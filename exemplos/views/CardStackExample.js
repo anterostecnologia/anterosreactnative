@@ -128,7 +128,7 @@ const TeamMemberCard = (props) => (
   </View>
 );
 
-export default class CardStackDemo extends AnterosNavigationPage {
+export class CardStackDemo extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

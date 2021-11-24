@@ -43,7 +43,7 @@ const config = {
 }
 
 
-export default class AlertExample extends AnterosNavigationPage {
+export class AlertExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

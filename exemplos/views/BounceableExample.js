@@ -8,7 +8,7 @@ import {
 
 import {AnterosNavigationPage, AnterosLabel, AnterosAvatar, AnterosBounceable} from 'anteros-react-native';
 
-export default class BigSliderExample extends AnterosNavigationPage {
+export class BigSliderExample extends AnterosNavigationPage {
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
       title: "Bounceable",

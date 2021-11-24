@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {AnterosNavigationPage, AnterosCircularSlider} from 'anteros-react-native';
 
-export default class CircularSliderExample extends AnterosNavigationPage {
+export class CircularSliderExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

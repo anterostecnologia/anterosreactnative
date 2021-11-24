@@ -2,7 +2,7 @@
 
 'use strict';
 import PropTypes from 'prop-types'; 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {View, ScrollView, StyleSheet, Text, TouchableHighlight} from 'react-native';
 import {AnterosIcon} from 'anteros-react-native';
 import {AnterosTheme, AnterosNavigationPage, AnterosNavigationBar, AnterosLabel} from 'anteros-react-native';
@@ -103,7 +103,7 @@ const items = [
 ]
 
 
-export default class NewHome extends AnterosNavigationPage {
+export class NewHome extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,

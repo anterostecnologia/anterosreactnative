@@ -7,10 +7,10 @@ export {
   withContainerDimensions
 } from "./wrappers/gridDimensions";
 export { calculateStretchLength, warn, checkInsideGrid } from "./utils";
-import AnterosBlock from "./components/block";
-import AnterosContent from "./components/content";
-import AnterosSection from "./components/section";
-import React, { Component } from "react";
+import {AnterosBlock} from "./components/block";
+import {AnterosContent} from "./components/content";
+import {AnterosSection} from "./components/section";
+import React,{ Component } from "react";
 import { View, ScrollView } from "react-native";
 import PropTypes from "prop-types";
 import {
@@ -19,6 +19,7 @@ import {
   Platform,
   InteractionManager
 } from "react-native";
+
 const deviceHeight = Dimensions.get("window").height;
 
 class Center extends Component {
@@ -417,7 +418,7 @@ export const AnterosScreenInfo = () => {
   return _screenInfo;
 };
 
-export class AnterosLayoutGrid extends React.Component {
+export class AnterosLayoutGrid extends Component {
   constructor(props) {
     super(props);
     this.state = { ...props.state, layout: {} };
@@ -475,7 +476,7 @@ export class AnterosLayoutGrid extends React.Component {
   }
 }
 
-export class AnterosLayoutRow extends React.Component {
+export class AnterosLayoutRow extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -734,7 +735,7 @@ export class AnterosLayoutRow extends React.Component {
   }
 }
 
-export class AnterosLayoutColumn extends React.Component {
+export class AnterosLayoutColumn extends Component {
   constructor(props) {
     super(props);
     this.state = {};

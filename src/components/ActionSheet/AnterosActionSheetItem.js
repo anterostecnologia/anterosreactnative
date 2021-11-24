@@ -2,13 +2,13 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import shallowCompare from "react-addons-shallow-compare";
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-import AnterosTheme from '../../themes/AnterosTheme';
-
-export default class AnterosActionSheetItem extends Component {
+export class AnterosActionSheetItem extends Component {
 
   static propTypes = {
     ...TouchableOpacity.propTypes,
@@ -148,6 +148,10 @@ export default class AnterosActionSheetItem extends Component {
       onPress,
       ...others
     };
+  }
+
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {

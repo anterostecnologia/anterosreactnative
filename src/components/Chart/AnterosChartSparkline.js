@@ -1,4 +1,4 @@
-import React,{PureComponent} from 'react'
+import { Children, cloneElement, PureComponent } from 'react';
 import { ART } from 'react-native'
 import * as helper from './AnterosChartSparklineHelper'
 
@@ -89,15 +89,15 @@ const AnterosChartSparkline = ({ children, ...props }) => {
       height={props.height}
       style={props.style}
     >
-      {React.Children.map(children, child =>
-        React.cloneElement(child, {
+      {Children.map(children, child =>
+        cloneElement(child, {
           ...props,
           ...child.props,
           ...helpers
         })
       )}
     </ART.Surface>
-  )
+  );
 }
 
 AnterosChartSparkline.defaultProps = {

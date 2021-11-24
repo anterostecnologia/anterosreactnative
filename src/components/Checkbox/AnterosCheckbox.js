@@ -6,56 +6,19 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from "../Datasource/AnterosDatasource";
+import shallowCompare from "react-addons-shallow-compare";
 
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 
-export class AnterosCheckbox extends TouchableOpacity {
-
-  static propTypes = {
-    ...TouchableOpacity.propTypes,
-    dataSource: PropTypes.oneOfType([
-      PropTypes.instanceOf(AnterosLocalDatasource),
-      PropTypes.instanceOf(AnterosRemoteDatasource)
-    ]),
-    checked: PropTypes.bool,
-    defaultChecked: PropTypes.bool,
-    size: PropTypes.oneOf(['lg', 'md', 'sm']),
-    title: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.number]),
-    titleStyle: Text.propTypes.style,
-    checkedIcon: PropTypes.oneOfType([
-      PropTypes.element, PropTypes.shape({uri: PropTypes.string}),
-      PropTypes.number
-    ]),
-    checkedIconStyle: Image.propTypes.style,
-    uncheckedIcon: PropTypes.oneOfType([
-      PropTypes.element, PropTypes.shape({uri: PropTypes.string}),
-      PropTypes.number
-    ]),
-    uncheckedIconStyle: Image.propTypes.style,
-    onChange: PropTypes.func
-  };
-
-  static defaultProps = {
-    ...TouchableOpacity.defaultProps,
-    defaultChecked: false,
-    size: 'md',
-    checkedIcon: require('../../assets/icons/checked.png'),
-    uncheckedIcon: require('../../assets/icons/unchecked.png'),
-    hitSlop: {
-      top: 8,
-      bottom: 8,
-      left: 8,
-      right: 8
-    }
-  };
+export class AnterosCheckbox extends Component {  
 
   constructor(props) {
     super(props);
-    this.state = Object.assign(this.state, {
+    this.state = {
       checked: props.checked === true || props.checked === false
         ? props.checked
         : props.defaultChecked
-    });
+    };
 
     if(this.props.dataSource){
       this.state.checked = this.props.dataSource.fieldByName(this.props.dataField)
@@ -66,12 +29,8 @@ export class AnterosCheckbox extends TouchableOpacity {
 
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.checked === true || nextProps.checked === false) {
-      if (nextProps.checked != this.state.checked) {
-        this.setState({checked: nextProps.checked});
-      }
-    }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.setState({checked: nextProps.checked});
   }
 
   onChangeChecked = (checked) => {
@@ -80,8 +39,12 @@ export class AnterosCheckbox extends TouchableOpacity {
       this.props.dataSource.setFieldByName(this.props.dataField,checked)
     }
 
-    this.setState({checked})
+    this.setState({checked});
 
+  }
+
+  shouldComponentUpdate=(nextProps, nextState) => {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   buildProps() {
@@ -99,9 +62,7 @@ export class AnterosCheckbox extends TouchableOpacity {
       onChange,
       ...others
     } = this.props;
-    let {checked} = this.state;
-
-    
+    let {checked} = this.state;    
 
     let iconSize,
       textFontSize,
@@ -189,7 +150,7 @@ export class AnterosCheckbox extends TouchableOpacity {
 
     onChange = this.props.onChange ? this.props.onChange : this.onChangeChecked
 
-    this.props = {
+    return {
       style,
       size,
       title,
@@ -206,18 +167,56 @@ export class AnterosCheckbox extends TouchableOpacity {
   }
 
   render() {
-    this.buildProps();
-
-    if (this.props.disabled) {
+    const props = this.buildProps();
+    if (props.disabled) {
       return (
         <View style={{
           opacity: AnterosTheme.cbDisabledOpacity
         }}>
-          {super.render()}
+          <TouchableOpacity {...props}/>
         </View>
       );
     } else {
-      return super.render();
+      return <TouchableOpacity {...props}/>
     }
   }
 }
+
+
+AnterosCheckbox.propTypes = {
+  ...TouchableOpacity.propTypes,
+  dataSource: PropTypes.oneOfType([
+    PropTypes.instanceOf(AnterosLocalDatasource),
+    PropTypes.instanceOf(AnterosRemoteDatasource)
+  ]),
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  size: PropTypes.oneOf(['lg', 'md', 'sm']),
+  title: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.number]),
+  titleStyle: Text.propTypes.style,
+  checkedIcon: PropTypes.oneOfType([
+    PropTypes.element, PropTypes.shape({uri: PropTypes.string}),
+    PropTypes.number
+  ]),
+  checkedIconStyle: Image.propTypes.style,
+  uncheckedIcon: PropTypes.oneOfType([
+    PropTypes.element, PropTypes.shape({uri: PropTypes.string}),
+    PropTypes.number
+  ]),
+  uncheckedIconStyle: Image.propTypes.style,
+  onChange: PropTypes.func
+};
+
+AnterosCheckbox.defaultProps = {
+  ...TouchableOpacity.defaultProps,
+  defaultChecked: false,
+  size: 'md',
+  checkedIcon: require('../../assets/icons/checked.png'),
+  uncheckedIcon: require('../../assets/icons/unchecked.png'),
+  hitSlop: {
+    top: 8,
+    bottom: 8,
+    left: 8,
+    right: 8
+  }
+};

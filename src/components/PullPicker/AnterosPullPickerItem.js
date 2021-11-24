@@ -2,26 +2,23 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React,{Component} from "react";
 import PropTypes from 'prop-types';
 
-import AnterosListRow from '../ListRow/AnterosListRow';
+import {AnterosListRow} from '../ListRow/AnterosListRow';
+export class AnterosPullPickerItem extends AnterosListRow {
 
-export default class AnterosPullPickerItem extends AnterosListRow {
+  constructor(props){
+    super(props);
+  }
 
   static propTypes = {
     ...AnterosListRow.propTypes,
     selected: PropTypes.bool,
   };
 
-  buildProps() {
-    let {selected, accessory, ...others} = this.props;
-    accessory = selected ? 'check' : 'empty';
-    this.props = {selected, accessory, ...others} ;
-
-    super.buildProps();
+  renderAccessory(accessory = null) {
+    return super.renderAccessory(this.props.selected ? 'check' : 'empty');
   }
 
 }
-
-              

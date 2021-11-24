@@ -6,7 +6,7 @@ export class AnterosAnimatedProgressbar extends Component {
     animation: new Animated.Value(this.props.progress),
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.widthInterpolate = this.state.animation.interpolate({
       inputRange: [0, 1],
       outputRange: ["0%", "100%"],
@@ -68,12 +68,12 @@ export class AnterosAnimatedProgressbar extends Component {
     } = this.props;
 
     return (
-      <Animated.View style={[styles.outer, { height }, row ? styles.flex : undefined, style]}>
-        <Animated.View style={[styles.flex, { borderColor, borderWidth, borderRadius }, wrapStyle]}>
-          <Animated.View
+      <Animated.View useNativeDriver={true}   style={[styles.outer, { height }, row ? styles.flex : undefined, style]}>
+        <Animated.View useNativeDriver={true}   style={[styles.flex, { borderColor, borderWidth, borderRadius }, wrapStyle]}>
+          <Animated.View useNativeDriver={true}
             style={[StyleSheet.absoluteFill, { backgroundColor: fillColor }, fillStyle]}
           />
-          <Animated.View
+          <Animated.View useNativeDriver={true}
             style={[
               styles.bar,
               {

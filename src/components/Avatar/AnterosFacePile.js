@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, Text, Image, StyleSheet, Animated } from 'react-native'
 import {AnterosImage} from '../Image/AnterosImage';
@@ -38,7 +38,7 @@ class Circle extends PureComponent {
     const marginRight = circleSize * offset
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={{ marginRight: -marginRight }}
       >
         <AnterosImage

@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -25,7 +25,7 @@ import moment from 'moment';
 import {AnterosButton, AnterosNavigationPage, AnterosScrollableTabBar, AnterosScrollableDefaultTabBar,
      AnterosLabel, AnterosListRow, AnterosText, AnterosScrollableTabView, AnterosIcon} from 'anteros-react-native';
 
-export default class ScrollableTabViewExample extends AnterosNavigationPage {
+export class ScrollableTabViewExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
@@ -263,7 +263,7 @@ const styles3 = StyleSheet.create({
   });
 
 
-  class FacebookTabBar extends React.Component {
+  class FacebookTabBar extends Component {
     icons = [];
   
     constructor(props) {

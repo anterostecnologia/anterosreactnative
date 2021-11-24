@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types';
 const barMinWidthOffset = 20;	
 const maxFontSize = 15;
-import AnterosTheme from '../../themes/AnterosTheme';
+import {AnterosTheme} from '../../themes/AnterosTheme';
 import {AnterosText} from '../Text/AnterosText';
 
 
@@ -33,7 +33,7 @@ export class AnterosProgressBar extends Component {
 		}
 	}
 
-	componentWillReceiveProps(props) {
+	UNSAFE_componentWillReceiveProps(props) {
 		if (this.props.progress !== props.progress) {
 			const sizeWidthRatio = props.size / props.width;
 			const progress = (props.progress > props.size) ? props.size : props.progress;
@@ -81,7 +81,7 @@ export class AnterosProgressBar extends Component {
 
 		return (
 		<View style={[styles.container, {margin:margin, padding: padding, width: this.props.width, height: this.props.height }, style]}>
-			<Animated.View 
+			<Animated.View useNativeDriver={true}   
 					style={[styles.progressBar, { 
 					width: this.state.width, 
 					borderRadius: (style && style.borderRadius ? style.borderRadius : 5),

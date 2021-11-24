@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -25,15 +25,13 @@ import moment from 'moment';
 import {AnterosButton, AnterosSwiper, AnterosNavigationPage,  
     AnterosImage, AnterosLabel, AnterosListRow, AnterosText, AnterosTheme} from 'anteros-react-native';
 import ArticlesExamples from './ArticlesExample';
-import ChatExample from './examples/ChatExample';
 import ECommerceExample from './ECommerceExample';
-import NewsFeedExample from './examples/NewsFeedExample';
 import TimelineExample from './examples/TimelineExample';
 import NotificationsExample from './examples/NotificationsExample';
 
 
 
-export default class Examples extends AnterosNavigationPage {
+export class Examples extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
@@ -99,11 +97,7 @@ export default class Examples extends AnterosNavigationPage {
             .navigator
             .push({view: <DialogExample/>})
     }
-    ex4() {
-        this
-            .navigator
-            .push({view: <NewsFeedExample/>})
-    }
+    
 
     ex5() {
         this
@@ -115,12 +109,6 @@ export default class Examples extends AnterosNavigationPage {
         this
             .navigator
             .push({view: <NotificationsExample/>})
-    }
-
-    ex7() {
-        this
-            .navigator
-            .push({view: <ChatExample/>})
     }
 
 
@@ -138,9 +126,6 @@ export default class Examples extends AnterosNavigationPage {
                 <AnterosListRow iconStyle={{paddingRight: 8}} iconType='font-awesome' 
                         iconSize={24} iconColor={AnterosTheme.primaryColor} iconName='lock' 
                         title='Authentication'  topSeparator='full'/>
-                <AnterosListRow iconStyle={{paddingRight: 8}} iconType='font-awesome' 
-                        iconSize={24} iconColor={AnterosTheme.primaryColor} iconName='comment-o'  
-                        title='Chat' onPress={this.ex7} topSeparator='full'/>
                 <AnterosListRow iconStyle={{paddingRight: 8}} iconType='font-awesome' 
                         iconSize={24} iconColor={AnterosTheme.primaryColor} iconName='comments-o' 
                         title='Comments'  topSeparator='full'/>

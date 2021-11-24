@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -53,15 +53,12 @@ import randomcolor from 'randomcolor';
 import _ from 'lodash';
 import TimelineExample from './TimelineExample';
 import ListRowExample from './ListRowExample';
-import SwipeListViewExample from './SwipeListViewExample';
-import DigitalMagazineExample from './DigitalMagazineExample';
-import MasonryListExample from './MasonryListExample';
 import { Button, ListItem, Left, Right, Body, Thumbnail, Icon, Item, Input } from 'native-base'
 var faker = require('faker/locale/pt_BR');
 
 const window = Dimensions.get('window');
 
-export default class ListExample extends AnterosNavigationPage {
+export class ListExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
@@ -147,12 +144,6 @@ export default class ListExample extends AnterosNavigationPage {
             .push({view: <SettingsListExample/>})
     }
 
-    list5() {
-        //  this
-        //      .navigator
-        //      .push({view: <MasonryListExample/>})
-    }
-
     list6() {
          this
              .navigator
@@ -172,17 +163,7 @@ export default class ListExample extends AnterosNavigationPage {
             .navigator
             .push({view: <SearchBoxExample/>})
     }
-
-    list10() {
-         this
-             .navigator
-             .push({view: <SwipeListViewExample/>})
-    }
-    list11() {
-         this
-             .navigator
-             .push({view: <DigitalMagazineExample/>})
-    }
+    
     list12() {
          this
              .navigator
@@ -201,15 +182,12 @@ export default class ListExample extends AnterosNavigationPage {
                 <AnterosListRow title='Sortable list' onPress={this.list2} topSeparator='full'/>
                 <AnterosListRow title='Alphabetic list' onPress={this.list3} topSeparator='full'/>
                 <AnterosListRow title='Settings list' onPress={this.list4} topSeparator='full'/>
-                <AnterosListRow title='Masonry' onPress={this.list5} topSeparator='full'/>
                 <AnterosListRow title='Timeline' onPress={this.list6} topSeparator='full'/>
                 <AnterosListRow title='List row' onPress={this.list7} topSeparator='full'/>
                 
                 <AnterosListRow title='Search box' onPress={this.list9} topSeparator='full'/>
-                <AnterosListRow title='Swipe list' onPress={this.list10} topSeparator='full'/>
                 <AnterosListRow title='Infinite scrollview' onPress={this.list12} topSeparator='full'/>
-                <AnterosListRow title='Digital magazine' onPress={this.list11} topSeparator='full'/>
-
+            
             </ScrollView>
         );
     }

@@ -101,9 +101,9 @@ export class AnterosImageHeaderScrollView extends Component{
     ];
 
     return (
-      <Animated.View style={[styles.header, headerTransformStyle]}>
+      <Animated.View useNativeDriver={true}   style={[styles.header, headerTransformStyle]}>
         {this.renderHeaderProps()}
-        <Animated.View style={overlayStyle} />
+        <Animated.View useNativeDriver={true}   style={overlayStyle} />
         <View style={styles.fixedForeground}>{this.props.renderFixedForeground()}</View>
       </Animated.View>
     );
@@ -128,7 +128,7 @@ export class AnterosImageHeaderScrollView extends Component{
     }
 
     return (
-      <Animated.View style={[styles.header, headerTransformStyle]}>
+      <Animated.View useNativeDriver={true}   style={[styles.header, headerTransformStyle]}>
         {this.props.renderForeground()}
       </Animated.View>
     );
@@ -142,7 +142,7 @@ export class AnterosImageHeaderScrollView extends Component{
     }
 
     return (
-      <Animated.View style={[styles.header, styles.touchableFixedForeground, { height }]}>
+      <Animated.View useNativeDriver={true}   style={[styles.header, styles.touchableFixedForeground, { height }]}>
         {this.props.renderTouchableFixedForeground()}
       </Animated.View>
     );
@@ -411,14 +411,14 @@ export class AnterosTriggeringView extends Component {
       };
     }
   
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       if (!this.context.scrollY) {
         return;
       }
       this.listenerId = this.context.scrollY.addListener(this.onScroll);
     }
   
-    componentWillReceiveProps(nextProps, nextContext) {
+    UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
       if (!this.context.scrollY) {
         return;
       }

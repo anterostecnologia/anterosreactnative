@@ -81,7 +81,7 @@ export class AnterosFloatingAction extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.visible !== this.props.visible) {
       if (nextProps.visible) {
         Animated.parallel([
@@ -232,7 +232,7 @@ export class AnterosFloatingAction extends Component {
     }
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         style={[
           styles.buttonContainer,
           styles[`${position}Button`],
@@ -246,7 +246,7 @@ export class AnterosFloatingAction extends Component {
           activeOpacity={0.85}
           onPress={this.animateButton}
         >
-          <Animated.View style={[styles.buttonTextContainer, animatedViewStyle]}>
+          <Animated.View useNativeDriver={true}   style={[styles.buttonTextContainer, animatedViewStyle]}>
             {this.getIcon()}
           </Animated.View>
         </Touchable>
@@ -286,7 +286,7 @@ export class AnterosFloatingAction extends Component {
     const sortedActions = actions.sort((a, b) => a.position - b.position);
 
     return (
-      <Animated.View style={actionsStyles} pointerEvents="box-none">
+      <Animated.View useNativeDriver={true}   style={actionsStyles} pointerEvents="box-none">
         {
           sortedActions.map((action) => {
             const textColor = action.textColor || action.actionsTextColor;
@@ -329,7 +329,7 @@ export class AnterosFloatingAction extends Component {
     const { showBackground } = this.props;
 
     return (
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         pointerEvents="box-none"
         style={[styles.overlay, { backgroundColor: 'transparent' }]}
       >
@@ -473,7 +473,7 @@ class AnterosFloatingActionItem extends Component {
     this.animation = new Animated.Value(0);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.active !== this.props.active) {
       Animated.spring(this.animation, { toValue: nextProps.active ? 1 : 0 }).start();
     }
@@ -578,7 +578,7 @@ class AnterosFloatingActionItem extends Component {
 
     return (
       <Touchable activeOpacity={0.4} style={stylesItem.container} onPress={this.handleOnPress}>
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           style={[
             stylesItem.actionContainer,
             animatedActionContainerStyle,

@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class AccordionExample extends AnterosNavigationPage {
+export class AccordionExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

@@ -10,7 +10,7 @@ import {
 
 import {AnterosNavigationPage, AnterosCardModal} from 'anteros-react-native';
 
-export default class CardModalExample extends AnterosNavigationPage {
+export class CardModalExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

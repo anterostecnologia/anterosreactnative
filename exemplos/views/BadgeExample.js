@@ -12,7 +12,7 @@ import {
 } from "anteros-react-native";
 
 
-export default class BadgeExample extends AnterosNavigationPage {
+export class BadgeExample extends AnterosNavigationPage {
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,
     title: "Badge",

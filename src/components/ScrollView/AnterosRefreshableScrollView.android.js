@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   ActivityIndicator,
   Animated,
@@ -25,7 +24,7 @@ const PaginationStatus = {
   allLoaded: 2
 }
 
-export default class AnterosRefreshableScrollView extends ScrollView {
+export class AnterosRefreshableScrollView extends ScrollView {
   static defaultProps = {
     horizontal: false,
     scrollEnabled: true,
@@ -81,7 +80,6 @@ export default class AnterosRefreshableScrollView extends ScrollView {
   }
 
   onScroll = (event) => {
-    // console.log('onScroll()');
     const { y } = event.nativeEvent.contentOffset
     const { refreshViewHeight } = this.props
     if (y <= refreshViewHeight) {
@@ -122,7 +120,6 @@ export default class AnterosRefreshableScrollView extends ScrollView {
   }
 
   onScrollBeginDrag = (event) => {
-    // console.log('onScrollBeginDrag()');
     this._dragFlag = true
     const { refreshViewHeight } = this.props
     this._offsetY = event.nativeEvent.contentOffset.y - refreshViewHeight
@@ -136,7 +133,6 @@ export default class AnterosRefreshableScrollView extends ScrollView {
     const { y } = event.nativeEvent.contentOffset
     const { refreshViewHeight } = this.props
     this._offsetY = y - refreshViewHeight
-    // console.log('onScrollEndDrag()' + y);
     if (!this._isRefreshing) {
       if (this.state.refreshStatus === RefreshStatus.releaseToRefresh) {
         this._isRefreshing = true
@@ -172,7 +168,6 @@ export default class AnterosRefreshableScrollView extends ScrollView {
   }
 
   onRefreshEnd = () => {
-    // console.log('onRefreshEnd()');
     if (this.state.refreshStatus === RefreshStatus.refreshing) {
       this._isRefreshing = false
       const now = new Date().getTime()
@@ -233,7 +228,7 @@ export default class AnterosRefreshableScrollView extends ScrollView {
       )
     }
     return (
-      <Animated.Image
+      <Animated.Image  useNativeDriver={true} 
         source={this.props.arrowImageSource}
         resizeMode="contain"
         style={[defaultHeaderStyles.arrow,

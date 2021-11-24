@@ -30,4 +30,4 @@ class AnterosARTChartBar extends Component {
   }
 }
 
-export default AnterosARTChartBar;
+export {AnterosARTChartBar};

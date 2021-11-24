@@ -56,7 +56,7 @@ const getVisibleArrayIndexes = (
   return _.uniq(uniquePaddedIndexList);
 };
 
-// export default class Pagination extends Component {
+// export class Pagination extends Component {
 export class AnterosPagination extends Component {
   constructor(props) {
     super(props);
@@ -103,7 +103,6 @@ export class AnterosPagination extends Component {
           }
         };
     }
-    // if(!onPress)onPress=()=>{try {this.props.refs.scrollToIndex(i)} catch (e) {console.log(" e: ",e)}}
     return (
       <AnterosPaginationDot
         onPress={onPress}

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {AnterosNavigationPage, AnterosSwipeable} from 'anteros-react-native';
 
-export default class SwipeableExample extends AnterosNavigationPage {
+export class SwipeableExample extends AnterosNavigationPage {
   
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

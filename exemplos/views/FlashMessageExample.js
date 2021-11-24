@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React,{Component} from "react";
 import { StyleSheet, StatusBar, TouchableOpacity, ScrollView, Text, View } from "react-native";
 import {AnterosSeparator, AnterosButton, AnterosNavigationPage, AnterosFlashMessage, showMessage, hideMessage} from 'anteros-react-native';
 
@@ -24,7 +24,7 @@ import {AnterosSeparator, AnterosButton, AnterosNavigationPage, AnterosFlashMess
     },
   });
 
-export default class FlashMessageExample extends AnterosNavigationPage {
+export class FlashMessageExample extends AnterosNavigationPage {
   static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
         title: 'Flash message',

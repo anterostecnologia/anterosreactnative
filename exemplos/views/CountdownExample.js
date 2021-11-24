@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,7 @@ import {
 
 import {AnterosNavigationPage, AnterosCountdown, AnterosSeparator} from 'anteros-react-native';
 
-export default class CountdownExample extends AnterosNavigationPage {
+export class CountdownExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

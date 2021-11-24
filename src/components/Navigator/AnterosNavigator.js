@@ -2,7 +2,7 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text} from 'react-native';
 
@@ -12,7 +12,11 @@ import {Navigator} from 'react-native-deprecated-custom-components';
 //replace AnterosNavigatorScene, optimize the effect of the scene
 Navigator.SceneConfigs = AnterosNavigatorScene;
 
-export default class AnterosNavigator extends Component {
+export class AnterosNavigator extends Component {
+
+  constructor(props){
+    super(props);
+  }
 
   static propTypes = {
     rootView: PropTypes.element,

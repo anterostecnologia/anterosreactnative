@@ -38,7 +38,7 @@ class AnterosARTChartDonut extends Component {
     this.donutSlices=[];
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this._computeChartData();
     //this.props.max ? this.sum = this.props.max : this.sum = this._computeSum();
     this.slices = [];
@@ -99,7 +99,7 @@ class AnterosARTChartDonut extends Component {
     this._initClickHandler();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
   }
 
   componentWillUnmount() {
@@ -146,7 +146,6 @@ class AnterosARTChartDonut extends Component {
         let distFromCenter = Math.sqrt(Math.pow(this.elementCenter.x - evt.nativeEvent.locationX,2) + Math.pow(this.elementCenter.y - evt.nativeEvent.locationY,2));
         this.slices.some((d, idx) => {
           let ro2 = this.props.data.data[d.dataSetIdx].r/2;
-          //console.log(angle, d.startAngle, d.endAngle, ro2, distFromCenter);
           if ((d.startAngle <= angle && angle <= d.startAngle + d.arcLength)
             && (ro2 - this.strokeWidth <= distFromCenter && distFromCenter <= ro2)) {
             clickedSlice = idx;
@@ -170,7 +169,7 @@ class AnterosARTChartDonut extends Component {
   render() {
     let size = this.maxR;    
     return(
-      <Animated.View
+      <Animated.View useNativeDriver={true}
         onLayout={this._onLayout.bind(this)}
         ref="donutchart"
         {...this._responder}
@@ -191,4 +190,4 @@ class AnterosARTChartDonut extends Component {
   }
 }
 
-export default AnterosARTChartDonut;
+export {AnterosARTChartDonut};

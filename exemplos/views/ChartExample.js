@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import {Component, PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -34,7 +34,7 @@ import dateFns from 'date-fns'
 
 const timer = require('react-native-timer');
 
-export default class ChartExample extends AnterosNavigationPage {
+export class ChartExample extends AnterosNavigationPage {
 
     static defaultProps = {
         ...AnterosNavigationPage.defaultProps,
@@ -1451,7 +1451,7 @@ class HistogramExample extends AnterosNavigationPage {
           }
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       this.set_random_param()
     }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {Platform, View,Text} from 'react-native';
 
 
@@ -18,7 +18,10 @@ Platform.select({
   android: { fontFamily: 'Roboto' }
 })
 
-export default class App extends Component {
+export class App extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     //console.log(AnterosTheme);
     console.disableYellowBox = true;

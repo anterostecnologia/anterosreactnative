@@ -14,7 +14,7 @@ const items = ['https://source.unsplash.com/MsTOg6rhRVk/300x300',
                ]
 
 
-export default class ElasticStackExample extends AnterosNavigationPage {
+export class ElasticStackExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,

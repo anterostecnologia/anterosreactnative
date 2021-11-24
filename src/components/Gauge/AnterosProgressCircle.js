@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, View, ViewPropTypes,I18nManager } from 'react-native'
 
@@ -62,7 +62,7 @@ export class AnterosProgressCircle extends Component {
     this.state = this.getInitialStateFromProps(props)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState(this.getInitialStateFromProps(nextProps))
   }
 

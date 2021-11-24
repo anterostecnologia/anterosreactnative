@@ -253,8 +253,8 @@ export class AnterosRating extends Component {
           {...this.state.panResponder.panHandlers}
         >
           <View style={styles.starsInsideWrapper}>
-            <Animated.View style={this.getPrimaryViewStyle()} />
-            <Animated.View style={this.getSecondaryViewStyle()} />
+            <Animated.View useNativeDriver={true}   style={this.getPrimaryViewStyle()} />
+            <Animated.View useNativeDriver={true}   style={this.getSecondaryViewStyle()} />
           </View>
           {this.renderRatings()}
         </View>

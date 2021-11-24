@@ -4,12 +4,12 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {StyleSheet, View, Image, ScrollView} from 'react-native';
 
 import {NavigationPage, ListRow, SegmentedView, Carousel} from 'teaset';
 
-export default class MultiScrollViewExample extends AnterosNavigationPage {
+export class MultiScrollViewExample extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

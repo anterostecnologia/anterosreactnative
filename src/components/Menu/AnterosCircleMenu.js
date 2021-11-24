@@ -136,7 +136,7 @@ export class AnterosCircleMenu extends Component {
         pointerEvents="box-none"
         style={styles.actionContainer}
       >
-        <Animated.View style={[styles.actionBarItem, {
+        <Animated.View useNativeDriver={true}   style={[styles.actionBarItem, {
           top: (this.props.itemSize - constants.BUTTON_SIZE - 10) / 2 + 5,
           left: 0,
           transform: [{
@@ -301,11 +301,11 @@ const stylesAction = {
       const outRadius = radius * 2;
       const border = (this.props.size - 50) / 2 + 5;
   
-      return <Animated.View
+      return <Animated.View useNativeDriver={true}
         style={[this.props.style]}
         ref={(ref) => this.wraper = ref}
       >
-        <Animated.View style={{
+        <Animated.View useNativeDriver={true}   style={{
           alignItems: 'center',
           display: this.state.isActive ? 'flex' : 'none',
           height: outRadius + this.props.size * 2,
@@ -330,7 +330,7 @@ const stylesAction = {
           /> */}
         </Animated.View>
   
-        <Animated.View
+        <Animated.View useNativeDriver={true}
           ref={ref => this.btn = ref}
           style={[{
             height: this.props.size,
@@ -449,7 +449,7 @@ class TouchableIcon extends Component {
           }
         }}
       >
-        <Animated.View style={[stylesTouch.container, {
+        <Animated.View useNativeDriver={true}   style={[stylesTouch.container, {
           backgroundColor: 'transparent',
           borderColor: '#FFF',
           borderRadius: this.state.animation.interpolate({

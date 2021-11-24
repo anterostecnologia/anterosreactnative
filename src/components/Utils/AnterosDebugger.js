@@ -85,4 +85,4 @@ class AnterosDebugger {
 	}
 }
 
-export default AnterosDebugger;
+export {AnterosDebugger};

@@ -3,7 +3,7 @@ import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
 import {AnterosNavigationPage, AnterosFloatingAction} from 'anteros-react-native';
 import Property from './Property';
 
-export default class FloatingActionChangeActionColor extends AnterosNavigationPage {
+export class FloatingActionChangeActionColor extends AnterosNavigationPage {
 
   static defaultProps = {
     ...AnterosNavigationPage.defaultProps,

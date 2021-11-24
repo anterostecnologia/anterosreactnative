@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react';
+
 import PropTypes from 'prop-types';
 import createReactClass from 'create-react-class';
 
@@ -15,13 +15,13 @@ import {
   Image,
   ViewPropTypes
 } from 'react-native';
-
+import React,{Component} from "react";
 import {AnterosText} from '../Text/AnterosText';
 import {AnterosImage} from '../Image/AnterosImage';
 
 const ARROW_ICON = require('../../assets/images/icon-arrow-settings.png');
 
-export class AnterosSettingsList extends React.Component {
+export class AnterosSettingsList extends Component {
   static propTypes = {
     backgroundColor: PropTypes.string,
     borderColor: PropTypes.string,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import {
   ScrollView,
   StyleSheet, PixelRatio,
@@ -191,7 +191,7 @@ function report (comments, cmnt) {
 
 
 
-export default class CommentsExample extends AnterosNavigationPage {
+export class CommentsExample extends AnterosNavigationPage {
 
     static defaultProps = {
       ...AnterosNavigationPage.defaultProps,
@@ -218,7 +218,7 @@ export default class CommentsExample extends AnterosNavigationPage {
   
     static navigatorStyle = {}
   
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
       const c = this.actions.getComments();
       this.setState({
         comments : c,
