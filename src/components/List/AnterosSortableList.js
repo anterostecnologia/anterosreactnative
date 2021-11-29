@@ -690,7 +690,7 @@ class Row extends Component {
     animated: PropTypes.bool,
     disabled: PropTypes.bool,
     horizontal: PropTypes.bool,
-    style: Animated.View.propTypes.style,
+    style: PropTypes.any,
     location: PropTypes.shape({
       x: PropTypes.number,
       y: PropTypes.number,

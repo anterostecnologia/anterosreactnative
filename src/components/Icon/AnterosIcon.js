@@ -8,6 +8,7 @@ import {
   ViewPropTypes as RNViewPropTypes,
   Text as NativeText,
 } from 'react-native';
+import { Linejoin, Linecap, Svg, Path } from "react-native-svg";
 
 
 import ZocialIcon from 'react-native-vector-icons/Zocial';
@@ -18,10 +19,19 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import FAIcon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5Pro from 'react-native-vector-icons/FontAwesome5Pro';
 import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { AnterosText } from '../Text/AnterosText';
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import icoMoonConfig from './versatil_fonts.json';
+
+let Versatil = FontAwesome5Pro;
+
+if (Platform.OS !== 'ios'){
+  Versatil = createIconSetFromIcoMoon(icoMoonConfig);
+}
 
 const customIcons = {};
 
@@ -29,7 +39,13 @@ const registerCustomIconType = (id, customIcon) => {
   customIcons[id] = customIcon;
 };
 
-function getIconType(type) {
+
+import * as React from "react"
+
+
+
+
+function getIconType(type, name) {
   switch (type) {
     case 'zocial':
       return ZocialIcon;
@@ -48,7 +64,9 @@ function getIconType(type) {
     case 'entypo':
       return EntypoIcon;
     case 'font-awesome':
-      return FAIcon;
+      return FontAwesome;
+    case 'font-versatil':
+        return Versatil;  
     case 'simple-line-icon':
       return SimpleLineIcon;
     case 'feather':
@@ -62,6 +80,10 @@ function getIconType(type) {
 };
 
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
+
+
+
+
 
 export const AnterosIcon = props => {
   const {
@@ -78,6 +100,7 @@ export const AnterosIcon = props => {
     reverseColor,
     text,
     textStyle,
+    FaStyle,
     onPress,
     ...attributes
   } = props;
@@ -91,9 +114,9 @@ export const AnterosIcon = props => {
   }
   let Icon;
   if (!type) {
-    Icon = getIconType('material');
+    Icon = getIconType('material',name);
   } else {
-    Icon = getIconType(type);
+    Icon = getIconType(type,name);
   }
   return (
     <Component
@@ -121,6 +144,10 @@ export const AnterosIcon = props => {
           style={[{ backgroundColor: 'transparent' }, iconStyle && iconStyle]}
           size={size}
           name={name}
+          light={FaStyle==="light"}
+          solid={FaStyle==="solid"}
+          brands={FaStyle==="brands"}
+          duodone={FaStyle==="duodone"}
           color={reverse ? reverseColor : color}
         />
         {text?<AnterosText style={[{paddingLeft: 4},textStyle]}>{text}</AnterosText>:null}
@@ -143,6 +170,7 @@ AnterosIcon.propTypes = {
   iconStyle: NativeText.propTypes.style,
   onPress: PropTypes.func,
   reverseColor: PropTypes.string,
+  FaStyle: PropTypes.string
 };
 
 AnterosIcon.defaultProps = {
@@ -152,6 +180,7 @@ AnterosIcon.defaultProps = {
   size: 24,
   color: 'black',
   reverseColor: 'white',
+  FaStyle: 'light'
 };
 
 const styles = StyleSheet.create({

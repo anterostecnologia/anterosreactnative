@@ -53,7 +53,7 @@ import { AnterosAccordion } from './src/components/Accordion/AnterosAccordion';
 import { AnterosAlert } from './src/components/Alert/AnterosAlert';
 import { AnterosDropdownAlert } from './src/components/Alert/AnterosDropdownAlert';
 import { AnterosFlashMessage, showMessage, hideMessage } from './src/components/Alert/AnterosFlashMessage';
-import { AnterosNotifyPanel } from './src/components/Alert/AnterosNotifyPanel';
+// import { AnterosNotifyPanel } from './src/components/Alert/AnterosNotifyPanel';
 import { AnterosAppIntro } from './src/components/AppIntro/AnterosAppIntro';
 import { AnterosConfirmationCodeInput } from './src/components/Authentication/AnterosConfirmationCodeInput';
 import { AnterosFingerprint } from './src/components/Authentication/AnterosFingerprint';
