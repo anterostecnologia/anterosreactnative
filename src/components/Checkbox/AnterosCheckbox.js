@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import {AnterosLocalDatasource, AnterosRemoteDatasource, dataSourceEvents} from "../Datasource/AnterosDatasource";
+import {AnterosLocalDatasource, AnterosRemoteDatasource} from "../Datasource/AnterosDatasource";
 import shallowCompare from "react-addons-shallow-compare";
 
 import {AnterosTheme} from '../../themes/AnterosTheme';
@@ -14,33 +14,34 @@ export class AnterosCheckbox extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      checked: props.checked === true || props.checked === false
-        ? props.checked
-        : props.defaultChecked
-    };
+    this.state = {};
+    if(props.dataSource){
+      if(typeof props.dataSource.fieldByName(props.dataField) !== 'boolean'){
+        props.dataSource.setFieldByName(props.dataField, false)
 
-    if(this.props.dataSource){
-      this.state.checked = this.props.dataSource.fieldByName(this.props.dataField)
-      if(!this.props.dataSource.fieldByName(this.props.dataField)){
-        this.props.dataSource.setFieldByName(this.props.dataField,false)
+      }
+      this.state.checked = props.dataSource.fieldByName(props.dataField);
+    }else{
+      this.state.checked = typeof props.checked === 'boolean' ? props.checked : props.defaultChecked
     }
-    }
-
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({checked: nextProps.checked});
+    if(typeof nextProps.checked === 'boolean'){
+      this.setState({checked: nextProps.checked});
+    }
   }
 
   onChangeChecked = (checked) => {
-    
     if(this.props.dataSource){
-      this.props.dataSource.setFieldByName(this.props.dataField,checked)
+      this.props.dataSource.setFieldByName(this.props.dataField, checked)
     }
 
     this.setState({checked});
 
+    if(this.props.onChange){
+      this.props.onChange(checked);
+    }
   }
 
   shouldComponentUpdate=(nextProps, nextState) => {
@@ -142,10 +143,7 @@ export class AnterosCheckbox extends Component {
     ];
 
     onPress = () => {
-      this.setState({
-        checked: !checked
-      });
-      onChange && onChange(!checked);
+      this.onChangeChecked(!this.state.checked)
     };
 
     onChange = this.props.onChange ? this.props.onChange : this.onChangeChecked
