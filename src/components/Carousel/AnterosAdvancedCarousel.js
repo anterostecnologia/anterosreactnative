@@ -54,7 +54,7 @@ export class AnterosAdvancedCarousel extends Component {
         loopClonesPerSide: PropTypes.number,
         scrollInterpolator: PropTypes.func,
         slideInterpolatedStyle: PropTypes.func,
-        slideStyle: Animated.View.propTypes.style,
+        slideStyle: PropTypes.any,
         shouldOptimizeUpdates: PropTypes.bool,
         swipeThreshold: PropTypes.number,
         useScrollView: PropTypes.bool,
