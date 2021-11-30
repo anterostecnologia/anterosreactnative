@@ -2,7 +2,7 @@
 
 'use strict';
 
-import {
+import React,{
   PureComponent,
 } from "react";
 
