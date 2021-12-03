@@ -39,12 +39,6 @@ const registerCustomIconType = (id, customIcon) => {
   customIcons[id] = customIcon;
 };
 
-
-import * as React from "react"
-
-
-
-
 function getIconType(type, name) {
   switch (type) {
     case 'zocial':
