@@ -1819,7 +1819,7 @@ export const animatedStyles = {
 
 
 
-class Pagination extends PureComponent {
+export class Pagination extends PureComponent {
 
     static propTypes = {
         activeDotIndex: PropTypes.number.isRequired,
@@ -1959,6 +1959,31 @@ class Pagination extends PureComponent {
 }
 
 
+
+const DEFAULT_DOT_SIZE = 7;
+const DEFAULT_DOT_COLOR = 'rgba(0, 0, 0, 0.75)';
+
+const stylesPagination= StyleSheet.create({
+    sliderPagination: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 20,
+        paddingVertical: 30
+    },
+    sliderPaginationDotContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 8
+    },
+    sliderPaginationDot: {
+        width: DEFAULT_DOT_SIZE,
+        height: DEFAULT_DOT_SIZE,
+        borderRadius: DEFAULT_DOT_SIZE / 2,
+        backgroundColor: DEFAULT_DOT_COLOR
+    }
+});
+
+
 class PaginationDot extends PureComponent {
 
     static propTypes = {
@@ -2071,12 +2096,12 @@ class PaginationDot extends PureComponent {
         } : {};
 
         const dotContainerStyle = [
-            styles.sliderPaginationDotContainer,
+            stylesPagination.sliderPaginationDotContainer,
             containerStyle || {}
         ];
 
         const dotStyle = [
-            styles.sliderPaginationDot,
+            stylesPagination.sliderPaginationDot,
             style || {},
             (!active && inactiveStyle) || {},
             animatedStyle,
@@ -2103,27 +2128,3 @@ class PaginationDot extends PureComponent {
 AnterosAdvancedCarousel.Pagination = Pagination;
 AnterosAdvancedCarousel.PaginationDot = PaginationDot;
 
-
-
-const DEFAULT_DOT_SIZE = 7;
-const DEFAULT_DOT_COLOR = 'rgba(0, 0, 0, 0.75)';
-
-const stylesPagination= StyleSheet.create({
-    sliderPagination: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 20,
-        paddingVertical: 30
-    },
-    sliderPaginationDotContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginHorizontal: 8
-    },
-    sliderPaginationDot: {
-        width: DEFAULT_DOT_SIZE,
-        height: DEFAULT_DOT_SIZE,
-        borderRadius: DEFAULT_DOT_SIZE / 2,
-        backgroundColor: DEFAULT_DOT_COLOR
-    }
-});

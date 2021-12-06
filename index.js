@@ -89,7 +89,7 @@ import { AnterosInteractiveCard, Header, Footer, Content } from './src/component
 import { AnterosPricingCard } from './src/components/Card/AnterosPricingCard';
 import { AnterosErrorBoundary } from './src/components/Error/AnterosErrorBoundary';
 
-import { AnterosAdvancedCarousel, scrollInterpolators, animatedStyles } from './src/components/Carousel/AnterosAdvancedCarousel';
+import { AnterosAdvancedCarousel, scrollInterpolators, animatedStyles,  Pagination } from './src/components/Carousel/AnterosAdvancedCarousel';
 import {
     polarToCartesian, makeArc, interpolateColors, interpolateColorsFixedAlpha, lightenColor,
     saturateColor, hueshiftColor, tintColor, shadeColor, complement, computeSplineControlPoints,
@@ -255,7 +255,7 @@ import { AnterosDatasourceError } from './src/components/anteros-core/AnterosExc
 import { Anteros } from './src/components/anteros-core/Anteros'
 import { AnterosObjectUtils } from './src/components/anteros-core/AnterosObjectUtils'
 import { AnterosSignaturePad } from './src/components/Signature/AnterosSignaturePad'
-
+import { AnterosBigList } from './src/components/List/AnterosBigList';
 export {
     AnterosTheme,
     AnterosLabel,
@@ -339,6 +339,7 @@ export {
     AnterosInteractiveCard, Header, Footer, Content,
     AnterosPricingCard,
     AnterosAdvancedCarousel,
+    Pagination,
     polarToCartesian,
     makeArc,
     interpolateColors,
@@ -413,6 +414,7 @@ export {
     AnterosLightbox,
     AnterosParallaxImage,
     AnterosThumbnailSelector,
+    AnterosBigList,
     //AnterosAutoComplete,
     AnterosInputSearchText,
     AnterosSearchBox,
