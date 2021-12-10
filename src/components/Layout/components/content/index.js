@@ -184,7 +184,7 @@ AnterosContent.propTypes = {
 AnterosContent.defaultProps = {
   breakpoints: BREAKPOINT_VALUES,
   horizontal: false,
-  scrollable: true,
+  scrollable: false,
   relativeTo: 'window',
   style: {},
   stretchable: false
