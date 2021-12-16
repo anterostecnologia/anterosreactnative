@@ -1,6 +1,6 @@
 {
   "name": "anteros-react-native",
-  "version": "1.0.69",
+  "version": "1.0.70",
   "description": "Anteros React Native Components",
   "main": "index.js",
   "scripts": {

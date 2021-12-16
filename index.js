@@ -1,8 +1,3 @@
-// import {NativeModules} from 'react-native';
-// const {RNAnterosReactNative} = NativeModules;
-
-// 'use strict';
-
 import { AnterosButton } from './src/components/Button/AnterosButton';
 import { AnterosTheme } from './src/themes/AnterosTheme';
 import { AnterosLabel } from './src/components/Label/AnterosLabel';
@@ -418,7 +413,7 @@ export {
     //AnterosAutoComplete,
     AnterosInputSearchText,
     AnterosSearchBox,
-    //AnterosHyperlink,
+    AnterosHyperlink,
     AnterosOnLayoutWindow,
     AnterosContainer, AnterosContent, AnterosSection, AnterosBlock,
     AnterosAtoZList,

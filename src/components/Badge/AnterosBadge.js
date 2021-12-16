@@ -15,13 +15,15 @@ export class AnterosBadge extends Component {
     type: PropTypes.oneOf(['capsule', 'square', 'dot']),
     count: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     countStyle: Text.propTypes.style,
+    textStyle: Text.propTypes.style,
     maxCount: PropTypes.number
   };
 
   static defaultProps = {
     ...View.defaultProps,
     type: 'capsule',
-    maxCount: 99
+    maxCount: 99,
+    textStyle: {}
   };
 
   buildProps() {
@@ -29,6 +31,8 @@ export class AnterosBadge extends Component {
       style,
       type,
       count,
+      text,
+      textStyle,
       countStyle,
       maxCount,
       children,
@@ -103,6 +107,18 @@ export class AnterosBadge extends Component {
             : count}
         </Text>
       );
+    } else if (text){
+      textStyle = [
+        {
+          color: AnterosTheme.badgeTextColor,
+          fontSize: AnterosTheme.badgeFontSize
+        }
+      ].concat(textStyle);
+      children = (
+        <Text style={textStyle} allowFontScaling={false} numberOfLines={1}>
+          {text}
+        </Text>
+      );
     }
 
     return {
@@ -110,6 +126,7 @@ export class AnterosBadge extends Component {
       type,
       count,
       countStyle,
+      textStyle,
       maxCount,
       children,
       ...others

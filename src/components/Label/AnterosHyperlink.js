@@ -1,156 +1,49 @@
-import React,{ Component } from 'react'
-import PropTypes from 'prop-types'
-import { 
-	View, 
-	Text, 
-	Linking, 
-	Platform
-} from 'react-native'
-import mdurl from 'mdurl';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {
+  Linking,
+  Text,
+  StyleSheet
+} from 'react-native';
 
-const textPropTypes = Text.propTypes || {}
-const { OS } = Platform
+export class AnterosHyperlink extends Component {
 
-class Hyperlink extends Component {
-  constructor(props){
-    super(props)
-    this.linkify = this.linkify.bind(this)
-    this.parse = this.parse.bind(this)
-    this.linkifyIt = props.linkify || require('linkify-it')()
+  constructor(){
+      super();
+      this._goToURL = this._goToURL.bind(this);
   }
 
-  UNSAFE_componentWillReceiveProps ({ linkify = require('linkify-it')() } = {}) {
-    this.linkifyIt = linkify
+  static propTypes = {
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   }
 
   render() {
-    const { ...viewProps } = this.props
-    delete viewProps.onPress
-    delete viewProps.linkDefault
-    delete viewProps.onLongPress
-    delete viewProps.linkStyle
-		
-    return (
-      <View { ...viewProps } style={ this.props.style }>
-        { !this.props.onPress && !this.props.onLongPress && !this.props.linkStyle
-          ? this.props.children
-          : this.parse(this).props.children }
-      </View>
-    )
+
+    const { title} = this.props;
+
+    return(
+      <Text style={styles.title} onPress={this._goToURL}>
+         {title}
+      </Text>
+    );
   }
 
-  isTextNested(component) {
-    if (!React.isValidElement(component)) 
-      throw new Error('Invalid component')
-    let { type: { displayName } = {} } = component
-    if (displayName !== 'Text') 
-      throw new Error('Not a Text component')
-    return typeof component.props.children !== 'string'
-  }
-
-  linkify(component){
-    if (
-      !this.linkifyIt.pretest(component.props.children)
-      || !this.linkifyIt.test(component.props.children)
-    )
-      return component
-
-    let elements = []
-    let _lastIndex = 0
-
-    const componentProps = {
-      ...component.props,
-      ref: undefined,
-      key: undefined,
-    }
-
-    try {
-      this.linkifyIt.match(component.props.children).forEach(({ index, lastIndex, text, url }) => {
-        let nonLinkedText = component.props.children.substring(_lastIndex, index)
-        nonLinkedText && elements.push(nonLinkedText)
-        _lastIndex = lastIndex
-        if (this.props.linkText)
-          text = typeof this.props.linkText === 'function'
-              ? this.props.linkText(url)
-              : this.props.linkText
-
-        const linkComponentProps = {}
-        if (OS !== 'web') {
-          linkComponentProps.onLongPress = () => this.props.onLongPress && this.props.onLongPress(url, text)
-        }
-
-        elements.push(
-          <Text
-            { ...componentProps }
-            { ...linkComponentProps }
-            key={ url + index }
-            style={ [ component.props.style, this.props.linkStyle ] }
-            onPress={ () => this.props.onPress && this.props.onPress(url, text) }
-          >
-            { text }
-          </Text>
-        )
-      })
-      elements.push(component.props.children.substring(_lastIndex, component.props.children.length))
-      return React.cloneElement(component, componentProps, elements)
-    } catch (err) {
-      return component
-    }
-  }
-
-  parse (component) {
-    let { props: { children} = {}, type: { displayName } = {} } = component
-    if (!children)
-      return component
-
-    const componentProps = {
-      ...component.props,
-      ref: undefined,
-      key: undefined,
-    }
-
-    return React.cloneElement(component, componentProps, React.Children.map(children, child => {
-      let { type : { displayName } = {} } = child
-      if (typeof child === 'string' && this.linkifyIt.pretest(child))
-        return this.linkify(<Text { ...componentProps } style={ component.props.style }>{ child }</Text>)
-		  if (displayName === 'Text' && !this.isTextNested(child))
-			  return this.linkify(child)
-		  return this.parse(child)
-    }))
+  _goToURL() {
+    const { url } = this.props;
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+        Linking.openURL(this.props.url);
+      } else {
+        console.log('Não sei como abrir URI: ' + this.props.url);
+      }
+    });
   }
 }
 
-Hyperlink.propTypes = {
-  linkDefault: PropTypes.bool,
-  linkify: PropTypes.object,
-  linkStyle: textPropTypes.style,
-  linkText: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]),
-  onPress: PropTypes.func,
-  onLongPress: PropTypes.func,
-}
-
-export class AnterosHyperlink extends Component {
-  constructor (props) {
-    super(props)
-    this.handleLink = this.handleLink.bind(this)
+const styles = StyleSheet.create({
+  title: {
+    color: '#acacac',
+    fontWeight: 'bold'
   }
-
-  handleLink (url) {
-    const urlObject = mdurl.parse(url);
-    urlObject.protocol = urlObject.protocol.toLowerCase();
-    const normalizedURL = mdurl.format(urlObject)
-
-    Linking.canOpenURL(normalizedURL)
-      .then(supported => supported && Linking.openURL(normalizedURL));
-  }
-
-  render () {
-    const onPress = this.handleLink || this.props.onPress
-	if (this.props.linkDefault) 
-		return <Hyperlink { ...this.props } onPress={ onPress }/>
-    return <Hyperlink { ...this.props } />
-  }
-}
+});
