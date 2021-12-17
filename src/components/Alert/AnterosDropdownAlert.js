@@ -211,18 +211,24 @@ export class AnterosDropdownAlert extends Component {
     if (validateType(type) == false) {
       return;
     }
+
+    let _message = message;
+    if (message && message.message){
+      _message = message.message;
+    }   
+
     if (typeof title !== 'string') {
       title = title.toString();
       console.warn('AnterosDropdownAlert: Title is not a string.');
     }
-    if (typeof message !== 'string') {
-      message = message.toString();
+    if (typeof _message !== 'string') {
+      _message = _message.toString();
       console.warn('AnterosDropdownAlert: Message is not a string.');
     }
     if (this.props.replaceEnabled == false) {
       this.setState({
         type: type,
-        message: message,
+        message: _message,
         title: title,
         isOpen: true,
         topValue: 0,
@@ -253,7 +259,7 @@ export class AnterosDropdownAlert extends Component {
           if (self.state.isOpen == false) {
             self.setState({
               type: type,
-              message: message,
+              message: _message,
               title: title,
               isOpen: true,
               topValue: 0,

@@ -148,6 +148,7 @@ import { AnterosInputSearchText } from './src/components/Input/AnterosInputSearc
 import { AnterosSearchBox } from './src/components/Input/AnterosSearchBox';
 import { AnterosHyperlink } from './src/components/Label/AnterosHyperlink';
 import { AnterosOnLayoutWindow } from './src/components/Layout/AnterosOnLayoutWindow';
+import { AnterosTimetable, AnterosNowLine } from './src/components/TimeTable/AnterosTimeTable';
 
 import {
     AnterosContainer, AnterosContent, AnterosSection, AnterosBlock, AnterosLayout,
@@ -509,7 +510,7 @@ export {
 
     AnterosColorGradientSlider,
     AnterosGradingModal,
-
+    AnterosTimetable, AnterosNowLine,
     AnterosLocalDatasource, AnterosRemoteDatasource, DATASOURCE_EVENTS, dataSourceConstants, dataSourceEvents,
     AnterosJacksonParser, AnterosUtils, AnterosDateUtils,
     AnterosDatasourceError, Anteros, AnterosObjectUtils,
