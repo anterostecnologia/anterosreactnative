@@ -59,15 +59,19 @@ export class AnterosSelect extends Component {
   constructor(props) {
     super(props);
 
-    if (!this.props.dataSource && this.props.value) {
-      this.state.value = this.props.value;
-    } else if (this.props.dataSource) {
-      if (!this.props.fieldText) {
-        this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField) : ''
+    if (!props.dataSource && props.value) {
+      this.state.value = props.value;
+      if (props.fieldText && props.value) {
+        this.state.value = props.value[props.fieldText];
+      }
+    } else if (props.dataSource) {
+      if (!props.fieldText) {
+        this.state.value = props.dataSource.fieldByName(props.dataField) ? this.props.dataSource.fieldByName(props.dataField) : ''
       } else {
-        this.state.value = this.props.dataSource.fieldByName(this.props.dataField) ? this.props.dataSource.fieldByName(this.props.dataField)[this.props.fieldText] : ''
+        this.state.value = props.dataSource.fieldByName(props.dataField) ? this.props.dataSource.fieldByName(props.dataField)[props.fieldText] : ''
       }
     }
+    this.state.renderProps = this.buildProps(props, this.state.value);
   }
 
   measureInWindow(callback) {
@@ -131,7 +135,7 @@ export class AnterosSelect extends Component {
       : `${text}`;
   }
 
-  buildProps() {
+  buildProps = (props, _value) => {
     let {
       style,
       size,
@@ -145,10 +149,10 @@ export class AnterosSelect extends Component {
       placeholderTextColor,
       onSelected,
       ...others
-    } = this.props;
+    } = props;
 
     //value
-    value = this.props.onSelected ? this.props.value : this.state.value;
+    value = _value;
     //onSelected
     onSelected = this.onChangeSelect;
 
@@ -223,20 +227,21 @@ export class AnterosSelect extends Component {
     ].concat(valueStyle);
     if (value === null || value === undefined) {
       valueStyle = valueStyle.concat({ color: placeholderTextColor });
-      valueElement = <Text style={valueStyle} numberOfLines={this.props.numberOfLines ? this.props.numberOfLines : 1} allowFontScaling={false}>{placeholder}</Text>;
+      valueElement = <Text style={valueStyle} numberOfLines={props.numberOfLines ? props.numberOfLines : 1} allowFontScaling={false}>{placeholder}</Text>;
     } else {
       let valueText = value;
+      console.log(valueText);
       if (React.isValidElement(valueText)) {
         valueElement = valueText;
       } else {
-        valueElement = <Text style={valueStyle} numberOfLines={this.props.numberOfLines ? this.props.numberOfLines : 1} allowFontScaling={false}>{valueText}</Text>;
+        valueElement = <Text style={valueStyle} numberOfLines={props.numberOfLines ? props.numberOfLines : 1} allowFontScaling={false}>{valueText}</Text>;
       }
     }
 
     //iconTintColor
     if (!iconTintColor)
       iconTintColor = AnterosTheme.selectIconTintColor;
-
+      
     return {
       style,
       size,
@@ -254,7 +259,7 @@ export class AnterosSelect extends Component {
   }
 
   showPullPicker() {
-    const props = this.buildProps();
+    const props = this.state.renderProps;
     let { pickerTitle, items, getItemText, onSelected } = props;
     let its;
     if (!getItemText) {
@@ -266,7 +271,7 @@ export class AnterosSelect extends Component {
   }
 
   showPopoverPicker() {
-    const props = this.buildProps();
+    const props = this.state.renderProps;
     this.measure((x, y, width, height, pageX, pageY) => {
       let { items, getItemText, onSelected } = props;
       let its = items.map(item => {
@@ -282,7 +287,7 @@ export class AnterosSelect extends Component {
   }
 
   showPicker() {
-    const props = this.buildProps();
+    const props = this.state.renderProps;
     switch (this.props.pickerType) {
       case 'pull':
         this.showPullPicker(props);
@@ -336,9 +341,13 @@ export class AnterosSelect extends Component {
           }
         }
       })
-      this.setState({ value: valor });
+      this.setState({ value: valor, renderProps: this.buildProps(this.props,valor) });
     } else {
-      this.setState({ value: newValue });
+      if (this.props.fieldText && newValue) {
+        this.setState({ value: newValue[this.props.fieldText], renderProps: this.buildProps(this.props,newValue[this.props.fieldText]) });
+      } else {
+        this.setState({ value: newValue, renderProps: this.buildProps(this.props,newValue) });
+      }
     }
 
     if (this.props.onSelected){
@@ -352,6 +361,17 @@ export class AnterosSelect extends Component {
       let value = nextProps.dataSource.fieldByName(this.props.dataField);
       if (!value) {
         value = '';
+      } else {
+        value = value[nextProps.fieldText];
+      }
+      this.setState({...this.state, value: value, renderProps: this.buildProps(nextProps,value)})
+    } else {
+      if (nextProps.fieldText && nextProps.value) {
+        let value= nextProps.value[nextProps.fieldText];
+        let renderProps = this.buildProps(nextProps,value);
+        this.setState({ value, renderProps});
+      } else {
+        this.setState({ value: nextProps.value, renderProps: this.buildProps(nextProps,nextProps.value)  });
       }
     }
   }
@@ -391,7 +411,7 @@ export class AnterosSelect extends Component {
       if (valor){
         valor = valor[this.props.fieldText];
         if (valor !== this.state.value){
-          this.setState({value: valor});
+          this.setState({value: valor}); 
         }
       }
     }
@@ -399,7 +419,7 @@ export class AnterosSelect extends Component {
 
 
   render() {
-    const props = this.buildProps();
+    const props = this.state.renderProps;
 
     let {
       style,
