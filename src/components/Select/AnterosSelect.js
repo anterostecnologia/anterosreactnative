@@ -59,6 +59,10 @@ export class AnterosSelect extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      value: ''
+    }  
+
     if (!props.dataSource && props.value) {
       this.state.value = props.value;
       if (props.fieldText && props.value) {
@@ -106,10 +110,7 @@ export class AnterosSelect extends Component {
     return -1;
   }
 
-  state = {
-    value: ''
-  }
-
+  
   valueText = () => {
     let { value, items, getItemValue, getItemText } = this.props;
     let text = value;
@@ -335,18 +336,19 @@ export class AnterosSelect extends Component {
           if (item[this.props.fieldText] === newValue[this.props.fieldText] || item[this.props.fieldText] === newValue) {
             this.props.dataSource.setFieldByName(this.props.dataField, item);
             valor = this.props.dataSource.fieldByName(this.props.dataField)
-            if (valor){
+            if (valor && this.props.fieldText){
               valor = valor[this.props.fieldText];
             }
           }
         }
       })
-      this.setState({ value: valor, renderProps: this.buildProps(this.props,valor) });
+      let renderProps = this.buildProps(this.props,valor);
+      this.setState({ ...this.state, value: valor, renderProps });
     } else {
       if (this.props.fieldText && newValue) {
-        this.setState({ value: newValue[this.props.fieldText], renderProps: this.buildProps(this.props,newValue[this.props.fieldText]) });
+        this.setState({ ...this.state, value: newValue[this.props.fieldText], renderProps: this.buildProps(this.props,newValue[this.props.fieldText]) });
       } else {
-        this.setState({ value: newValue, renderProps: this.buildProps(this.props,newValue) });
+        this.setState({ ...this.state, value: newValue, renderProps: this.buildProps(this.props,newValue) });
       }
     }
 
@@ -361,7 +363,7 @@ export class AnterosSelect extends Component {
       let value = nextProps.dataSource.fieldByName(this.props.dataField);
       if (!value) {
         value = '';
-      } else {
+      } else if (nextProps.fieldText) {
         value = value[nextProps.fieldText];
       }
       this.setState({...this.state, value: value, renderProps: this.buildProps(nextProps,value)})
@@ -369,9 +371,9 @@ export class AnterosSelect extends Component {
       if (nextProps.fieldText && nextProps.value) {
         let value= nextProps.value[nextProps.fieldText];
         let renderProps = this.buildProps(nextProps,value);
-        this.setState({ value, renderProps});
+        this.setState({ ...this.state, value, renderProps});
       } else {
-        this.setState({ value: nextProps.value, renderProps: this.buildProps(nextProps,nextProps.value)  });
+        this.setState({ ...this.state, value: nextProps.value, renderProps: this.buildProps(nextProps,nextProps.value)  });
       }
     }
   }
@@ -408,10 +410,10 @@ export class AnterosSelect extends Component {
   onDatasourceEvent=(event, error) => {
     if (this.props.dataSource && this.props.dataField){
       let valor = this.props.dataSource.fieldByName(this.props.dataField)
-      if (valor){
+      if (valor && this.props.fieldText){
         valor = valor[this.props.fieldText];
         if (valor !== this.state.value){
-          this.setState({value: valor}); 
+          this.setState({...this.state, value: valor}); 
         }
       }
     }
