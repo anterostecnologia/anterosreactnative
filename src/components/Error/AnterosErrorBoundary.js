@@ -79,10 +79,19 @@ class AnterosErrorBoundary extends Component {
 
   render () {
     const { FallbackComponent } = this.props
-
+    let errorDescription = this.state.error;
+    if (typeof errorDescription === 'object' && this.state.error) {
+      errorDescription = '';
+      if (this.state.error.hasOwnProperty("message")){
+        errorDescription = this.state.error.message;
+      }
+      if (this.state.error.hasOwnProperty("name")){
+        errorDescription = errorDescription + ' ['+this.state.error.name+']';
+      }
+    }
     return this.state.error
       ? <FallbackComponent
-          error={this.state.error}
+          error={errorDescription}
           resetError={this.resetError}
         />
       : this.props.children
