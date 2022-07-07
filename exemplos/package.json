@@ -44,7 +44,7 @@
     "md5": "^2.3.0",
     "mdurl": "^1.0.1",
     "metro-react-native-babel-preset": "^0.66.2",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "node-libs-react-native": "^1.2.1",
     "paths-js": "^0.4.11",
     "payment": "^2.4.6",
